@@ -1,0 +1,25 @@
+{
+  "name": "react-training",
+  "version": "1.0.0",
+  "description": "react REACTJS GLOBAL MENTORING PROGRAM 2020Q2",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xelsoid/react-training.git"
+  },
+  "author": "Artsiom Reutovich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Xelsoid/react-training/issues"
+  },
+  "homepage": "https://github.com/Xelsoid/react-training#readme"
+}

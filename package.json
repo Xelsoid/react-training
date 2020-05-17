@@ -4,13 +4,42 @@
   "description": "react REACTJS GLOBAL MENTORING PROGRAM 2020Q2",
   "main": "index.js",
   "dependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.5.3",
     "express": "^4.17.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "5.0.2",
+    "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.0.1",
+    "mini-css-extract-plugin": "0.9.0",
+    "module-alias": "2.2.2",
+    "node-sass": "4.13.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.12.21",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.2.0",
+    "redux": "^4.0.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^4.2.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "development": "cross-env NODE_ENV=development node server.js",
+    "production": "cross-env NODE_ENV=production webpack",
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +50,9 @@
   "bugs": {
     "url": "https://github.com/Xelsoid/react-training/issues"
   },
-  "homepage": "https://github.com/Xelsoid/react-training#readme"
+  "homepage": "https://github.com/Xelsoid/react-training#readme",
+  "_moduleAliases": {
+    "@root": ".",
+    "@components": "src/components"
+  }
 }

@@ -1,17 +1,15 @@
 import React from 'react';
-import PureComponentExample from "@components/PureComponent";
-import ComponentExample from "@components/Component";
-import FunctionalComponent from "@components/FunctionalComponent";
-import CreateElement from "@components/CreateElement";
+import Header from "@components/Header";
+import Main from "@components/Main";
+import Footer from "@components/Footer";
 
 class Application extends React.Component {
   render() {
     return (
       <>
-        <CreateElement/>
-        <ComponentExample/>
-        <PureComponentExample/>
-        <FunctionalComponent/>
+        <Header/>
+        <Main/>
+        <Footer/>
       </>
     )
   }

@@ -1,0 +1,14 @@
+@import "@styles/colours.scss";
+
+.logo {
+  font-size: 20px;
+  color: $pink;
+
+  &__link {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

@@ -53,6 +53,7 @@
   "homepage": "https://github.com/Xelsoid/react-training#readme",
   "_moduleAliases": {
     "@root": ".",
+    "@styles": "src/styles",
     "@components": "src/components"
   }
 }

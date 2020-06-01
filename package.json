@@ -39,7 +39,8 @@
   "scripts": {
     "development": "cross-env NODE_ENV=development node server.js",
     "production": "cross-env NODE_ENV=production webpack",
-    "test": "jest"
+    "test": "jest",
+    "test:update-snapshots": "jest --updateSnapshot"
   },
   "repository": {
     "type": "git",

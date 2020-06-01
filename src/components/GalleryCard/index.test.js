@@ -1,9 +1,9 @@
 import React from 'react';
-import ComponentExample from "./index";
+import ComponentExample from './index';
 
 describe('Component test example', () => {
   it('renders correctly', () => {
-    const component = <ComponentExample/>;
+    const component = <ComponentExample />;
     expect(component).toMatchSnapshot();
   });
 });

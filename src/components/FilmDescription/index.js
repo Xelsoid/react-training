@@ -1,7 +1,11 @@
 import React from 'react';
 import './index.scss';
 
-const FilmDescription = ({film: {poster_path, title, tagline, vote_average, release_date, runtime, overview}}) => (
+const FilmDescription = ({
+  film: {
+    poster_path, title, tagline, vote_average, release_date, runtime, overview,
+  },
+}) => (
   <div className="film-description">
     <div className="film-description__image-wrapper">
       <img alt={title} className="film-description__image" src={poster_path} />

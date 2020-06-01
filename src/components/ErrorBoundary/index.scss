@@ -1,0 +1,13 @@
+@import "@styles/colours.scss";
+
+.error-boundary {
+  font-size: 48px;
+
+  &-wrapper {
+    display: flex;
+    height: 900px;
+    justify-content: center;
+    align-items: center;
+  }
+
+}

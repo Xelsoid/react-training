@@ -12,7 +12,7 @@ const FilmSearchComponent = () => (
         <Button/>
       </div>
       <div className='film-search__filter'>
-        <span className='film-search__filter-title'>Search by</span>
+        <span className='film-search__filter-title'>SEARCH BY</span>
         <OptionChooser/>
       </div>
     </div>

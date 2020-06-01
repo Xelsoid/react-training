@@ -1,0 +1,10 @@
+@import "@styles/colours.scss";
+
+.footer {
+  text-align: center;
+
+  &-wrapper{
+    padding: 28px 60px;
+    background-color: $dark-grey;
+  }
+}

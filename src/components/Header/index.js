@@ -4,10 +4,12 @@ import Logo from "@components/Logo";
 import './index.scss';
 
 const Header = () => (
-  <header className='header-wrapper'>
-    <Logo/>
-    <FilmSearchComponent/>
-  </header>
+    <div className='header-wrapper'>
+      <header className='header'>
+        <Logo/>
+        <FilmSearchComponent/>
+      </header>
+    </div>
 );
 
 export default Header;

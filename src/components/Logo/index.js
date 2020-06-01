@@ -1,9 +1,10 @@
 import React from 'react';
 import './index.scss';
+import SiteTitle from "@components/SiteTitle";
 
 const Logo = () => (
     <h1 className="logo">
-      <a className="logo__link" href="/"><strong>netflix</strong>roulette</a>
+      <SiteTitle/>
     </h1>
 );
 

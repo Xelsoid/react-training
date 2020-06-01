@@ -54,6 +54,7 @@
   "homepage": "https://github.com/Xelsoid/react-training#readme",
   "_moduleAliases": {
     "@root": ".",
+    "@images": "src/images",
     "@mockedData": "src/mockedData",
     "@styles": "src/styles",
     "@components": "src/components"

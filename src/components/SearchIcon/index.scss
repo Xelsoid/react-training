@@ -1,0 +1,12 @@
+@import "@styles/colours.scss";
+
+.search-icon {
+  color: $pink;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    color: $light-pink;
+  }
+}

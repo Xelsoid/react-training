@@ -21,11 +21,7 @@ const FilmsGallery = ({ films: { data } }) => (
 FilmsGallery.propTypes = {
   films: PropTypes.shape({
     data: PropTypes.array,
-  }),
-};
-
-FilmsGallery.defaultProps = {
-  films: {},
+  }).isRequired,
 };
 
 export default FilmsGallery;

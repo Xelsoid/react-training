@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component test example renders correctly 1`] = `
+exports[`TextInput test renders correctly 1`] = `
 <input
   className="text-input"
   placeholder="enter film name"

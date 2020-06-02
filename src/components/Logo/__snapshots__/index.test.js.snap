@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component test example renders correctly 1`] = `<Logo />`;
+exports[`Component test example renders correctly 1`] = `
+<h1
+  className="logo"
+>
+  <SiteTitle />
+</h1>
+`;

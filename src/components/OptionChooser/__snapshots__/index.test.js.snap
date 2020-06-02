@@ -1,3 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component test example renders correctly 1`] = `<OptionChooser />`;
+exports[`Component test example renders correctly 1`] = `
+<div
+  className="option-chooser-wrapper"
+>
+  <input
+    className="option-chooser__option"
+    id="title"
+    name="searchType"
+    type="radio"
+    value="title"
+  />
+  <label
+    className="option-chooser__label option-chooser__label--active"
+    htmlFor="title"
+  >
+    TITLE
+  </label>
+  <input
+    className="option-chooser__option"
+    id="genre"
+    name="searchType"
+    type="radio"
+    value="genre"
+  />
+  <label
+    className="option-chooser__label"
+    htmlFor="genre"
+  >
+    GENRE
+  </label>
+</div>
+`;

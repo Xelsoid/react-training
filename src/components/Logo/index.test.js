@@ -3,7 +3,7 @@ import ComponentExample from './index';
 
 describe('Component test example', () => {
   it('renders correctly', () => {
-    const component = <ComponentExample />;
+    const component = shallow(<ComponentExample />);
     expect(component).toMatchSnapshot();
   });
 });

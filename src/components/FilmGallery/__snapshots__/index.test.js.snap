@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component test example renders correctly 1`] = `
+<div
+  className="film-gallery"
+>
+  <div
+    className="film-gallery--column"
+    key="337167"
+  >
+    <GalleryCard
+      genres={
+        Array [
+          "Drama",
+          "Romance",
+        ]
+      }
+      posterPath="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+      releaseDate="2018-02-07"
+      title="Fifty Shades Freed"
+    />
+  </div>
+  <div
+    className="film-gallery--column"
+    key="181808"
+  >
+    <GalleryCard
+      genres={
+        Array [
+          "Fantasy",
+          "Adventure",
+          "Science Fiction",
+        ]
+      }
+      posterPath="https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg"
+      releaseDate="2017-12-13"
+      title="Star Wars: The Last Jedi"
+    />
+  </div>
+  <div
+    className="film-gallery--column"
+    key="284054"
+  >
+    <GalleryCard
+      genres={
+        Array [
+          "Action",
+          "Adventure",
+          "Fantasy",
+          "Science Fiction",
+        ]
+      }
+      posterPath="https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8wjKA.jpg"
+      releaseDate="2018-02-13"
+      title="Black Panther"
+    />
+  </div>
+  <div
+    className="film-gallery--column"
+    key="354912"
+  >
+    <GalleryCard
+      genres={
+        Array [
+          "Adventure",
+          "Comedy",
+          "Family",
+          "Animation",
+        ]
+      }
+      posterPath="https://image.tmdb.org/t/p/w500/eKi8dIrr8voobbaGzDpe8w0PVbC.jpg"
+      releaseDate="2017-10-27"
+      title="Coco"
+    />
+  </div>
+  <div
+    className="film-gallery--column"
+    key="333339"
+  >
+    <GalleryCard
+      genres={
+        Array [
+          "Adventure",
+          "Science Fiction",
+          "Action",
+        ]
+      }
+      posterPath="https://image.tmdb.org/t/p/w500/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg"
+      releaseDate="2018-03-28"
+      title="Ready Player One"
+    />
+  </div>
+  <div
+    className="film-gallery--column"
+    key="338970"
+  >
+    <GalleryCard
+      genres={
+        Array [
+          "Action",
+          "Adventure",
+        ]
+      }
+      posterPath="https://image.tmdb.org/t/p/w500/ePyN2nX9t8SOl70eRW47Q29zUFO.jpg"
+      releaseDate="2018-03-08"
+      title="Tomb Raider"
+    />
+  </div>
+  <div
+    className="film-gallery--column"
+    key="284053"
+  >
+    <GalleryCard
+      genres={
+        Array [
+          "Action",
+          "Adventure",
+          "Fantasy",
+        ]
+      }
+      posterPath="https://image.tmdb.org/t/p/w500/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg"
+      releaseDate="2017-10-25"
+      title="Thor: Ragnarok"
+    />
+  </div>
+  <div
+    className="film-gallery--column"
+    key="321612"
+  >
+    <GalleryCard
+      genres={
+        Array [
+          "Family",
+          "Fantasy",
+          "Romance",
+        ]
+      }
+      posterPath="https://image.tmdb.org/t/p/w500/tWqifoYuwLETmmasnGHO7xBjEtt.jpg"
+      releaseDate="2017-03-16"
+      title="Beauty and the Beast"
+    />
+  </div>
+  <div
+    className="film-gallery--column"
+    key="399055"
+  >
+    <GalleryCard
+      genres={
+        Array [
+          "Drama",
+          "Fantasy",
+          "Romance",
+        ]
+      }
+      posterPath="https://image.tmdb.org/t/p/w500/k4FwHlMhuRR5BISY2Gm2QZHlH5Q.jpg"
+      releaseDate="2017-12-01"
+      title="The Shape of Water"
+    />
+  </div>
+</div>
+`;

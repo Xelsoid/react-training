@@ -16,17 +16,10 @@ const GalleryCard = ({
 );
 
 GalleryCard.propTypes = {
-  title: PropTypes.string,
-  posterPath: PropTypes.string,
-  releaseDate: PropTypes.string,
-  genres: PropTypes.arrayOf(PropTypes.string),
-};
-
-GalleryCard.defaultProps = {
-  title: '',
-  posterPath: '',
-  releaseDate: '',
-  genres: [],
+  title: PropTypes.string.isRequired,
+  posterPath: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default GalleryCard;

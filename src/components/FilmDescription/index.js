@@ -30,23 +30,13 @@ const FilmDescription = ({
 );
 
 FilmDescription.propTypes = {
-  title: PropTypes.string,
-  posterPath: PropTypes.string,
-  releaseDate: PropTypes.string,
-  tagline: PropTypes.string,
-  voteAverage: PropTypes.number,
-  runtime: PropTypes.number,
-  overview: PropTypes.string,
-};
-
-FilmDescription.defaultProps = {
-  title: '',
-  posterPath: '',
-  releaseDate: '',
-  tagline: '',
-  voteAverage: '',
-  runtime: '',
-  overview: '',
+  title: PropTypes.string.isRequired,
+  posterPath: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
+  tagline: PropTypes.string.isRequired,
+  voteAverage: PropTypes.number.isRequired,
+  runtime: PropTypes.number.isRequired,
+  overview: PropTypes.string.isRequired,
 };
 
 export default FilmDescription;

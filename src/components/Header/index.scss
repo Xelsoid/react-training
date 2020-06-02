@@ -1,0 +1,13 @@
+@import "@styles/colours.scss";
+
+.header {
+  &-wrapper {
+    padding: 24px 60px;
+    background-image: url("../../images/header-bg.jpg") ;
+  }
+
+  &__logo-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}

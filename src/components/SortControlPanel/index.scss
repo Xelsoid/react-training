@@ -1,0 +1,25 @@
+@import "@styles/colours.scss";
+
+.sort-control-panel {
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 128px;
+    background-color: $light-grey;
+  }
+
+  &__result-amount {
+    display: inline-block;
+  }
+
+  &__filter {
+    display: flex;
+    align-items: center;
+
+    &-title {
+      font-size: 20px;
+      margin-right: 20px;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@import "@styles/colours.scss";
+
+.film-description {
+  padding: 44px 0;
+  display: flex;
+
+  &__image {
+    max-width: 250px;
+    min-width: 200px;
+
+    &-wrapper {
+      margin-right: 60px;
+    }
+  }
+
+  &__title {
+    display: inline-block;
+    font-size: 40px;
+    margin-right: 20px;
+
+    &-wrapper {
+      display: flex;
+      align-content: center;
+    }
+  }
+
+  &__rating {
+    display: inline-block;
+    color: $light-green;
+    font-size: 24px;
+    border-radius: 50%;
+    border: solid $light-grey 2px;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    padding-top: 9px;
+    box-sizing: border-box;
+  }
+
+  &__year {
+    margin-right: 40px;
+
+    &-wrapper {
+      margin-top: 20px;
+      font-size: 20px;
+      color: $pink;
+    }
+  }
+
+  &__narration {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+}

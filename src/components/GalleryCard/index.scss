@@ -1,0 +1,26 @@
+@import "@styles/colours.scss";
+
+.gallery-card {
+
+  &__image {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  &__description-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 8px;
+  }
+
+  &__year {
+    padding: 4px 12px;
+    border: solid $grey 1px;
+  }
+
+  &__genre {
+    margin-top: 8px;
+    font-size: 10px;
+  }
+}

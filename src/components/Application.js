@@ -1,20 +1,18 @@
 import React from 'react';
-import PureComponentExample from "@components/PureComponent";
-import ComponentExample from "@components/Component";
-import FunctionalComponent from "@components/FunctionalComponent";
-import CreateElement from "@components/CreateElement";
+import Header from '@components/Header';
+import Main from '@components/Main';
+import Footer from '@components/Footer';
+import '@styles/reset.css';
+import '@styles/colours.scss';
+import '@styles/styles.scss';
+import ErrorBoundary from '@components/ErrorBoundary';
 
-class Application extends React.Component {
-  render() {
-    return (
-      <>
-        <CreateElement/>
-        <ComponentExample/>
-        <PureComponentExample/>
-        <FunctionalComponent/>
-      </>
-    )
-  }
-}
+const Application = () => (
+  <ErrorBoundary>
+    <Header />
+    <Main />
+    <Footer />
+  </ErrorBoundary>
+);
 
 export default Application;

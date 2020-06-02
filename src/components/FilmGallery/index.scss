@@ -1,0 +1,14 @@
+@import "@styles/colours.scss";
+
+.film-gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 72px 60px;
+
+  &--column {
+    flex-basis: 33%;
+    box-sizing: border-box;
+    padding: 16px;
+  }
+}

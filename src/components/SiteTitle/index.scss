@@ -1,0 +1,12 @@
+@import "@styles/colours.scss";
+
+.site-title {
+  font-size: 20px;
+  text-decoration: none;
+  color: $pink;
+
+  &:hover {
+    text-decoration: none;
+    color: $light-pink;
+  }
+}

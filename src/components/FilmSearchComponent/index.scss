@@ -1,0 +1,31 @@
+@import "@styles/colours.scss";
+
+.film-search {
+  &-wrapper {
+    margin: 68px;
+  }
+
+  &__title {
+    font-size: 40px;
+  }
+
+  &__panel {
+    display: flex;
+    margin-top: 40px;
+
+    & .text-input {
+      margin-right: 14px;
+    }
+  }
+
+  &__filter {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+
+    &-title {
+      font-size: 20px;
+      margin-right: 20px;
+    }
+  }
+}

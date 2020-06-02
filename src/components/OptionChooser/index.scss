@@ -1,0 +1,33 @@
+@import "@styles/colours.scss";
+
+.option-chooser {
+
+  &-wrapper {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  &__option {
+    display: none;
+  }
+
+  &__label {
+    display: inline-block;
+    font-size: 20px;
+    padding: 8px 24px;
+    background-color: $grey;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $btn-grey;
+    }
+
+    &--active {
+      background-color: $pink;
+
+      &:hover {
+        background-color: $light-pink;
+      }
+    }
+  }
+}

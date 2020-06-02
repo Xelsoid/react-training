@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component test example renders correctly 1`] = `
+exports[`Button test renders correctly 1`] = `
 <button
   className="btn btn--large"
   type="button"

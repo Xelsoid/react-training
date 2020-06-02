@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component test example renders correctly 1`] = `
+exports[`SortControlPanel test renders correctly 1`] = `
 <div
   className="sort-control-panel-wrapper"
 >

@@ -2,7 +2,7 @@ import React from 'react';
 import MOCKED_DATA from '@mockedData/MOCKED_DATA';
 import ComponentExample from './index';
 
-describe('Component test example', () => {
+describe('GalleryCard test', () => {
   it('renders correctly', () => {
     const film = MOCKED_DATA.data[1];
     const {

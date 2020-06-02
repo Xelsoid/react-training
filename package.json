@@ -54,6 +54,7 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "test": "jest",
+    "test:coverage": "jest --coverage --watchAll=false",
     "test:update-snapshots": "jest --updateSnapshot"
   },
   "repository": {

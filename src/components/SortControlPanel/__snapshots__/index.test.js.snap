@@ -1,3 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component test example renders correctly 1`] = `<SortControlPanel />`;
+exports[`Component test example renders correctly 1`] = `
+<div
+  className="sort-control-panel-wrapper"
+>
+  <strong
+    className="sort-control-panel__result-amount"
+  >
+    7 movies found
+  </strong>
+  <div
+    className="sort-control-panel__filter"
+  >
+    <span
+      className="sort-control-panel__filter-title"
+    >
+      SORT BY
+    </span>
+    <OptionChooser />
+  </div>
+</div>
+`;

@@ -1,3 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component test example renders correctly 1`] = `<Footer />`;
+exports[`Component test example renders correctly 1`] = `
+<div
+  className="footer-wrapper"
+>
+  <footer
+    className="footer"
+  >
+    <SiteTitle />
+  </footer>
+</div>
+`;

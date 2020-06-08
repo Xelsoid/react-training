@@ -1,4 +1,4 @@
-export default {
+const films = {
   data:
     [
       {
@@ -169,3 +169,5 @@ export default {
   limit:
     10,
 };
+
+export default films;

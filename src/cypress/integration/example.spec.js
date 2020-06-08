@@ -1,11 +1,11 @@
 const rootSiteUrl = Cypress.config().baseUrl;
 
-context('Actions', () => {
+context('Main page', () => {
   beforeEach(() => {
     cy.visit(rootSiteUrl);
   });
 
-  it('focus search input', () => {
+  it('check logo links follow correct page', () => {
     cy.get('.logo .site-title').should('be.visible')
       .click()
       .url()

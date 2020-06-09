@@ -72,6 +72,7 @@
   "_moduleAliases": {
     "@root": ".",
     "@images": "src/images",
+    "@utils": "src/utils",
     "@mockedData": "src/mockedData",
     "@styles": "src/styles",
     "@components": "src/components"
@@ -89,6 +90,7 @@
       "\\.(gif|ttf|eot|svg)$": "identity-obj-proxy",
       "^@root(.*)$": "<rootDir>/$1",
       "^@images(.*)$": "<rootDir>/src/images$1",
+      "^@utils(.*)$": "<rootDir>/src/utils$1",
       "^@mockedData(.*)$": "<rootDir>/src/mockedData$1",
       "^@styles(.*)$": "<rootDir>/src/styles$1",
       "^@components(.*)$": "<rootDir>/src/components$1"

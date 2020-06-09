@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ErrorBoundary test renders correctly 1`] = `null`;
+exports[`ErrorBoundary test renders correctly error happened  1`] = `
+<div
+  className="error-boundary-wrapper"
+>
+  <div
+    className="error-boundary"
+  >
+    Something went wrong. layout is broken.
+  </div>
+</div>
+`;
+
+exports[`ErrorBoundary test renders correctly no error happened 1`] = `<NotEmptyComponent />`;

@@ -1,9 +1,9 @@
 import React from 'react';
 import ComponentExample from './index';
 
-describe('Component test example', () => {
+describe('SearchIcon test', () => {
   it('renders correctly', () => {
-    const component = <ComponentExample />;
+    const component = shallow(<ComponentExample />);
     expect(component).toMatchSnapshot();
   });
 });

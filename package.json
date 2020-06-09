@@ -12,6 +12,10 @@
     "babel-loader": "^8.1.0",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
+    "cypress": "^4.7.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
     "eslint": "^7.1.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -22,6 +26,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "5.0.2",
     "html-webpack-plugin": "^4.3.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "mini-css-extract-plugin": "0.9.0",
     "module-alias": "2.2.2",
@@ -50,7 +55,9 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "test": "jest",
-    "test:update-snapshots": "jest --updateSnapshot"
+    "test:coverage": "jest --coverage --watchAll=false",
+    "test:update-snapshots": "jest --updateSnapshot",
+    "cypress:e2e": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -65,8 +72,29 @@
   "_moduleAliases": {
     "@root": ".",
     "@images": "src/images",
+    "@utils": "src/utils",
     "@mockedData": "src/mockedData",
     "@styles": "src/styles",
     "@components": "src/components"
+  },
+  "jest": {
+    "verbose": true,
+    "setupFiles": [
+      "./jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+      "\\.(gif|ttf|eot|svg)$": "identity-obj-proxy",
+      "^@root(.*)$": "<rootDir>/$1",
+      "^@images(.*)$": "<rootDir>/src/images$1",
+      "^@utils(.*)$": "<rootDir>/src/utils$1",
+      "^@mockedData(.*)$": "<rootDir>/src/mockedData$1",
+      "^@styles(.*)$": "<rootDir>/src/styles$1",
+      "^@components(.*)$": "<rootDir>/src/components$1"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(js|ts|tsx)?$"
   }
 }

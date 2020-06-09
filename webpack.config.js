@@ -8,12 +8,12 @@ module.exports = () => {
     return merge([
       commonConfig(),
       developmentConfig(),
-    ])
+    ]);
   }
   if (process.env.NODE_ENV === 'production') {
     return merge([
       commonConfig(),
-      productionConfig()
-    ])
+      productionConfig(),
+    ]);
   }
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss';
 import SortControlPanel from '@components/SortControlPanel';
 import FilmsGallery from '@components/FilmGallery';
-import MOCKED_DATA from '@root/src/mockedData/MOCKED_DATA';
+import MOCKED_DATA from '@mockedData/MOCKED_DATA';
 import NotFound from '@components/NotFound';
 
 const Main = () => (

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmDescription test renders correctly 1`] = `
+<div
+  className="film-description"
+>
+  <div
+    className="film-description__image-wrapper"
+  >
+    <img
+      alt="Star Wars: The Last Jedi"
+      className="film-description__image"
+      src="https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg"
+    />
+  </div>
+  <div
+    className="film-description__info-wrapper"
+  >
+    <div
+      className="film-description__title-wrapper"
+    >
+      <h2
+        className="film-description__title"
+      >
+        Star Wars: The Last Jedi
+      </h2>
+      <div
+        className="film-description__rating"
+      >
+        7.1
+      </div>
+    </div>
+    <small
+      className="film-description__tagline"
+    >
+      The Saga Continues
+    </small>
+    <div
+      className="film-description__year-wrapper"
+    >
+      <span
+        className="film-description__year"
+      >
+        2017
+      </span>
+      <span
+        className="film-description__runtime"
+      >
+        152 min
+      </span>
+    </div>
+    <p
+      className="film-description__narration"
+    >
+      Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.
+    </p>
+  </div>
+</div>
+`;

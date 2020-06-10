@@ -6,7 +6,7 @@ import reducers from '@reducers';
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
   || compose;
 
-const initialState = {color: 'red'};
+const initialState = { color: 'red' };
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 const store = createStore(reducers, initialState, enhancer);
 

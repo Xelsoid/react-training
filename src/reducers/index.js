@@ -1,4 +1,5 @@
 import ACTIONS from '@constants/ACTIONS';
+
 const initialState = { color: 'blue' };
 
 export default (state = initialState, action) => {

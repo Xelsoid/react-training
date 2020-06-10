@@ -38,6 +38,8 @@
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
@@ -75,7 +77,11 @@
     "@utils": "src/utils",
     "@mockedData": "src/mockedData",
     "@styles": "src/styles",
-    "@components": "src/components"
+    "@components": "src/components",
+    "@store": "src/store",
+    "@actions": "src/actions",
+    "@reducers": "src/reducers",
+    "@constants": "src/constants"
   },
   "jest": {
     "verbose": true,
@@ -93,7 +99,11 @@
       "^@utils(.*)$": "<rootDir>/src/utils$1",
       "^@mockedData(.*)$": "<rootDir>/src/mockedData$1",
       "^@styles(.*)$": "<rootDir>/src/styles$1",
-      "^@components(.*)$": "<rootDir>/src/components$1"
+      "^@components(.*)$": "<rootDir>/src/components$1",
+      "^@store(.*)$": "<rootDir>/src/store$1",
+      "^@actions(.*)$": "<rootDir>/src/actions$1",
+      "^@reducers(.*)$": "<rootDir>/src/reducers$1",
+      "^@constants(.*)$": "<rootDir>/src/constants$1"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(js|ts|tsx)?$"
   }

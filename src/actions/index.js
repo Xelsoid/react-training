@@ -1,8 +1,11 @@
 import ACTIONS from '@constants/ACTIONS';
 
-const testFirstAction = () => ({
+export const addMoviesDataToStore = (data) => ({
+  type: ACTIONS.STORE_MOVIES,
+  payload: data,
+});
+
+export const testFirstAction = () => ({
   type: ACTIONS.TEST,
   payload: 'green',
 });
-
-export default testFirstAction;

@@ -3,9 +3,10 @@ import './index.scss';
 import GalleryCard from '@components/GalleryCard';
 import PropTypes from 'prop-types';
 
-const FilmsGallery = ({ films: { data } }) => (
+const FilmsGallery = ({ films }) => (
+
   <div className="film-gallery">
-    {data.map((film) => (
+    {films.map((film) => (
       <div key={film.id} className="film-gallery--column">
         <GalleryCard
           title={film.title}

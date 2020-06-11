@@ -1,18 +1,29 @@
 import React from 'react';
-import './index.scss';
+import { connect } from 'react-redux';
 import SortControlPanel from '@components/SortControlPanel';
 import FilmsGallery from '@components/FilmGallery';
-import MOCKED_DATA from '@mockedData/MOCKED_DATA';
 import NotFound from '@components/NotFound';
 
-const Main = () => (
+import './index.scss';
+import PropTypes from 'prop-types';
+
+const Main = ({ moviesList }) => (
   <div className="main-wrapper">
     <main className="main-">
       <SortControlPanel />
-      <FilmsGallery films={MOCKED_DATA} />
-      {/* <NotFound/> */}
+      {
+        moviesList && moviesList.data && moviesList.data.length
+          ? <FilmsGallery films={moviesList.data} />
+          : <NotFound />
+      }
     </main>
   </div>
 );
 
-export default Main;
+const mapStateToProps = (state) => ({ moviesList: state.moviesData });
+
+Main.propTypes = {
+  moviesList: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(Main);

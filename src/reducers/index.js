@@ -1,11 +1,12 @@
 import ACTIONS from '@constants/ACTIONS';
 
-const initialState = { color: 'blue' };
-
-export default (state = initialState, action) => {
+export default (state, action) => {
   switch (action.type) {
-    case ACTIONS.TEST:
-      return { color: action.payload };
+    // case ACTIONS.TEST:
+    //   return action.payload;
+
+    case ACTIONS.STORE_MOVIES:
+      return { ...state, moviesData: action.payload };
 
     default:
       return state;

@@ -23,7 +23,11 @@ const Main = ({ moviesList }) => (
 const mapStateToProps = (state) => ({ moviesList: state.moviesData });
 
 Main.propTypes = {
-  moviesList: PropTypes.object.isRequired,
+  moviesList: PropTypes.object,
+};
+
+Main.defaultProps = {
+  moviesList: null,
 };
 
 export default connect(mapStateToProps)(Main);

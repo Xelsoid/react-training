@@ -1,21 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Logo from '@components/Logo';
 import FilmDescription from '@components/FilmDescription';
 import FilmSearchComponent from '@components/FilmSearchComponent';
 import SearchIcon from '@components/SearchIcon';
-
-import './index.scss';
-import MOCKED_DATA from '@mockedData/MOCKED_DATA';
-
 import { makeFetch } from '@utils/index';
 import { addMoviesDataToStore } from '@actions/index';
 import PropTypes from 'prop-types';
 
+import './index.scss';
+
 const Header = ({ addMovies, moviesList }) => {
   const film = moviesList;
-  console.log(film);
 
   const findMovies = () => {
     makeFetch(
@@ -36,15 +33,15 @@ const Header = ({ addMovies, moviesList }) => {
         <FilmSearchComponent
           findMovies={findMovies}
         />
-        {/* <FilmDescription */}
-        {/*  posterPath={film.poster_path} */}
-        {/*  title={film.title} */}
-        {/*  tagline={film.tagline} */}
-        {/*  voteAverage={film.vote_average} */}
-        {/*  releaseDate={film.release_date} */}
-        {/*  runtime={film.runtime} */}
-        {/*  overview={film.overview} */}
-        {/* /> */}
+         {/*<FilmDescription*/}
+         {/* posterPath={film.poster_path}*/}
+         {/* title={film.title}*/}
+         {/* tagline={film.tagline}*/}
+         {/* voteAverage={film.vote_average}*/}
+         {/* releaseDate={film.release_date}*/}
+         {/* runtime={film.runtime}*/}
+         {/* overview={film.overview}*/}
+         {/*/>*/}
       </header>
     </div>
   );

@@ -20,9 +20,7 @@ const FilmsGallery = ({ films }) => (
 );
 
 FilmsGallery.propTypes = {
-  films: PropTypes.shape({
-    data: PropTypes.array,
-  }).isRequired,
+  films: PropTypes.array.isRequired,
 };
 
 export default FilmsGallery;

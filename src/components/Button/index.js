@@ -1,9 +1,11 @@
 import React from 'react';
 import './index.scss';
 import PropTypes from 'prop-types';
-{ /* eslint-disable react/button-has-type */ }
 
-const Button = ({ type, additionalClassName, onClickCallback, name }) => (
+/* eslint-disable react/button-has-type */
+const Button = ({
+  type, additionalClassName, onClickCallback, name,
+}) => (
   <button
     type={type}
     className={`btn ${additionalClassName}`}

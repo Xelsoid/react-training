@@ -1,7 +1,7 @@
 import React from 'react';
-import './index.scss';
 import GalleryCard from '@components/GalleryCard';
 import PropTypes from 'prop-types';
+import './index.scss';
 
 const FilmsGallery = ({ films }) => (
 

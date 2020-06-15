@@ -18,15 +18,3 @@ export const formatIncomingData = (incomingData) => {
 
   return data;
 };
-
-export const makeFetch = (url, params = {}, successCallback, errorCallback, fetchErrorCallback) => {
-  fetch(url, params)
-    .then((res) => {
-      if (!res.ok) {
-        errorCallback(res);
-      }
-      return res.json();
-    })
-    .then((res) => successCallback(res))
-    .catch((error) => fetchErrorCallback(error));
-};

@@ -1,27 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Logo from '@components/Logo';
 import FilmDescription from '@components/FilmDescription';
 import FilmSearchComponent from '@components/FilmSearchComponent';
 import SearchIcon from '@components/SearchIcon';
-import { makeFetch } from '@utils/index';
-import { addMoviesDataToStore } from '@actions/index';
-import PropTypes from 'prop-types';
 
 import './index.scss';
 
-const Header = ({ addMovies, moviesList }) => {
-  const film = moviesList;
-
-  const findMovies = () => {
-    makeFetch(
-      'https://reactjs-cdp.herokuapp.com/movies',
-      {},
-      addMovies,
-    );
-  };
-
+const Header = () => {
   return (
     <div className="header-wrapper">
       <header className="header">
@@ -30,33 +15,19 @@ const Header = ({ addMovies, moviesList }) => {
           {/* <SearchIcon/> */}
         </div>
 
-        <FilmSearchComponent
-          findMovies={findMovies}
-        />
-         {/*<FilmDescription*/}
-         {/* posterPath={film.poster_path}*/}
-         {/* title={film.title}*/}
-         {/* tagline={film.tagline}*/}
-         {/* voteAverage={film.vote_average}*/}
-         {/* releaseDate={film.release_date}*/}
-         {/* runtime={film.runtime}*/}
-         {/* overview={film.overview}*/}
-         {/*/>*/}
+        <FilmSearchComponent />
+        {/* <FilmDescription */}
+        {/* posterPath={film.poster_path} */}
+        {/* title={film.title} */}
+        {/* tagline={film.tagline} */}
+        {/* voteAverage={film.vote_average} */}
+        {/* releaseDate={film.release_date} */}
+        {/* runtime={film.runtime} */}
+        {/* overview={film.overview} */}
+        {/* /> */}
       </header>
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
-  { addMovies: addMoviesDataToStore },
-  dispatch,
-);
-
-const mapStateToProps = (state) => ({ moviesList: state.moviesData });
-
-Header.propTypes = {
-  addMovies: PropTypes.func.isRequired,
-  moviesList: PropTypes.any,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

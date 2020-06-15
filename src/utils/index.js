@@ -18,3 +18,8 @@ export const formatIncomingData = (incomingData) => {
 
   return data;
 };
+
+export const sortByReleaseDate = (array) => array.sort((a, b) => (
+  new Date(b.release_date) - new Date(a.release_date)));
+
+export const sortByRating = (array) => array.sort((a, b) => (b.vote_average - a.vote_average));

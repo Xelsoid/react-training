@@ -38,7 +38,7 @@ const FilmSearchComponent = ({ addMovies }) => {
         return res.json();
       })
       .then((res) => addMovies(res))
-      .catch((error) => console.log(error));
+      .catch((error) => error);
   };
 
 

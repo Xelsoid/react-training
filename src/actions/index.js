@@ -5,7 +5,10 @@ export const addMoviesDataToStore = (data) => ({
   payload: data,
 });
 
-export const testFirstAction = () => ({
-  type: ACTIONS.TEST,
-  payload: 'green',
+export const filterByReleaseDate = () => ({
+  type: ACTIONS.FILTER_BY_RELEASE_DATE,
+});
+
+export const filterByRating = () => ({
+  type: ACTIONS.FILTER_BY_RATING,
 });

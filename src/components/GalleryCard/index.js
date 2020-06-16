@@ -2,11 +2,16 @@ import React from 'react';
 import './index.scss';
 import PropTypes from 'prop-types';
 
+const addNewImageSrc = (event) => {
+  const element = event.target;
+  element.src = 'https://via.placeholder.com/500x750';
+};
+
 const GalleryCard = ({
   title, posterPath, releaseDate, genres,
 }) => (
   <div className="gallery-card">
-    <img alt={title} className="gallery-card__image" src={posterPath} />
+    <img alt={title} className="gallery-card__image" src={posterPath} onError={addNewImageSrc} />
     <div className="gallery-card__description-line">
       <span className="gallery-card__name">{title}</span>
       <span className="gallery-card__year">{releaseDate.slice(0, 4)}</span>

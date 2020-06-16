@@ -13,6 +13,7 @@ const FilmsGallery = ({ films }) => (
           posterPath={film.poster_path}
           releaseDate={film.release_date}
           genres={film.genres}
+          id={film.id}
         />
       </div>
     ))}

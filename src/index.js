@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import store from '@store';
 import ErrorBoundary from '@components/ErrorBoundary';
 import Header from '@components/Header';
@@ -12,9 +13,11 @@ import '@styles/styles.scss';
 
 const App = () => (
   <ErrorBoundary>
-    <Header />
-    <Main />
-    <Footer />
+    <BrowserRouter>
+      <Header />
+      <Main />
+      <Footer />
+    </BrowserRouter>
   </ErrorBoundary>
 );
 

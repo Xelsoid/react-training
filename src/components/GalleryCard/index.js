@@ -1,17 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './index.scss';
 import PropTypes from 'prop-types';
 
-const addNewImageSrc = (event) => {
+const addImageFallback = (event) => {
   const element = event.target;
   element.src = 'https://via.placeholder.com/500x750';
 };
 
 const GalleryCard = ({
-  title, posterPath, releaseDate, genres,
+  title, posterPath, releaseDate, genres, id,
 }) => (
   <div className="gallery-card">
-    <img alt={title} className="gallery-card__image" src={posterPath} onError={addNewImageSrc} />
+    <Link to={`/film/${id}`}>
+      <img alt={title} className="gallery-card__image" src={posterPath} onError={addImageFallback} />
+    </Link>
     <div className="gallery-card__description-line">
       <span className="gallery-card__name">{title}</span>
       <span className="gallery-card__year">{releaseDate.slice(0, 4)}</span>
@@ -25,6 +28,7 @@ GalleryCard.propTypes = {
   posterPath: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default GalleryCard;

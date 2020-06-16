@@ -1,7 +1,7 @@
 import ACTIONS from '@constants/ACTIONS';
 import { sortByReleaseDate, sortByRating } from '@utils/index';
 
-export default (state, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case ACTIONS.STORE_MOVIES:
       return { ...state, moviesData: action.payload };

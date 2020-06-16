@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Switch } from 'react-router';
 import Logo from '@components/Logo';
 import FilmDescription from '@components/FilmDescription';
 import FilmSearchComponent from '@components/FilmSearchComponent';
@@ -11,19 +12,12 @@ const Header = () => (
     <header className="header">
       <div className="header__logo-wrapper">
         <Logo />
-        {/* <SearchIcon/> */}
+        <Route path="/film" component={SearchIcon} />
       </div>
-
-      <FilmSearchComponent />
-      {/* <FilmDescription */}
-      {/* posterPath={film.poster_path} */}
-      {/* title={film.title} */}
-      {/* tagline={film.tagline} */}
-      {/* voteAverage={film.vote_average} */}
-      {/* releaseDate={film.release_date} */}
-      {/* runtime={film.runtime} */}
-      {/* overview={film.overview} */}
-      {/* /> */}
+      <Switch>
+        <Route path="/" exact component={FilmSearchComponent} />
+        <Route path="/film/:id" component={FilmDescription} />
+      </Switch>
     </header>
   </div>
 );

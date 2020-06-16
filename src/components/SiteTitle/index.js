@@ -1,11 +1,12 @@
 import React from 'react';
 import './index.scss';
+import { NavLink } from 'react-router-dom';
 
 const SiteTitle = () => (
-  <a className="site-title" href="/">
+  <NavLink className="site-title" to="/">
     <strong>netflix</strong>
     roulette
-  </a>
+  </NavLink>
 );
 
 export default SiteTitle;

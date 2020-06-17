@@ -41,7 +41,6 @@ const FilmSearchComponent = ({ addMovies }) => {
       .catch((error) => error);
   };
 
-
   return (
     <div className="film-search-wrapper">
       <h2 className="film-search__title">FIND YOUR MOVIE</h2>

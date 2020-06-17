@@ -17,5 +17,4 @@ store.subscribe(
   () => { localStorage.setItem('redux', JSON.stringify(store.getState())); },
 );
 
-
 export default store;

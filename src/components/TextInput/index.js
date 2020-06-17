@@ -14,7 +14,6 @@ const TextInput = ({
   />
 );
 
-
 TextInput.propTypes = {
   type: PropTypes.string.isRequired,
   defaultValue: PropTypes.string.isRequired,

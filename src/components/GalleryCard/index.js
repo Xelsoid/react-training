@@ -28,7 +28,7 @@ GalleryCard.propTypes = {
   posterPath: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default GalleryCard;

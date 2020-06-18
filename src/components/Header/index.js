@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Logo from '@components/Logo';
 import FilmDescription from '@components/FilmDescription';
 import FilmSearchComponent from '@components/FilmSearchComponent';
@@ -17,6 +17,7 @@ const Header = () => (
       <Switch>
         <Route path="/" exact component={FilmSearchComponent} />
         <Route path="/film/:id" component={FilmDescription} />
+        <Redirect to="/404" />
       </Switch>
     </header>
   </div>

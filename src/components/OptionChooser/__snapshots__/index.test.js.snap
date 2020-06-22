@@ -5,30 +5,34 @@ exports[`OptionChooser test renders correctly 1`] = `
   className="option-chooser-wrapper"
 >
   <input
+    checked={true}
     className="option-chooser__option"
-    id="title"
-    name="searchType"
+    id="releaseDate"
+    name="sortBy"
+    onChange={[Function]}
     type="radio"
-    value="title"
-  />
-  <label
-    className="option-chooser__label option-chooser__label--active"
-    htmlFor="title"
-  >
-    TITLE
-  </label>
-  <input
-    className="option-chooser__option"
-    id="genre"
-    name="searchType"
-    type="radio"
-    value="genre"
+    value="releaseDate"
   />
   <label
     className="option-chooser__label"
-    htmlFor="genre"
+    htmlFor="releaseDate"
   >
-    GENRE
+    RELEASE DATE
+  </label>
+  <input
+    checked={false}
+    className="option-chooser__option"
+    id="rating"
+    name="sortBy"
+    onChange={[Function]}
+    type="radio"
+    value="rating"
+  />
+  <label
+    className="option-chooser__label"
+    htmlFor="rating"
+  >
+    RATING
   </label>
 </div>
 `;

@@ -19,6 +19,7 @@
     "node": true
   },
   "rules": {
+    "camelcase": [0],
     "sort-keys": "off",
     "quotes": ["error", "single"],
     "jsx-quotes": ["error", "prefer-double"],

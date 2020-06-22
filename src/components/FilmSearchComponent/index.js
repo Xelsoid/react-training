@@ -47,7 +47,6 @@ const FilmSearchComponent = ({ addMovies, match }) => {
   };
 
   useEffect(() => {
-    console.log(match);
     if (/\/search\/Search/i.test(match.url)) {
       const searchQuery = match.params.searchQuery.split(' ');
       findMovies(searchQuery[1], searchQuery[2]);

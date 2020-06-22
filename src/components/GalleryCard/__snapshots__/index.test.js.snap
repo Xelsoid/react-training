@@ -4,11 +4,16 @@ exports[`GalleryCard test renders correctly 1`] = `
 <div
   className="gallery-card"
 >
-  <img
-    alt="Star Wars: The Last Jedi"
-    className="gallery-card__image"
-    src="https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg"
-  />
+  <Link
+    to="/film/181808"
+  >
+    <img
+      alt="Star Wars: The Last Jedi"
+      className="gallery-card__image"
+      onError={[Function]}
+      src="https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg"
+    />
+  </Link>
   <div
     className="gallery-card__description-line"
   >

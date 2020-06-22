@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextInput from '@components/TextInput';
 import Button from '@components/Button';
 import OptionChooser from '@components/OptionChooser';
@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import { addMoviesDataToStore } from '@actions/index';
 import { connect } from 'react-redux';
 import './index.scss';
+import { Link } from 'react-router-dom';
 
 const optionsConfig = [
   {
@@ -17,7 +18,7 @@ const optionsConfig = [
   },
 ];
 
-const FilmSearchComponent = ({ addMovies }) => {
+const FilmSearchComponent = ({ addMovies, match }) => {
   const [searchByState, setSearchByState] = useState(optionsConfig[0].value);
   const getAndSetSearchByState = (event) => {
     setSearchByState(event.target.value);
@@ -28,9 +29,9 @@ const FilmSearchComponent = ({ addMovies }) => {
     setSearchState(event.target.value);
   };
 
-  const findMovies = () => {
+  const findMovies = (searchQuery, searchByQuery) => {
     const url = 'https://reactjs-cdp.herokuapp.com/movies';
-    fetch(`${url}?search=${searchState}&searchBy=${searchByState}`, {})
+    fetch(`${url}?search=${searchQuery}&searchBy=${searchByQuery}`, {})
       .then((res) => {
         if (!res.ok) {
           return res;
@@ -40,6 +41,18 @@ const FilmSearchComponent = ({ addMovies }) => {
       .then((res) => addMovies(res))
       .catch((error) => error);
   };
+
+  const findMoviesByButton = () => {
+    findMovies(searchState, searchByState);
+  };
+
+  useEffect(() => {
+    console.log(match);
+    if (/\/search\/Search/i.test(match.url)) {
+      const searchQuery = match.params.searchQuery.split(' ');
+      findMovies(searchQuery[1], searchQuery[2]);
+    }
+  }, []);
 
   return (
     <div className="film-search-wrapper">
@@ -51,11 +64,14 @@ const FilmSearchComponent = ({ addMovies }) => {
           defaultValue={searchState}
           onChangeCallback={getAndSetSearchState}
         />
-        <Button
-          onClickCallback={findMovies}
-          additionalClassName="btn--large"
-          name="SEARCH"
-        />
+        <Link to={`/search/Search ${searchState} ${searchByState}`}>
+          <Button
+            onClickCallback={findMoviesByButton}
+            additionalClassName="btn--large"
+            name="SEARCH"
+          />
+        </Link>
+
       </div>
       <div className="film-search__filter">
         <span className="film-search__filter-title">SEARCH BY</span>
@@ -76,6 +92,11 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
 
 FilmSearchComponent.propTypes = {
   addMovies: PropTypes.func.isRequired,
+  match: PropTypes.object,
+};
+
+FilmSearchComponent.defaultProps = {
+  match: {},
 };
 
 export default connect(null, mapDispatchToProps)(FilmSearchComponent);

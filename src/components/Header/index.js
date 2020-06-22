@@ -16,6 +16,7 @@ const Header = () => (
       </div>
       <Switch>
         <Route path="/" exact component={FilmSearchComponent} />
+        <Route path="/search/:searchQuery" component={FilmSearchComponent} />
         <Route path="/film/:id" component={FilmDescription} />
         <Redirect to="/404" />
       </Switch>

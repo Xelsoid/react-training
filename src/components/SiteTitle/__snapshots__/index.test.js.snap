@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SiteTitle test renders correctly 1`] = `
-<a
+<NavLink
   className="site-title"
-  href="/"
+  to="/"
 >
   <strong>
     netflix
   </strong>
   roulette
-</a>
+</NavLink>
 `;

@@ -1,4 +1,4 @@
-import { addMoviesDataToStore, filterByReleaseDate, filterByRating } from '@actions/index';
+import { addMoviesDataToStore, clearMoviesDataFromStore, filterByReleaseDate, filterByRating } from '@actions/index';
 import MOCKED_DATA from '@mockedData/MOCKED_DATA';
 import ACTIONS from '../constants/ACTIONS';
 
@@ -8,6 +8,14 @@ describe('actions test', () => {
       {
         type: ACTIONS.STORE_MOVIES,
         payload: MOCKED_DATA,
+      },
+    );
+  });
+
+  it('action remove fetched data', () => {
+    expect(clearMoviesDataFromStore()).toEqual(
+      {
+        type: ACTIONS.CLEAR_STORE_MOVIES,
       },
     );
   });

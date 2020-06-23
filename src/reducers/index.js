@@ -6,6 +6,9 @@ export default (state = {}, action) => {
     case ACTIONS.STORE_MOVIES:
       return { ...state, moviesData: action.payload };
 
+    case ACTIONS.CLEAR_STORE_MOVIES:
+      return { ...state, moviesData: {} };
+
     case ACTIONS.FILTER_BY_RELEASE_DATE:
       return {
         ...state,

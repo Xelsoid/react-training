@@ -12,7 +12,15 @@ exports[`Header test renders correctly 1`] = `
     >
       <Logo />
       <Route
-        component={[Function]}
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(SearchIcon)",
+            "type": [Function],
+          }
+        }
         path="/film"
       />
     </div>

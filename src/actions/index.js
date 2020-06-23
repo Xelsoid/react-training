@@ -5,6 +5,10 @@ export const addMoviesDataToStore = (data) => ({
   payload: data,
 });
 
+export const clearMoviesDataFromStore = () => ({
+  type: ACTIONS.CLEAR_STORE_MOVIES,
+});
+
 export const filterByReleaseDate = () => ({
   type: ACTIONS.FILTER_BY_RELEASE_DATE,
 });

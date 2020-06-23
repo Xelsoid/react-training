@@ -20,6 +20,13 @@ describe('reducers tests', () => {
     expect(reducer(initialState, action)).toEqual({ ...initialState, moviesData: action.payload });
   });
 
+  it('should handle CLEAR_STORE_MOVIES', () => {
+    const action = {
+      type: ACTIONS.CLEAR_STORE_MOVIES,
+    };
+    expect(reducer(initialState, action)).toEqual({ ...initialState, moviesData: {} });
+  });
+
   it('should handle FILTER_BY_RELEASE_DATE', () => {
     const action = {
       type: ACTIONS.FILTER_BY_RELEASE_DATE,

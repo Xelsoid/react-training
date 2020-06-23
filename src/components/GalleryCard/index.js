@@ -2,11 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.scss';
 import PropTypes from 'prop-types';
-
-const addImageFallback = (event) => {
-  const element = event.target;
-  element.src = 'https://via.placeholder.com/500x750';
-};
+import { addImageFallback } from '@utils/index';
 
 const GalleryCard = ({
   title, posterPath, releaseDate, genres, id,

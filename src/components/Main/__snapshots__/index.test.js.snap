@@ -1,35 +1,1219 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main test renders correctly 1`] = `
-<ContextProvider
-  value={
+exports[`Main test renders gallery correctly 1`] = `
+<Provider
+  store={
     Object {
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
-      "subscription": Subscription {
-        "handleChangeWrapper": [Function],
-        "listeners": Object {
-          "notify": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "dispatch": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
-        },
-        "unsubscribe": null,
-      },
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <Connect(Main) />
-</ContextProvider>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Connect(Main)>
+        <Main
+          filterMoviesByRating={[Function]}
+          filterMoviesByReleaseDate={[Function]}
+          moviesData={
+            Object {
+              "data": Array [
+                Object {
+                  "budget": 55000000,
+                  "genres": Array [
+                    "Drama",
+                    "Romance",
+                  ],
+                  "id": 337167,
+                  "overview": "Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.",
+                  "poster_path": "https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg",
+                  "release_date": "2018-02-07",
+                  "revenue": 136906000,
+                  "runtime": 106,
+                  "tagline": "Don't miss the climax",
+                  "title": "Fifty Shades Freed",
+                  "vote_average": 6.1,
+                  "vote_count": 1195,
+                },
+                Object {
+                  "budget": 200000000,
+                  "genres": Array [
+                    "Fantasy",
+                    "Adventure",
+                    "Science Fiction",
+                  ],
+                  "id": 181808,
+                  "overview": "Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.",
+                  "poster_path": "https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
+                  "release_date": "2017-12-13",
+                  "revenue": 1325937250,
+                  "runtime": 152,
+                  "tagline": "The Saga Continues",
+                  "title": "Star Wars: The Last Jedi",
+                  "vote_average": 7.1,
+                  "vote_count": 4732,
+                },
+                Object {
+                  "budget": 200000000,
+                  "genres": Array [
+                    "Action",
+                    "Adventure",
+                    "Fantasy",
+                    "Science Fiction",
+                  ],
+                  "id": 284054,
+                  "overview": "King T'Challa returns home from America to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without.  Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantel to join with girlfriend Nakia, the queen-mother, his princess-kid sister,  members of the Dora Milaje (the Wakandan \\"special forces\\"), and an American secret agent, to prevent Wakanda from being dragged into a world war.",
+                  "poster_path": "https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
+                  "release_date": "2018-02-13",
+                  "revenue": 1245257672,
+                  "runtime": 134,
+                  "tagline": "Long live the king",
+                  "title": "Black Panther",
+                  "vote_average": 7.3,
+                  "vote_count": 3788,
+                },
+                Object {
+                  "budget": 175000000,
+                  "genres": Array [
+                    "Adventure",
+                    "Comedy",
+                    "Family",
+                    "Animation",
+                  ],
+                  "id": 354912,
+                  "overview": "Despite his family’s baffling generations-old ban on music, Miguel dreams of becoming an accomplished musician like his idol, Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead following a mysterious chain of events. Along the way, he meets charming trickster Hector, and together, they set off on an extraordinary journey to unlock the real story behind Miguel's family history.",
+                  "poster_path": "https://image.tmdb.org/t/p/w500/eKi8dIrr8voobbaGzDpe8w0PVbC.jpg",
+                  "release_date": "2017-10-27",
+                  "revenue": 700920729,
+                  "runtime": 105,
+                  "tagline": "The celebration of a lifetime",
+                  "title": "Coco",
+                  "vote_average": 7.8,
+                  "vote_count": 3619,
+                },
+                Object {
+                  "budget": 175000000,
+                  "genres": Array [
+                    "Adventure",
+                    "Science Fiction",
+                    "Action",
+                  ],
+                  "id": 333339,
+                  "overview": "When the creator of a popular video game system dies, a virtual contest is created to compete for his fortune.",
+                  "poster_path": "https://image.tmdb.org/t/p/w500/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg",
+                  "release_date": "2018-03-28",
+                  "revenue": 0,
+                  "runtime": 140,
+                  "tagline": "A better reality awaits.",
+                  "title": "Ready Player One",
+                  "vote_average": 8.1,
+                  "vote_count": 617,
+                },
+                Object {
+                  "budget": 94000000,
+                  "genres": Array [
+                    "Action",
+                    "Adventure",
+                  ],
+                  "id": 338970,
+                  "overview": "Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.",
+                  "poster_path": "https://image.tmdb.org/t/p/w500/ePyN2nX9t8SOl70eRW47Q29zUFO.jpg",
+                  "release_date": "2018-03-08",
+                  "revenue": 126025000,
+                  "runtime": 118,
+                  "tagline": "Her legend begins",
+                  "title": "Tomb Raider",
+                  "vote_average": 6.2,
+                  "vote_count": 817,
+                },
+                Object {
+                  "budget": 180000000,
+                  "genres": Array [
+                    "Action",
+                    "Adventure",
+                    "Fantasy",
+                  ],
+                  "id": 284053,
+                  "overview": "Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the prophecy of destruction to his homeworld and the end of Asgardian civilization, at the hands of an all-powerful new threat, the ruthless Hela.",
+                  "poster_path": "https://image.tmdb.org/t/p/w500/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
+                  "release_date": "2017-10-25",
+                  "revenue": 854229371,
+                  "runtime": 130,
+                  "tagline": "No Hammer. No Problem.",
+                  "title": "Thor: Ragnarok",
+                  "vote_average": 7.4,
+                  "vote_count": 5349,
+                },
+                Object {
+                  "budget": 160000000,
+                  "genres": Array [
+                    "Family",
+                    "Fantasy",
+                    "Romance",
+                  ],
+                  "id": 321612,
+                  "overview": "A live-action adaptation of Disney's version of the classic tale of a cursed prince and a beautiful young woman who helps him break the spell.",
+                  "poster_path": "https://image.tmdb.org/t/p/w500/tWqifoYuwLETmmasnGHO7xBjEtt.jpg",
+                  "release_date": "2017-03-16",
+                  "revenue": 1263521126,
+                  "runtime": 129,
+                  "tagline": "Be our guest.",
+                  "title": "Beauty and the Beast",
+                  "vote_average": 6.8,
+                  "vote_count": 7861,
+                },
+                Object {
+                  "budget": 19500000,
+                  "genres": Array [
+                    "Drama",
+                    "Fantasy",
+                    "Romance",
+                  ],
+                  "id": 399055,
+                  "overview": "An other-worldly story, set against the backdrop of Cold War era America circa 1962, where a mute janitor working at a lab falls in love with an amphibious man being held captive there and devises a plan to help him escape.",
+                  "poster_path": "https://image.tmdb.org/t/p/w500/k4FwHlMhuRR5BISY2Gm2QZHlH5Q.jpg",
+                  "release_date": "2017-12-01",
+                  "revenue": 185545281,
+                  "runtime": 123,
+                  "tagline": "A Fairy Tale for Troubled Times",
+                  "title": "The Shape of Water",
+                  "vote_average": 7.3,
+                  "vote_count": 3200,
+                },
+              ],
+              "limit": 10,
+              "offset": 0,
+              "total": 3000,
+            }
+          }
+        >
+          <div
+            className="main-wrapper"
+          >
+            <main>
+              <SortControlPanel
+                defaultSortValue="releaseDate"
+                getAndSetSortBy={[Function]}
+                optionsConfig={
+                  Array [
+                    Object {
+                      "name": "sortBy",
+                      "radioBtnName": "RELEASE DATE",
+                      "value": "releaseDate",
+                    },
+                    Object {
+                      "name": "sortBy",
+                      "radioBtnName": "RATING",
+                      "value": "rating",
+                    },
+                  ]
+                }
+                total={9}
+              >
+                <div
+                  className="sort-control-panel-wrapper"
+                >
+                  <strong
+                    className="sort-control-panel__result-amount"
+                  >
+                    9 movies found
+                  </strong>
+                  <div
+                    className="sort-control-panel__filter"
+                  >
+                    <span
+                      className="sort-control-panel__filter-title"
+                    >
+                      SORT BY
+                    </span>
+                    <OptionChooser
+                      defaultValue="releaseDate"
+                      onChangeCallback={[Function]}
+                      optionsConfig={
+                        Array [
+                          Object {
+                            "name": "sortBy",
+                            "radioBtnName": "RELEASE DATE",
+                            "value": "releaseDate",
+                          },
+                          Object {
+                            "name": "sortBy",
+                            "radioBtnName": "RATING",
+                            "value": "rating",
+                          },
+                        ]
+                      }
+                    >
+                      <div
+                        className="option-chooser-wrapper"
+                      >
+                        <input
+                          checked={true}
+                          className="option-chooser__option"
+                          id="releaseDate"
+                          name="sortBy"
+                          onChange={[Function]}
+                          type="radio"
+                          value="releaseDate"
+                        />
+                        <label
+                          className="option-chooser__label"
+                          htmlFor="releaseDate"
+                        >
+                          RELEASE DATE
+                        </label>
+                        <input
+                          checked={false}
+                          className="option-chooser__option"
+                          id="rating"
+                          name="sortBy"
+                          onChange={[Function]}
+                          type="radio"
+                          value="rating"
+                        />
+                        <label
+                          className="option-chooser__label"
+                          htmlFor="rating"
+                        >
+                          RATING
+                        </label>
+                      </div>
+                    </OptionChooser>
+                  </div>
+                </div>
+              </SortControlPanel>
+              <FilmsGallery
+                films={
+                  Array [
+                    Object {
+                      "budget": 55000000,
+                      "genres": Array [
+                        "Drama",
+                        "Romance",
+                      ],
+                      "id": 337167,
+                      "overview": "Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.",
+                      "poster_path": "https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg",
+                      "release_date": "2018-02-07",
+                      "revenue": 136906000,
+                      "runtime": 106,
+                      "tagline": "Don't miss the climax",
+                      "title": "Fifty Shades Freed",
+                      "vote_average": 6.1,
+                      "vote_count": 1195,
+                    },
+                    Object {
+                      "budget": 200000000,
+                      "genres": Array [
+                        "Fantasy",
+                        "Adventure",
+                        "Science Fiction",
+                      ],
+                      "id": 181808,
+                      "overview": "Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.",
+                      "poster_path": "https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
+                      "release_date": "2017-12-13",
+                      "revenue": 1325937250,
+                      "runtime": 152,
+                      "tagline": "The Saga Continues",
+                      "title": "Star Wars: The Last Jedi",
+                      "vote_average": 7.1,
+                      "vote_count": 4732,
+                    },
+                    Object {
+                      "budget": 200000000,
+                      "genres": Array [
+                        "Action",
+                        "Adventure",
+                        "Fantasy",
+                        "Science Fiction",
+                      ],
+                      "id": 284054,
+                      "overview": "King T'Challa returns home from America to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without.  Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantel to join with girlfriend Nakia, the queen-mother, his princess-kid sister,  members of the Dora Milaje (the Wakandan \\"special forces\\"), and an American secret agent, to prevent Wakanda from being dragged into a world war.",
+                      "poster_path": "https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
+                      "release_date": "2018-02-13",
+                      "revenue": 1245257672,
+                      "runtime": 134,
+                      "tagline": "Long live the king",
+                      "title": "Black Panther",
+                      "vote_average": 7.3,
+                      "vote_count": 3788,
+                    },
+                    Object {
+                      "budget": 175000000,
+                      "genres": Array [
+                        "Adventure",
+                        "Comedy",
+                        "Family",
+                        "Animation",
+                      ],
+                      "id": 354912,
+                      "overview": "Despite his family’s baffling generations-old ban on music, Miguel dreams of becoming an accomplished musician like his idol, Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead following a mysterious chain of events. Along the way, he meets charming trickster Hector, and together, they set off on an extraordinary journey to unlock the real story behind Miguel's family history.",
+                      "poster_path": "https://image.tmdb.org/t/p/w500/eKi8dIrr8voobbaGzDpe8w0PVbC.jpg",
+                      "release_date": "2017-10-27",
+                      "revenue": 700920729,
+                      "runtime": 105,
+                      "tagline": "The celebration of a lifetime",
+                      "title": "Coco",
+                      "vote_average": 7.8,
+                      "vote_count": 3619,
+                    },
+                    Object {
+                      "budget": 175000000,
+                      "genres": Array [
+                        "Adventure",
+                        "Science Fiction",
+                        "Action",
+                      ],
+                      "id": 333339,
+                      "overview": "When the creator of a popular video game system dies, a virtual contest is created to compete for his fortune.",
+                      "poster_path": "https://image.tmdb.org/t/p/w500/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg",
+                      "release_date": "2018-03-28",
+                      "revenue": 0,
+                      "runtime": 140,
+                      "tagline": "A better reality awaits.",
+                      "title": "Ready Player One",
+                      "vote_average": 8.1,
+                      "vote_count": 617,
+                    },
+                    Object {
+                      "budget": 94000000,
+                      "genres": Array [
+                        "Action",
+                        "Adventure",
+                      ],
+                      "id": 338970,
+                      "overview": "Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.",
+                      "poster_path": "https://image.tmdb.org/t/p/w500/ePyN2nX9t8SOl70eRW47Q29zUFO.jpg",
+                      "release_date": "2018-03-08",
+                      "revenue": 126025000,
+                      "runtime": 118,
+                      "tagline": "Her legend begins",
+                      "title": "Tomb Raider",
+                      "vote_average": 6.2,
+                      "vote_count": 817,
+                    },
+                    Object {
+                      "budget": 180000000,
+                      "genres": Array [
+                        "Action",
+                        "Adventure",
+                        "Fantasy",
+                      ],
+                      "id": 284053,
+                      "overview": "Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the prophecy of destruction to his homeworld and the end of Asgardian civilization, at the hands of an all-powerful new threat, the ruthless Hela.",
+                      "poster_path": "https://image.tmdb.org/t/p/w500/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
+                      "release_date": "2017-10-25",
+                      "revenue": 854229371,
+                      "runtime": 130,
+                      "tagline": "No Hammer. No Problem.",
+                      "title": "Thor: Ragnarok",
+                      "vote_average": 7.4,
+                      "vote_count": 5349,
+                    },
+                    Object {
+                      "budget": 160000000,
+                      "genres": Array [
+                        "Family",
+                        "Fantasy",
+                        "Romance",
+                      ],
+                      "id": 321612,
+                      "overview": "A live-action adaptation of Disney's version of the classic tale of a cursed prince and a beautiful young woman who helps him break the spell.",
+                      "poster_path": "https://image.tmdb.org/t/p/w500/tWqifoYuwLETmmasnGHO7xBjEtt.jpg",
+                      "release_date": "2017-03-16",
+                      "revenue": 1263521126,
+                      "runtime": 129,
+                      "tagline": "Be our guest.",
+                      "title": "Beauty and the Beast",
+                      "vote_average": 6.8,
+                      "vote_count": 7861,
+                    },
+                    Object {
+                      "budget": 19500000,
+                      "genres": Array [
+                        "Drama",
+                        "Fantasy",
+                        "Romance",
+                      ],
+                      "id": 399055,
+                      "overview": "An other-worldly story, set against the backdrop of Cold War era America circa 1962, where a mute janitor working at a lab falls in love with an amphibious man being held captive there and devises a plan to help him escape.",
+                      "poster_path": "https://image.tmdb.org/t/p/w500/k4FwHlMhuRR5BISY2Gm2QZHlH5Q.jpg",
+                      "release_date": "2017-12-01",
+                      "revenue": 185545281,
+                      "runtime": 123,
+                      "tagline": "A Fairy Tale for Troubled Times",
+                      "title": "The Shape of Water",
+                      "vote_average": 7.3,
+                      "vote_count": 3200,
+                    },
+                  ]
+                }
+              >
+                <div
+                  className="film-gallery"
+                >
+                  <div
+                    className="film-gallery--column"
+                    key="337167"
+                  >
+                    <GalleryCard
+                      genres={
+                        Array [
+                          "Drama",
+                          "Romance",
+                        ]
+                      }
+                      id={337167}
+                      posterPath="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+                      releaseDate="2018-02-07"
+                      title="Fifty Shades Freed"
+                    >
+                      <div
+                        className="gallery-card"
+                      >
+                        <Link
+                          to="/film/337167"
+                        >
+                          <LinkAnchor
+                            href="/film/337167"
+                            navigate={[Function]}
+                          >
+                            <a
+                              href="/film/337167"
+                              onClick={[Function]}
+                            >
+                              <img
+                                alt="Fifty Shades Freed"
+                                className="gallery-card__image"
+                                onError={[Function]}
+                                src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+                              />
+                            </a>
+                          </LinkAnchor>
+                        </Link>
+                        <div
+                          className="gallery-card__description-line"
+                        >
+                          <span
+                            className="gallery-card__name"
+                          >
+                            Fifty Shades Freed
+                          </span>
+                          <span
+                            className="gallery-card__year"
+                          >
+                            2018
+                          </span>
+                        </div>
+                        <small
+                          className="gallery-card__genre"
+                        >
+                          Drama 
+                          Romance 
+                        </small>
+                      </div>
+                    </GalleryCard>
+                  </div>
+                  <div
+                    className="film-gallery--column"
+                    key="181808"
+                  >
+                    <GalleryCard
+                      genres={
+                        Array [
+                          "Fantasy",
+                          "Adventure",
+                          "Science Fiction",
+                        ]
+                      }
+                      id={181808}
+                      posterPath="https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg"
+                      releaseDate="2017-12-13"
+                      title="Star Wars: The Last Jedi"
+                    >
+                      <div
+                        className="gallery-card"
+                      >
+                        <Link
+                          to="/film/181808"
+                        >
+                          <LinkAnchor
+                            href="/film/181808"
+                            navigate={[Function]}
+                          >
+                            <a
+                              href="/film/181808"
+                              onClick={[Function]}
+                            >
+                              <img
+                                alt="Star Wars: The Last Jedi"
+                                className="gallery-card__image"
+                                onError={[Function]}
+                                src="https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg"
+                              />
+                            </a>
+                          </LinkAnchor>
+                        </Link>
+                        <div
+                          className="gallery-card__description-line"
+                        >
+                          <span
+                            className="gallery-card__name"
+                          >
+                            Star Wars: The Last Jedi
+                          </span>
+                          <span
+                            className="gallery-card__year"
+                          >
+                            2017
+                          </span>
+                        </div>
+                        <small
+                          className="gallery-card__genre"
+                        >
+                          Fantasy 
+                          Adventure 
+                          Science Fiction 
+                        </small>
+                      </div>
+                    </GalleryCard>
+                  </div>
+                  <div
+                    className="film-gallery--column"
+                    key="284054"
+                  >
+                    <GalleryCard
+                      genres={
+                        Array [
+                          "Action",
+                          "Adventure",
+                          "Fantasy",
+                          "Science Fiction",
+                        ]
+                      }
+                      id={284054}
+                      posterPath="https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8wjKA.jpg"
+                      releaseDate="2018-02-13"
+                      title="Black Panther"
+                    >
+                      <div
+                        className="gallery-card"
+                      >
+                        <Link
+                          to="/film/284054"
+                        >
+                          <LinkAnchor
+                            href="/film/284054"
+                            navigate={[Function]}
+                          >
+                            <a
+                              href="/film/284054"
+                              onClick={[Function]}
+                            >
+                              <img
+                                alt="Black Panther"
+                                className="gallery-card__image"
+                                onError={[Function]}
+                                src="https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8wjKA.jpg"
+                              />
+                            </a>
+                          </LinkAnchor>
+                        </Link>
+                        <div
+                          className="gallery-card__description-line"
+                        >
+                          <span
+                            className="gallery-card__name"
+                          >
+                            Black Panther
+                          </span>
+                          <span
+                            className="gallery-card__year"
+                          >
+                            2018
+                          </span>
+                        </div>
+                        <small
+                          className="gallery-card__genre"
+                        >
+                          Action 
+                          Adventure 
+                          Fantasy 
+                          Science Fiction 
+                        </small>
+                      </div>
+                    </GalleryCard>
+                  </div>
+                  <div
+                    className="film-gallery--column"
+                    key="354912"
+                  >
+                    <GalleryCard
+                      genres={
+                        Array [
+                          "Adventure",
+                          "Comedy",
+                          "Family",
+                          "Animation",
+                        ]
+                      }
+                      id={354912}
+                      posterPath="https://image.tmdb.org/t/p/w500/eKi8dIrr8voobbaGzDpe8w0PVbC.jpg"
+                      releaseDate="2017-10-27"
+                      title="Coco"
+                    >
+                      <div
+                        className="gallery-card"
+                      >
+                        <Link
+                          to="/film/354912"
+                        >
+                          <LinkAnchor
+                            href="/film/354912"
+                            navigate={[Function]}
+                          >
+                            <a
+                              href="/film/354912"
+                              onClick={[Function]}
+                            >
+                              <img
+                                alt="Coco"
+                                className="gallery-card__image"
+                                onError={[Function]}
+                                src="https://image.tmdb.org/t/p/w500/eKi8dIrr8voobbaGzDpe8w0PVbC.jpg"
+                              />
+                            </a>
+                          </LinkAnchor>
+                        </Link>
+                        <div
+                          className="gallery-card__description-line"
+                        >
+                          <span
+                            className="gallery-card__name"
+                          >
+                            Coco
+                          </span>
+                          <span
+                            className="gallery-card__year"
+                          >
+                            2017
+                          </span>
+                        </div>
+                        <small
+                          className="gallery-card__genre"
+                        >
+                          Adventure 
+                          Comedy 
+                          Family 
+                          Animation 
+                        </small>
+                      </div>
+                    </GalleryCard>
+                  </div>
+                  <div
+                    className="film-gallery--column"
+                    key="333339"
+                  >
+                    <GalleryCard
+                      genres={
+                        Array [
+                          "Adventure",
+                          "Science Fiction",
+                          "Action",
+                        ]
+                      }
+                      id={333339}
+                      posterPath="https://image.tmdb.org/t/p/w500/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg"
+                      releaseDate="2018-03-28"
+                      title="Ready Player One"
+                    >
+                      <div
+                        className="gallery-card"
+                      >
+                        <Link
+                          to="/film/333339"
+                        >
+                          <LinkAnchor
+                            href="/film/333339"
+                            navigate={[Function]}
+                          >
+                            <a
+                              href="/film/333339"
+                              onClick={[Function]}
+                            >
+                              <img
+                                alt="Ready Player One"
+                                className="gallery-card__image"
+                                onError={[Function]}
+                                src="https://image.tmdb.org/t/p/w500/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg"
+                              />
+                            </a>
+                          </LinkAnchor>
+                        </Link>
+                        <div
+                          className="gallery-card__description-line"
+                        >
+                          <span
+                            className="gallery-card__name"
+                          >
+                            Ready Player One
+                          </span>
+                          <span
+                            className="gallery-card__year"
+                          >
+                            2018
+                          </span>
+                        </div>
+                        <small
+                          className="gallery-card__genre"
+                        >
+                          Adventure 
+                          Science Fiction 
+                          Action 
+                        </small>
+                      </div>
+                    </GalleryCard>
+                  </div>
+                  <div
+                    className="film-gallery--column"
+                    key="338970"
+                  >
+                    <GalleryCard
+                      genres={
+                        Array [
+                          "Action",
+                          "Adventure",
+                        ]
+                      }
+                      id={338970}
+                      posterPath="https://image.tmdb.org/t/p/w500/ePyN2nX9t8SOl70eRW47Q29zUFO.jpg"
+                      releaseDate="2018-03-08"
+                      title="Tomb Raider"
+                    >
+                      <div
+                        className="gallery-card"
+                      >
+                        <Link
+                          to="/film/338970"
+                        >
+                          <LinkAnchor
+                            href="/film/338970"
+                            navigate={[Function]}
+                          >
+                            <a
+                              href="/film/338970"
+                              onClick={[Function]}
+                            >
+                              <img
+                                alt="Tomb Raider"
+                                className="gallery-card__image"
+                                onError={[Function]}
+                                src="https://image.tmdb.org/t/p/w500/ePyN2nX9t8SOl70eRW47Q29zUFO.jpg"
+                              />
+                            </a>
+                          </LinkAnchor>
+                        </Link>
+                        <div
+                          className="gallery-card__description-line"
+                        >
+                          <span
+                            className="gallery-card__name"
+                          >
+                            Tomb Raider
+                          </span>
+                          <span
+                            className="gallery-card__year"
+                          >
+                            2018
+                          </span>
+                        </div>
+                        <small
+                          className="gallery-card__genre"
+                        >
+                          Action 
+                          Adventure 
+                        </small>
+                      </div>
+                    </GalleryCard>
+                  </div>
+                  <div
+                    className="film-gallery--column"
+                    key="284053"
+                  >
+                    <GalleryCard
+                      genres={
+                        Array [
+                          "Action",
+                          "Adventure",
+                          "Fantasy",
+                        ]
+                      }
+                      id={284053}
+                      posterPath="https://image.tmdb.org/t/p/w500/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg"
+                      releaseDate="2017-10-25"
+                      title="Thor: Ragnarok"
+                    >
+                      <div
+                        className="gallery-card"
+                      >
+                        <Link
+                          to="/film/284053"
+                        >
+                          <LinkAnchor
+                            href="/film/284053"
+                            navigate={[Function]}
+                          >
+                            <a
+                              href="/film/284053"
+                              onClick={[Function]}
+                            >
+                              <img
+                                alt="Thor: Ragnarok"
+                                className="gallery-card__image"
+                                onError={[Function]}
+                                src="https://image.tmdb.org/t/p/w500/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg"
+                              />
+                            </a>
+                          </LinkAnchor>
+                        </Link>
+                        <div
+                          className="gallery-card__description-line"
+                        >
+                          <span
+                            className="gallery-card__name"
+                          >
+                            Thor: Ragnarok
+                          </span>
+                          <span
+                            className="gallery-card__year"
+                          >
+                            2017
+                          </span>
+                        </div>
+                        <small
+                          className="gallery-card__genre"
+                        >
+                          Action 
+                          Adventure 
+                          Fantasy 
+                        </small>
+                      </div>
+                    </GalleryCard>
+                  </div>
+                  <div
+                    className="film-gallery--column"
+                    key="321612"
+                  >
+                    <GalleryCard
+                      genres={
+                        Array [
+                          "Family",
+                          "Fantasy",
+                          "Romance",
+                        ]
+                      }
+                      id={321612}
+                      posterPath="https://image.tmdb.org/t/p/w500/tWqifoYuwLETmmasnGHO7xBjEtt.jpg"
+                      releaseDate="2017-03-16"
+                      title="Beauty and the Beast"
+                    >
+                      <div
+                        className="gallery-card"
+                      >
+                        <Link
+                          to="/film/321612"
+                        >
+                          <LinkAnchor
+                            href="/film/321612"
+                            navigate={[Function]}
+                          >
+                            <a
+                              href="/film/321612"
+                              onClick={[Function]}
+                            >
+                              <img
+                                alt="Beauty and the Beast"
+                                className="gallery-card__image"
+                                onError={[Function]}
+                                src="https://image.tmdb.org/t/p/w500/tWqifoYuwLETmmasnGHO7xBjEtt.jpg"
+                              />
+                            </a>
+                          </LinkAnchor>
+                        </Link>
+                        <div
+                          className="gallery-card__description-line"
+                        >
+                          <span
+                            className="gallery-card__name"
+                          >
+                            Beauty and the Beast
+                          </span>
+                          <span
+                            className="gallery-card__year"
+                          >
+                            2017
+                          </span>
+                        </div>
+                        <small
+                          className="gallery-card__genre"
+                        >
+                          Family 
+                          Fantasy 
+                          Romance 
+                        </small>
+                      </div>
+                    </GalleryCard>
+                  </div>
+                  <div
+                    className="film-gallery--column"
+                    key="399055"
+                  >
+                    <GalleryCard
+                      genres={
+                        Array [
+                          "Drama",
+                          "Fantasy",
+                          "Romance",
+                        ]
+                      }
+                      id={399055}
+                      posterPath="https://image.tmdb.org/t/p/w500/k4FwHlMhuRR5BISY2Gm2QZHlH5Q.jpg"
+                      releaseDate="2017-12-01"
+                      title="The Shape of Water"
+                    >
+                      <div
+                        className="gallery-card"
+                      >
+                        <Link
+                          to="/film/399055"
+                        >
+                          <LinkAnchor
+                            href="/film/399055"
+                            navigate={[Function]}
+                          >
+                            <a
+                              href="/film/399055"
+                              onClick={[Function]}
+                            >
+                              <img
+                                alt="The Shape of Water"
+                                className="gallery-card__image"
+                                onError={[Function]}
+                                src="https://image.tmdb.org/t/p/w500/k4FwHlMhuRR5BISY2Gm2QZHlH5Q.jpg"
+                              />
+                            </a>
+                          </LinkAnchor>
+                        </Link>
+                        <div
+                          className="gallery-card__description-line"
+                        >
+                          <span
+                            className="gallery-card__name"
+                          >
+                            The Shape of Water
+                          </span>
+                          <span
+                            className="gallery-card__year"
+                          >
+                            2017
+                          </span>
+                        </div>
+                        <small
+                          className="gallery-card__genre"
+                        >
+                          Drama 
+                          Fantasy 
+                          Romance 
+                        </small>
+                      </div>
+                    </GalleryCard>
+                  </div>
+                </div>
+              </FilmsGallery>
+            </main>
+          </div>
+        </Main>
+      </Connect(Main)>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;
+
+exports[`Main test renders not found correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Connect(Main)>
+        <Main
+          filterMoviesByRating={[Function]}
+          filterMoviesByReleaseDate={[Function]}
+          moviesData={Object {}}
+        >
+          <div
+            className="main-wrapper"
+          >
+            <main>
+              <SortControlPanel
+                defaultSortValue="releaseDate"
+                getAndSetSortBy={[Function]}
+                optionsConfig={
+                  Array [
+                    Object {
+                      "name": "sortBy",
+                      "radioBtnName": "RELEASE DATE",
+                      "value": "releaseDate",
+                    },
+                    Object {
+                      "name": "sortBy",
+                      "radioBtnName": "RATING",
+                      "value": "rating",
+                    },
+                  ]
+                }
+                total={0}
+              >
+                <div
+                  className="sort-control-panel-wrapper"
+                >
+                  <strong
+                    className="sort-control-panel__result-amount"
+                  >
+                    0 movies found
+                  </strong>
+                  <div
+                    className="sort-control-panel__filter"
+                  >
+                    <span
+                      className="sort-control-panel__filter-title"
+                    >
+                      SORT BY
+                    </span>
+                    <OptionChooser
+                      defaultValue="releaseDate"
+                      onChangeCallback={[Function]}
+                      optionsConfig={
+                        Array [
+                          Object {
+                            "name": "sortBy",
+                            "radioBtnName": "RELEASE DATE",
+                            "value": "releaseDate",
+                          },
+                          Object {
+                            "name": "sortBy",
+                            "radioBtnName": "RATING",
+                            "value": "rating",
+                          },
+                        ]
+                      }
+                    >
+                      <div
+                        className="option-chooser-wrapper"
+                      >
+                        <input
+                          checked={true}
+                          className="option-chooser__option"
+                          id="releaseDate"
+                          name="sortBy"
+                          onChange={[Function]}
+                          type="radio"
+                          value="releaseDate"
+                        />
+                        <label
+                          className="option-chooser__label"
+                          htmlFor="releaseDate"
+                        >
+                          RELEASE DATE
+                        </label>
+                        <input
+                          checked={false}
+                          className="option-chooser__option"
+                          id="rating"
+                          name="sortBy"
+                          onChange={[Function]}
+                          type="radio"
+                          value="rating"
+                        />
+                        <label
+                          className="option-chooser__label"
+                          htmlFor="rating"
+                        >
+                          RATING
+                        </label>
+                      </div>
+                    </OptionChooser>
+                  </div>
+                </div>
+              </SortControlPanel>
+              <NotFound>
+                <div
+                  className="not-found"
+                >
+                  No films found
+                </div>
+              </NotFound>
+            </main>
+          </div>
+        </Main>
+      </Connect(Main)>
+    </Router>
+  </BrowserRouter>
+</Provider>
 `;

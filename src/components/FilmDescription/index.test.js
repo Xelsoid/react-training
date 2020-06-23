@@ -1,18 +1,29 @@
 import React from 'react';
 import MOCKED_DATA from '@mockedData/MOCKED_DATA';
-import { formatIncomingData } from '@utils';
 import { Provider } from 'react-redux';
-import store from '@store';
+import configureStore from 'redux-mock-store';
 import ComponentExample from './index';
 
+const mockStore = configureStore([]);
+
 describe('FilmDescription test', () => {
-  const film = MOCKED_DATA.data[1];
-  const defaultProps = formatIncomingData(film);
+  let store;
+  const match = {
+    params: {
+      id: '337167',
+    },
+  };
+
+  beforeEach(() => {
+    store = mockStore({
+      moviesData: MOCKED_DATA,
+    });
+  });
 
   it('renders correctly', () => {
-    const component = shallow(
+    const component = mount(
       <Provider store={store}>
-        <ComponentExample {...defaultProps} />
+        <ComponentExample match={match} />
       </Provider>,
     );
     expect(component).toMatchSnapshot();

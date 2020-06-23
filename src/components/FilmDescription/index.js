@@ -2,18 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './index.scss';
+import { addImageFallback } from '@utils/index';
 
-const addImageFallback = (event) => {
-  const element = event.target;
-  element.src = 'https://via.placeholder.com/500x750';
-};
-
-const FilmDescription = ({ match, moviesList }) => {
+const FilmDescription = ({ match, moviesData }) => {
   const { id } = match.params;
-  const film = moviesList.data.filter((elem) => elem.id.toString() === id.toString());
+  const film = moviesData.data.filter((elem) => elem.id.toString() === id.toString());
   const {
     poster_path, title, tagline, vote_average, release_date, runtime, overview,
   } = film[0];
+
   return (
     <div className="film-description">
       <div className="film-description__image-wrapper">
@@ -47,9 +44,9 @@ const FilmDescription = ({ match, moviesList }) => {
 
 FilmDescription.propTypes = {
   match: PropTypes.object.isRequired,
-  moviesList: PropTypes.object.isRequired,
+  moviesData: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({ moviesList: state.moviesData });
+const mapStateToProps = (state) => ({ moviesData: state.moviesData });
 
 export default connect(mapStateToProps)(FilmDescription);

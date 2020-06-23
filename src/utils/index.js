@@ -23,3 +23,8 @@ export const sortByReleaseDate = (array) => array.sort((a, b) => (
   new Date(b.release_date) - new Date(a.release_date)));
 
 export const sortByRating = (array) => array.sort((a, b) => (b.vote_average - a.vote_average));
+
+export const addImageFallback = (event) => {
+  const element = event.target;
+  element.src = 'https://via.placeholder.com/500x750';
+};

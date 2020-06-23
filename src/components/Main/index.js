@@ -18,11 +18,11 @@ const optionsConfig = [
   },
 ];
 
-const Main = ({ moviesList, filterMoviesByRating, filterMoviesByReleaseDate }) => {
+const Main = ({ moviesData, filterMoviesByRating, filterMoviesByReleaseDate }) => {
   const [sortBy, setSortBy] = useState(optionsConfig[0].value);
   const getAndSetSortBy = (event) => {
     setSortBy(event.target.value);
-    if (moviesList && moviesList.total) {
+    if (moviesData && moviesData.total) {
       if (event.target.value === optionsConfig[0].value) {
         filterMoviesByReleaseDate();
       } else {
@@ -36,13 +36,13 @@ const Main = ({ moviesList, filterMoviesByRating, filterMoviesByReleaseDate }) =
       <main>
         <SortControlPanel
           optionsConfig={optionsConfig}
-          total={moviesList && moviesList.data ? moviesList.data.length : 0}
+          total={moviesData && moviesData.data ? moviesData.data.length : 0}
           getAndSetSortBy={getAndSetSortBy}
           defaultSortValue={sortBy}
         />
         {
-          moviesList && moviesList.data && moviesList.data.length
-            ? <FilmsGallery films={moviesList.data} />
+          moviesData && moviesData.data && moviesData.data.length
+            ? <FilmsGallery films={moviesData.data} />
             : <NotFound />
         }
       </main>
@@ -50,7 +50,7 @@ const Main = ({ moviesList, filterMoviesByRating, filterMoviesByReleaseDate }) =
   );
 };
 
-const mapStateToProps = (state) => ({ moviesList: state.moviesData });
+const mapStateToProps = (state) => ({ moviesData: state.moviesData });
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators(
@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 Main.propTypes = {
-  moviesList: PropTypes.shape({
+  moviesData: PropTypes.shape({
     data: PropTypes.array,
     total: PropTypes.number,
     offset: PropTypes.number,
@@ -74,7 +74,7 @@ Main.propTypes = {
 };
 
 Main.defaultProps = {
-  moviesList: {
+  moviesData: {
     data: [],
     total: 0,
     offset: 0,

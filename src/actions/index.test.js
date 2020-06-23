@@ -1,4 +1,6 @@
-import { addMoviesDataToStore, clearMoviesDataFromStore, filterByReleaseDate, filterByRating } from '@actions/index';
+import {
+  addMoviesDataToStore, clearMoviesDataFromStore, filterByReleaseDate, filterByRating,
+} from '@actions/index';
 import MOCKED_DATA from '@mockedData/MOCKED_DATA';
 import ACTIONS from '../constants/ACTIONS';
 

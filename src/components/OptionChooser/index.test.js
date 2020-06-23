@@ -1,6 +1,5 @@
 import React from 'react';
 import ComponentExample from './index';
-import PropTypes from 'prop-types';
 
 describe('OptionChooser test', () => {
   const optionsConfig = [
@@ -16,8 +15,9 @@ describe('OptionChooser test', () => {
       <ComponentExample
         optionsConfig={optionsConfig}
         defaultValue={optionsConfig[0].value}
-        onChangeCallback={()=>{}}
-    />);
+        onChangeCallback={() => {}}
+      />,
+    );
     expect(component).toMatchSnapshot();
   });
 });

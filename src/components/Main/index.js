@@ -36,7 +36,7 @@ const Main = ({ moviesList, filterMoviesByRating, filterMoviesByReleaseDate }) =
       <main>
         <SortControlPanel
           optionsConfig={optionsConfig}
-          total={moviesList ? moviesList.total : 0}
+          total={moviesList && moviesList.data ? moviesList.data.length : 0}
           getAndSetSortBy={getAndSetSortBy}
           defaultSortValue={sortBy}
         />

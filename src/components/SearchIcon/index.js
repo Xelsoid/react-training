@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { clearMoviesDataFromStore } from '@actions/index';
+import { clearMoviesDataFromStore } from '@reducers';
 import PropTypes from 'prop-types';
 import './index.scss';
 import { NavLink } from 'react-router-dom';

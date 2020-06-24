@@ -5,7 +5,7 @@ import SortControlPanel from '@components/SortControlPanel';
 import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
 import PropTypes from 'prop-types';
-import { filterByRating, filterByReleaseDate } from '@actions';
+import { filterByRating, filterByReleaseDate } from '@reducers';
 
 import './index.scss';
 

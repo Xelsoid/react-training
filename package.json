@@ -84,9 +84,7 @@
     "@styles": "src/styles",
     "@components": "src/components",
     "@store": "src/store",
-    "@actions": "src/actions",
-    "@reducers": "src/reducers",
-    "@constants": "src/constants"
+    "@reducers": "src/services/reducers.js"
   },
   "jest": {
     "verbose": true,
@@ -107,9 +105,7 @@
       "^@styles(.*)$": "<rootDir>/src/styles$1",
       "^@components(.*)$": "<rootDir>/src/components$1",
       "^@store(.*)$": "<rootDir>/src/store$1",
-      "^@actions(.*)$": "<rootDir>/src/actions$1",
-      "^@reducers(.*)$": "<rootDir>/src/reducers$1",
-      "^@constants(.*)$": "<rootDir>/src/constants$1"
+      "^@reducers(.*)$": "<rootDir>/src/services$1"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(js|ts|tsx)?$"
   }

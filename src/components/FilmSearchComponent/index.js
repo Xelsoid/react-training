@@ -4,7 +4,7 @@ import Button from '@components/Button';
 import OptionChooser from '@components/OptionChooser';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { addMoviesDataToStore } from '@actions/index';
+import { addMoviesDataToStore } from '@reducers';
 import { connect } from 'react-redux';
 import './index.scss';
 import { Link } from 'react-router-dom';

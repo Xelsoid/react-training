@@ -84,7 +84,8 @@
     "@styles": "src/styles",
     "@components": "src/components",
     "@store": "src/store",
-    "@reducers": "src/services/reducers.js"
+    "@reducers": "src/services/reducers.js",
+    "@api": "src/services/api.js"
   },
   "jest": {
     "verbose": true,

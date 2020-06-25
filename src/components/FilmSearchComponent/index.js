@@ -3,9 +3,8 @@ import TextInput from '@components/TextInput';
 import Button from '@components/Button';
 import OptionChooser from '@components/OptionChooser';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { addMoviesDataToStore } from '@reducers';
-import { connect } from 'react-redux';
+import { fetchMoviesData } from '@reducers';
+import { useDispatch } from 'react-redux';
 import './index.scss';
 import { Link } from 'react-router-dom';
 
@@ -18,28 +17,21 @@ const optionsConfig = [
   },
 ];
 
-const FilmSearchComponent = ({ addMovies, match }) => {
-  const [searchByState, setSearchByState] = useState(optionsConfig[0].value);
-  const getAndSetSearchByState = (event) => {
-    setSearchByState(event.target.value);
-  };
+const FilmSearchComponent = ({ match }) => {
+  const dispatch = useDispatch();
 
   const [searchState, setSearchState] = useState('');
   const getAndSetSearchState = (event) => {
     setSearchState(event.target.value);
   };
 
+  const [searchByState, setSearchByState] = useState(optionsConfig[0].value);
+  const getAndSetSearchByState = (event) => {
+    setSearchByState(event.target.value);
+  };
+
   const findMovies = (searchQuery, searchByQuery) => {
-    const url = 'https://reactjs-cdp.herokuapp.com/movies';
-    fetch(`${url}?search=${searchQuery}&searchBy=${searchByQuery}`, {})
-      .then((res) => {
-        if (!res.ok) {
-          return res;
-        }
-        return res.json();
-      })
-      .then((res) => addMovies(res))
-      .catch((error) => error);
+    dispatch(fetchMoviesData(searchQuery, searchByQuery));
   };
 
   const findMoviesByButton = () => {
@@ -86,13 +78,7 @@ const FilmSearchComponent = ({ addMovies, match }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
-  { addMovies: addMoviesDataToStore },
-  dispatch,
-);
-
 FilmSearchComponent.propTypes = {
-  addMovies: PropTypes.func.isRequired,
   match: PropTypes.object,
 };
 
@@ -100,4 +86,4 @@ FilmSearchComponent.defaultProps = {
   match: {},
 };
 
-export default connect(null, mapDispatchToProps)(FilmSearchComponent);
+export default FilmSearchComponent;

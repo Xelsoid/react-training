@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import SortControlPanel from '@components/SortControlPanel';
 import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
@@ -18,15 +17,18 @@ const optionsConfig = [
   },
 ];
 
-const Main = ({ moviesData, filterMoviesByRating, filterMoviesByReleaseDate }) => {
+const Main = () => {
+  const moviesData = useSelector((state) => state.moviesData);
+  const dispatch = useDispatch();
   const [sortBy, setSortBy] = useState(optionsConfig[0].value);
+
   const getAndSetSortBy = (event) => {
     setSortBy(event.target.value);
     if (moviesData && moviesData.total) {
       if (event.target.value === optionsConfig[0].value) {
-        filterMoviesByReleaseDate();
+        dispatch(filterByReleaseDate());
       } else {
-        filterMoviesByRating();
+        dispatch(filterByRating());
       }
     }
   };
@@ -50,18 +52,6 @@ const Main = ({ moviesData, filterMoviesByRating, filterMoviesByReleaseDate }) =
   );
 };
 
-const mapStateToProps = (state) => ({ moviesData: state.moviesData });
-
-const mapDispatchToProps = (dispatch) => (
-  bindActionCreators(
-    {
-      filterMoviesByRating: filterByRating,
-      filterMoviesByReleaseDate: filterByReleaseDate,
-    },
-    dispatch,
-  )
-);
-
 Main.propTypes = {
   moviesData: PropTypes.shape({
     data: PropTypes.array,
@@ -69,8 +59,6 @@ Main.propTypes = {
     offset: PropTypes.number,
     limit: PropTypes.number,
   }),
-  filterMoviesByRating: PropTypes.func.isRequired,
-  filterMoviesByReleaseDate: PropTypes.func.isRequired,
 };
 
 Main.defaultProps = {
@@ -82,4 +70,4 @@ Main.defaultProps = {
   },
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;

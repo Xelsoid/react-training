@@ -1,10 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import './index.scss';
 import { addImageFallback } from '@utils/index';
 
-const FilmDescription = ({ match, moviesData }) => {
+const FilmDescription = ({ match }) => {
+  const moviesData = useSelector((state) => state.moviesData);
   const { id } = match.params;
   const film = moviesData.data.filter((elem) => elem.id.toString() === id.toString());
   const {
@@ -44,9 +45,6 @@ const FilmDescription = ({ match, moviesData }) => {
 
 FilmDescription.propTypes = {
   match: PropTypes.object.isRequired,
-  moviesData: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({ moviesData: state.moviesData });
-
-export default connect(mapStateToProps)(FilmDescription);
+export default FilmDescription;

@@ -5,6 +5,7 @@ export const ACTIONS = {
   STORE_MOVIES: 'STORE_MOVIES',
   FETCH_MOVIES: 'FETCH_MOVIES',
   HANDLE_FETCH_ERRORS: 'HANDLE_FETCH_ERRORS',
+  HANDLE_FETCH_LOADING: 'HANDLE_FETCH_LOADING',
   CLEAR_STORE_MOVIES: 'CLEAR_STORE_MOVIES',
   FILTER_BY_RELEASE_DATE: 'FILTER_BY_RELEASE_DATE',
   FILTER_BY_RATING: 'FILTER_BY_RATING',
@@ -13,7 +14,7 @@ export const ACTIONS = {
 const initialStore = {
   moviesData: {},
   errors: {},
-  loaders: {},
+  loading: {},
 };
 
 export const addMoviesDataToStore = (data) => ({
@@ -21,23 +22,37 @@ export const addMoviesDataToStore = (data) => ({
   payload: data,
 });
 
-export const handleFetchErrors = (errorId, error) => ({
+export const handleFetchErrors = (id, error) => ({
   type: ACTIONS.HANDLE_FETCH_ERRORS,
   payload: {
-    errorId,
+    id,
     error,
   },
 });
 
+export const handleLoading = (id, flag) => ({
+  type: ACTIONS.HANDLE_FETCH_LOADING,
+  payload: {
+    id,
+    flag,
+  },
+});
+
 export const fetchMoviesData = (searchQuery, searchByQuery) => (dispatch) => {
+  const dataType = 'movieLoading';
+  dispatch(handleLoading(dataType, true));
+  dispatch(handleFetchErrors(dataType, false));
+
   fetchData(searchQuery, searchByQuery).then((res) => {
     if (!res.ok) {
-      return res;
+      dispatch(handleLoading(dataType, false));
+      return dispatch(handleFetchErrors(dataType, 'Response is not okay'));
     }
     return res.json();
   })
     .then((res) => dispatch(addMoviesDataToStore(res)))
-    .catch((error) => dispatch(handleFetchErrors('movieLoading', error)));
+    .catch((error) => dispatch(handleFetchErrors(dataType, error)))
+    .finally(() => dispatch(handleLoading(dataType, false)));
 };
 
 export const clearMoviesDataFromStore = () => ({
@@ -65,6 +80,14 @@ export const reducers = (state = initialStore, action) => {
         ...state,
         errors: {
           [action.payload.errorId]: action.payload.error,
+        },
+      };
+
+    case ACTIONS.HANDLE_FETCH_LOADING:
+      return {
+        ...state,
+        loading: {
+          [action.payload.id]: action.payload.flag,
         },
       };
 

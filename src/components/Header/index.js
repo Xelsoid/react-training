@@ -1,27 +1,29 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import Logo from '@components/Logo';
-import FilmDescription from '@components/FilmDescription';
-import FilmSearchComponent from '@components/FilmSearchComponent';
-import SearchIcon from '@components/SearchIcon';
-
 import './index.scss';
+import PropTypes from 'prop-types';
 
-const Header = () => (
+const Header = ({ headerChildren: { upperChild, middleChild } }) => (
   <div className="header-wrapper">
     <header className="header">
       <div className="header__logo-wrapper">
-        <Logo />
-        <Route path="/film" component={SearchIcon} />
+        {upperChild}
       </div>
-      <Switch>
-        <Route path="/" exact component={FilmSearchComponent} />
-        <Route path="/search/:searchQuery" component={FilmSearchComponent} />
-        <Route path="/film/:id" component={FilmDescription} />
-        <Redirect to="/404" />
-      </Switch>
+      {middleChild}
     </header>
   </div>
 );
+
+Header.propTypes = {
+  headerChildren: PropTypes.shape(
+    {
+      upperChild: PropTypes.node,
+      middleChild: PropTypes.node,
+    },
+  ),
+};
+
+Header.defaultProps = {
+  headerChildren: {},
+};
 
 export default Header;

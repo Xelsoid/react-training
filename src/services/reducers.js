@@ -1,9 +1,9 @@
 import { sortByReleaseDate, sortByRating } from '@utils/index';
-import { fetchData } from '@api';
+import { fetchMovies, fetchMovie } from '@api';
 
 export const ACTIONS = {
   STORE_MOVIES: 'STORE_MOVIES',
-  FETCH_MOVIES: 'FETCH_MOVIES',
+  STORE_MOVIE: 'STORE_MOVIE',
   HANDLE_FETCH_ERRORS: 'HANDLE_FETCH_ERRORS',
   HANDLE_FETCH_LOADING: 'HANDLE_FETCH_LOADING',
   CLEAR_STORE_MOVIES: 'CLEAR_STORE_MOVIES',
@@ -19,6 +19,11 @@ const initialStore = {
 
 export const addMoviesDataToStore = (data) => ({
   type: ACTIONS.STORE_MOVIES,
+  payload: data,
+});
+
+export const addMovieDataToStore = (data) => ({
+  type: ACTIONS.STORE_MOVIE,
   payload: data,
 });
 
@@ -43,7 +48,24 @@ export const fetchMoviesData = (searchQuery, searchByQuery) => (dispatch) => {
   dispatch(handleLoading(dataType, true));
   dispatch(handleFetchErrors(dataType, false));
 
-  fetchData(searchQuery, searchByQuery).then((res) => {
+  fetchMovies(searchQuery, searchByQuery).then((res) => {
+    if (!res.ok) {
+      dispatch(handleLoading(dataType, false));
+      return dispatch(handleFetchErrors(dataType, 'Response is not okay'));
+    }
+    return res.json();
+  })
+    .then((res) => dispatch(addMoviesDataToStore(res)))
+    .catch((error) => dispatch(handleFetchErrors(dataType, error)))
+    .finally(() => dispatch(handleLoading(dataType, false)));
+};
+
+export const fetchMovieData = (id) => (dispatch) => {
+  const dataType = 'movieLoading';
+  dispatch(handleLoading(dataType, true));
+  dispatch(handleFetchErrors(dataType, false));
+
+  fetchMovie(id).then((res) => {
     if (!res.ok) {
       dispatch(handleLoading(dataType, false));
       return dispatch(handleFetchErrors(dataType, 'Response is not okay'));
@@ -72,6 +94,9 @@ export const reducers = (state = initialStore, action) => {
     case ACTIONS.STORE_MOVIES:
       return { ...state, moviesData: action.payload };
 
+    case ACTIONS.STORE_MOVIE:
+      return { ...state, movie: action.payload };
+
     case ACTIONS.CLEAR_STORE_MOVIES:
       return { ...state, moviesData: {} };
 
@@ -79,7 +104,7 @@ export const reducers = (state = initialStore, action) => {
       return {
         ...state,
         errors: {
-          [action.payload.errorId]: action.payload.error,
+          [action.payload.id]: action.payload.error,
         },
       };
 

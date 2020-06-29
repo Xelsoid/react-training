@@ -21,7 +21,6 @@ describe('GalleryCard test', () => {
       <Provider store={store}>
         <ComponentExample {...film} />
       </Provider>,
-
     );
     expect(component).toMatchSnapshot();
   });

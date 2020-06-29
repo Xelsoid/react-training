@@ -11,11 +11,28 @@ export const ACTIONS = {
   FILTER_BY_RATING: 'FILTER_BY_RATING',
 };
 
+export const LOADINGS = {
+  MOVIES_LOADING: 'moviesLoading',
+  MOVIE_LOADING: 'movieLoading',
+};
+
+export const ERRORS = {
+  MOVIES_ERROR: 'moviesLoading',
+  MOVIE_ERROR: 'movieLoading',
+};
+
+let initialState = localStorage.getItem('redux')
+  ? JSON.parse(localStorage.getItem('redux'))
+  : {};
+
 const initialStore = {
   moviesData: {},
+  movieData: {},
   errors: {},
   loading: {},
 };
+
+initialState = { ...initialStore, ...initialState };
 
 export const addMoviesDataToStore = (data) => ({
   type: ACTIONS.STORE_MOVIES,
@@ -44,37 +61,38 @@ export const handleLoading = (id, flag) => ({
 });
 
 export const fetchMoviesData = (searchQuery, searchByQuery) => (dispatch) => {
-  const dataType = 'movieLoading';
-  dispatch(handleLoading(dataType, true));
-  dispatch(handleFetchErrors(dataType, false));
+  dispatch(handleLoading(LOADINGS.MOVIES_LOADING, true));
+  dispatch(handleFetchErrors(ERRORS.MOVIES_ERROR, false));
 
   fetchMovies(searchQuery, searchByQuery).then((res) => {
     if (!res.ok) {
-      dispatch(handleLoading(dataType, false));
-      return dispatch(handleFetchErrors(dataType, 'Response is not okay'));
+      dispatch(handleLoading(LOADINGS.MOVIES_LOADING, false));
+      return dispatch(handleFetchErrors(ERRORS.MOVIES_ERROR, 'Response is not okay'));
     }
     return res.json();
   })
     .then((res) => dispatch(addMoviesDataToStore(res)))
-    .catch((error) => dispatch(handleFetchErrors(dataType, error)))
-    .finally(() => dispatch(handleLoading(dataType, false)));
+    .catch((error) => dispatch(handleFetchErrors(ERRORS.MOVIES_ERROR, error)))
+    .finally(() => dispatch(handleLoading(LOADINGS.MOVIES_LOADING, false)));
 };
 
 export const fetchMovieData = (id) => (dispatch) => {
-  const dataType = 'movieLoading';
-  dispatch(handleLoading(dataType, true));
-  dispatch(handleFetchErrors(dataType, false));
+  dispatch(handleLoading(LOADINGS.MOVIE_LOADING, true));
+  dispatch(handleFetchErrors(ERRORS.MOVIE_ERROR, false));
 
   fetchMovie(id).then((res) => {
     if (!res.ok) {
-      dispatch(handleLoading(dataType, false));
-      return dispatch(handleFetchErrors(dataType, 'Response is not okay'));
+      dispatch(handleLoading(LOADINGS.MOVIE_LOADING, false));
+      return dispatch(handleFetchErrors(ERRORS.MOVIE_ERROR, 'Response is not okay'));
     }
     return res.json();
   })
-    .then((res) => dispatch(addMoviesDataToStore(res)))
-    .catch((error) => dispatch(handleFetchErrors(dataType, error)))
-    .finally(() => dispatch(handleLoading(dataType, false)));
+    .then((res) => {
+      dispatch(fetchMoviesData(res.genres[0], 'genres'));
+      dispatch(addMovieDataToStore(res));
+    })
+    .catch((error) => dispatch(handleFetchErrors(ERRORS.MOVIE_ERROR, error)))
+    .finally(() => dispatch(handleLoading(LOADINGS.MOVIE_LOADING, false)));
 };
 
 export const clearMoviesDataFromStore = () => ({
@@ -89,13 +107,13 @@ export const filterByRating = () => ({
   type: ACTIONS.FILTER_BY_RATING,
 });
 
-export const reducers = (state = initialStore, action) => {
+export const reducers = (state = initialState, action) => {
   switch (action.type) {
     case ACTIONS.STORE_MOVIES:
       return { ...state, moviesData: action.payload };
 
     case ACTIONS.STORE_MOVIE:
-      return { ...state, movie: action.payload };
+      return { ...state, movieData: action.payload };
 
     case ACTIONS.CLEAR_STORE_MOVIES:
       return { ...state, moviesData: {} };
@@ -104,6 +122,7 @@ export const reducers = (state = initialStore, action) => {
       return {
         ...state,
         errors: {
+          ...state.errors,
           [action.payload.id]: action.payload.error,
         },
       };
@@ -112,6 +131,7 @@ export const reducers = (state = initialStore, action) => {
       return {
         ...state,
         loading: {
+          ...state.loading,
           [action.payload.id]: action.payload.flag,
         },
       };
@@ -119,15 +139,19 @@ export const reducers = (state = initialStore, action) => {
     case ACTIONS.FILTER_BY_RELEASE_DATE:
       return {
         ...state,
-        moviesData:
-          { ...state.moviesData, data: sortByReleaseDate(state.moviesData.data) },
+        moviesData: {
+          ...state.moviesData,
+          data: sortByReleaseDate(state.moviesData.data),
+        },
       };
 
     case ACTIONS.FILTER_BY_RATING:
       return {
         ...state,
-        moviesData:
-          { ...state.moviesData, data: sortByRating(state.moviesData.data) },
+        moviesData: {
+          ...state.moviesData,
+          data: sortByRating(state.moviesData.data),
+        },
       };
 
     default:

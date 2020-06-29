@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading test renders correctly 1`] = `
+<div
+  className="loading"
+>
+  Loading films... Please wait.
+</div>
+`;

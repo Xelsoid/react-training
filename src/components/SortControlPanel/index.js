@@ -1,30 +1,36 @@
 import React from 'react';
-import OptionChooser from '@components/OptionChooser';
 import PropTypes from 'prop-types';
 
 import './index.scss';
 
 const SortControlPanel = ({
-  total, optionsConfig, getAndSetSortBy, defaultSortValue,
+  title, children, filterTitle,
 }) => (
   <div className="sort-control-panel-wrapper">
-    <strong className="sort-control-panel__result-amount">{`${total} movies found`}</strong>
-    <div className="sort-control-panel__filter">
-      <span className="sort-control-panel__filter-title">SORT BY</span>
-      <OptionChooser
-        optionsConfig={optionsConfig}
-        defaultValue={defaultSortValue}
-        onChangeCallback={getAndSetSortBy}
-      />
-    </div>
+    <strong className="sort-control-panel__result-amount">{title}</strong>
+    {
+      children
+        ? (
+          <div className="sort-control-panel__filter">
+            <span className="sort-control-panel__filter-title">{filterTitle}</span>
+            {children}
+          </div>
+        )
+        : null
+    }
   </div>
 );
 
 SortControlPanel.propTypes = {
-  total: PropTypes.number.isRequired,
-  optionsConfig: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getAndSetSortBy: PropTypes.func.isRequired,
-  defaultSortValue: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  filterTitle: PropTypes.string,
+  children: PropTypes.node,
+};
+
+SortControlPanel.defaultProps = {
+  title: '',
+  filterTitle: 'Sort by',
+  children: null,
 };
 
 export default SortControlPanel;

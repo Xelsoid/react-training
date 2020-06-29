@@ -18,7 +18,7 @@ describe('FilmSearchComponent test', () => {
   });
 
   it('renders correctly', () => {
-    const component = mount(
+    const component = shallow(
       <Provider store={store}>
         <BrowserRouter>
           <ComponentExample />

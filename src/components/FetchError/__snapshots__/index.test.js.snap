@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotFound test renders correctly 1`] = `
+exports[`Fetch test renders correctly 1`] = `
 <div
-  className="not-found"
+  className="fetch-error"
 >
-  Request error happened, please try again.
+  Request error happened..., please try again.
 </div>
 `;

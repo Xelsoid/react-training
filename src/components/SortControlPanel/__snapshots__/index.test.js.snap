@@ -6,35 +6,6 @@ exports[`SortControlPanel test renders correctly 1`] = `
 >
   <strong
     className="sort-control-panel__result-amount"
-  >
-    4 movies found
-  </strong>
-  <div
-    className="sort-control-panel__filter"
-  >
-    <span
-      className="sort-control-panel__filter-title"
-    >
-      SORT BY
-    </span>
-    <OptionChooser
-      defaultValue="title"
-      onChangeCallback={[Function]}
-      optionsConfig={
-        Array [
-          Object {
-            "name": "searchType",
-            "radioBtnName": "TITLE",
-            "value": "title",
-          },
-          Object {
-            "name": "searchType",
-            "radioBtnName": "GENRE",
-            "value": "genres",
-          },
-        ]
-      }
-    />
-  </div>
+  />
 </div>
 `;

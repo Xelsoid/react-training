@@ -10,8 +10,8 @@ const FilmsGallery = ({ films }) => (
       <div key={film.id} className="film-gallery--column">
         <GalleryCard
           title={film.title}
-          posterPath={film.poster_path}
-          releaseDate={film.release_date}
+          poster_path={film.poster_path}
+          release_date={film.release_date}
           genres={film.genres}
           id={film.id}
         />

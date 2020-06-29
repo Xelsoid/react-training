@@ -8,8 +8,14 @@ import SortControlPanel from '@components/SortControlPanel';
 import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterByRating, filterByReleaseDate, fetchMoviesData } from '@root/src/services/reducers';
+import {
+  filterByRating, filterByReleaseDate, fetchMoviesData, ERRORS, LOADINGS,
+} from '@root/src/services/reducers';
 import { useParams, useLocation } from 'react-router-dom';
+import OptionChooser from '@components/OptionChooser';
+import Loading from '@components/Loading';
+
+import FetchError from '@components/FetchError';
 
 const optionsConfig = [
   {
@@ -33,9 +39,10 @@ const RootPage = () => {
   const dispatch = useDispatch();
   const routerParams = useParams();
   const routerLocation = useLocation();
+  const loading = useSelector((state) => state.loading);
+  const error = useSelector((state) => state.error);
 
   const moviesData = useSelector((state) => state.moviesData);
-
   const [sortBy, setSortBy] = useState(optionsConfig[0].value);
 
   const [searchState, setSearchState] = useState('');
@@ -43,7 +50,7 @@ const RootPage = () => {
     setSearchState(event.target.value);
   };
 
-  const [searchByState, setSearchByState] = useState(optionsConfig[0].value);
+  const [searchByState, setSearchByState] = useState(searchOptionsConfig[0].value);
   const getAndSetSearchByState = (event) => {
     setSearchByState(event.target.value);
   };
@@ -63,7 +70,7 @@ const RootPage = () => {
       setSearchByState(searchQuery[2]);
       findMovies(searchQuery[1], searchQuery[2]);
     }
-  }, []);
+  }, [routerLocation.pathname, routerParams.searchQuery, findMovies]);
 
   const getAndSetSortBy = (event) => {
     setSortBy(event.target.value);
@@ -91,6 +98,10 @@ const RootPage = () => {
   />,
   };
 
+  const ResultComponent = () => (moviesData && moviesData.data && moviesData.data.length
+    ? <FilmsGallery films={moviesData.data} />
+    : <NotFound />);
+
   return (
     <>
       <Header
@@ -98,15 +109,22 @@ const RootPage = () => {
       />
       <Main>
         <SortControlPanel
-          optionsConfig={optionsConfig}
-          total={moviesData && moviesData.data ? moviesData.data.length : 0}
-          getAndSetSortBy={getAndSetSortBy}
-          defaultSortValue={sortBy}
-        />
+          title={`${moviesData && moviesData.data ? moviesData.data.length : 0} movies found`}
+          filterTitle="SORT BY"
+        >
+          <OptionChooser
+            optionsConfig={optionsConfig}
+            defaultValue={sortBy}
+            onChangeCallback={getAndSetSortBy}
+          />
+        </SortControlPanel>
+
         {
-          moviesData && moviesData.data && moviesData.data.length
-            ? <FilmsGallery films={moviesData.data} />
-            : <NotFound />
+          loading && loading[LOADINGS.MOVIES_LOADING]
+            ? <Loading />
+            : error && error[ERRORS.MOVIES_ERROR]
+              ? <FetchError />
+              : <ResultComponent />
         }
       </Main>
       <Footer />

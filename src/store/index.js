@@ -5,12 +5,8 @@ import { reducers } from '@reducers';
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
   || compose;
 
-const initialState = localStorage.getItem('redux')
-  ? JSON.parse(localStorage.getItem('redux'))
-  : {};
-
 const enhancer = composeEnhancers(applyMiddleware(thunk));
-const store = createStore(reducers, initialState, enhancer);
+const store = createStore(reducers, enhancer);
 
 store.subscribe(
   () => { localStorage.setItem('redux', JSON.stringify(store.getState())); },

@@ -9,63 +9,7 @@ exports[`Header test renders correctly 1`] = `
   >
     <div
       className="header__logo-wrapper"
-    >
-      <Logo />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(SearchIcon)",
-            "type": [Function],
-          }
-        }
-        path="/film"
-      />
-    </div>
-    <Switch>
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(FilmSearchComponent)",
-            "type": [Function],
-          }
-        }
-        exact={true}
-        path="/"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(FilmSearchComponent)",
-            "type": [Function],
-          }
-        }
-        path="/search/:searchQuery"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [Function],
-            "compare": null,
-            "displayName": "Connect(FilmDescription)",
-            "type": [Function],
-          }
-        }
-        path="/film/:id"
-      />
-      <Redirect
-        to="/404"
-      />
-    </Switch>
+    />
   </header>
 </div>
 `;

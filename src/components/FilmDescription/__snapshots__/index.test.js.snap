@@ -21,6 +21,13 @@ exports[`FilmDescription test renders correctly 1`] = `
         },
       }
     }
+    overview="title"
+    poster_path="title"
+    release_date="title"
+    runtime={0}
+    tagline="title"
+    title="title"
+    vote_average={0}
   >
     <div
       className="film-description"
@@ -29,10 +36,10 @@ exports[`FilmDescription test renders correctly 1`] = `
         className="film-description__image-wrapper"
       >
         <img
-          alt="Fifty Shades Freed"
+          alt="title"
           className="film-description__image"
           onError={[Function]}
-          src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+          src="title"
         />
       </div>
       <div
@@ -44,18 +51,18 @@ exports[`FilmDescription test renders correctly 1`] = `
           <h2
             className="film-description__title"
           >
-            Fifty Shades Freed
+            title
           </h2>
           <div
             className="film-description__rating"
           >
-            6.1
+            0
           </div>
         </div>
         <small
           className="film-description__tagline"
         >
-          Don't miss the climax
+          title
         </small>
         <div
           className="film-description__year-wrapper"
@@ -63,18 +70,18 @@ exports[`FilmDescription test renders correctly 1`] = `
           <span
             className="film-description__year"
           >
-            2018
+            titl
           </span>
           <span
             className="film-description__runtime"
           >
-            106 min
+            0 min
           </span>
         </div>
         <p
           className="film-description__narration"
         >
-          Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.
+          title
         </p>
       </div>
     </div>

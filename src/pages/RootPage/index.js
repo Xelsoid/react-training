@@ -70,7 +70,7 @@ const RootPage = () => {
       setSearchByState(searchQuery[2]);
       findMovies(searchQuery[1], searchQuery[2]);
     }
-  }, [routerLocation.pathname, routerParams.searchQuery, findMovies]);
+  }, []);
 
   const getAndSetSortBy = (event) => {
     setSortBy(event.target.value);

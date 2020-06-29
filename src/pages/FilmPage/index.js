@@ -34,7 +34,7 @@ const FilmPage = () => {
     if (/\/film/i.test(routerLocation.pathname) && !id && +searchId !== id) {
       dispatch(fetchMovieData(searchId));
     }
-  }, [routerParams.id, id, routerLocation.pathname]);
+  }, []);
 
   const moviesData = useSelector((state) => state.moviesData);
 

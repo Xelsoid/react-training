@@ -27,6 +27,9 @@
     "react/jsx-filename-extension": "off",
     "import/no-unresolved": "off",
     "react/forbid-prop-types": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-nested-ternary": "off",
     "jsx-a11y/label-has-for": [
       2,
       {

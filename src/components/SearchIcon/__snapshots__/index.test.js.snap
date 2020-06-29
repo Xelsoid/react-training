@@ -4,11 +4,12 @@ exports[`SearchIcon test renders correctly 1`] = `
 <Provider
   store={
     Object {
+      "clearActions": [Function],
       "dispatch": [Function],
+      "getActions": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
       "subscribe": [Function],
-      Symbol(observable): [Function],
     }
   }
 >
@@ -35,57 +36,53 @@ exports[`SearchIcon test renders correctly 1`] = `
         }
       }
     >
-      <Connect(SearchIcon)>
-        <SearchIcon
-          clearMovies={[Function]}
+      <SearchIcon>
+        <NavLink
+          className="search-icon"
+          onClick={[Function]}
+          to="/"
+          type="button"
         >
-          <NavLink
-            className="search-icon"
+          <Link
+            aria-current="page"
+            className="search-icon active"
             onClick={[Function]}
-            to="/"
+            style={Object {}}
+            to={
+              Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": null,
+              }
+            }
             type="button"
           >
-            <Link
+            <LinkAnchor
               aria-current="page"
               className="search-icon active"
+              href="/"
+              navigate={[Function]}
               onClick={[Function]}
               style={Object {}}
-              to={
-                Object {
-                  "hash": "",
-                  "pathname": "/",
-                  "search": "",
-                  "state": null,
-                }
-              }
               type="button"
             >
-              <LinkAnchor
+              <a
                 aria-current="page"
                 className="search-icon active"
                 href="/"
-                navigate={[Function]}
                 onClick={[Function]}
                 style={Object {}}
                 type="button"
               >
-                <a
-                  aria-current="page"
-                  className="search-icon active"
-                  href="/"
-                  onClick={[Function]}
-                  style={Object {}}
-                  type="button"
-                >
-                  <i
-                    className="fas fa-search fa-2x fa-flip-horizontal"
-                  />
-                </a>
-              </LinkAnchor>
-            </Link>
-          </NavLink>
-        </SearchIcon>
-      </Connect(SearchIcon)>
+                <i
+                  className="fas fa-search fa-2x fa-flip-horizontal"
+                />
+              </a>
+            </LinkAnchor>
+          </Link>
+        </NavLink>
+      </SearchIcon>
     </Router>
   </BrowserRouter>
 </Provider>

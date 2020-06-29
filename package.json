@@ -106,7 +106,8 @@
       "^@styles(.*)$": "<rootDir>/src/styles$1",
       "^@components(.*)$": "<rootDir>/src/components$1",
       "^@store(.*)$": "<rootDir>/src/store$1",
-      "^@reducers(.*)$": "<rootDir>/src/services$1"
+      "^@reducers(.*)$": "<rootDir>/src/services/reducers.js",
+      "^@api(.*)$": "<rootDir>/src/services/api.js"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(js|ts|tsx)?$"
   }

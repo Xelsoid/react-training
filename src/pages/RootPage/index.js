@@ -98,10 +98,6 @@ const RootPage = () => {
   />,
   };
 
-  const ResultComponent = () => (moviesData && moviesData.data && moviesData.data.length
-    ? <FilmsGallery films={moviesData.data} />
-    : <NotFound />);
-
   return (
     <>
       <Header
@@ -124,7 +120,9 @@ const RootPage = () => {
             ? <Loading />
             : error && error[ERRORS.MOVIES_ERROR]
               ? <FetchError />
-              : <ResultComponent />
+              : moviesData && moviesData.data && moviesData.data.length
+                ? <FilmsGallery films={moviesData.data} />
+                : <NotFound />
         }
       </Main>
       <Footer />

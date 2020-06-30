@@ -9,8 +9,9 @@ import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  filterByRating, filterByReleaseDate, fetchMoviesData, ERRORS, LOADINGS,
-} from '@root/src/services/reducers';
+  filterByRating, filterByReleaseDate, fetchMoviesData,
+} from '@root/src/services/movieReducers';
+import { ERRORS, LOADINGS } from '@root/src/services/constants';
 import { useParams, useLocation } from 'react-router-dom';
 import OptionChooser from '@components/OptionChooser';
 import Loading from '@components/Loading';
@@ -39,10 +40,10 @@ const RootPage = () => {
   const dispatch = useDispatch();
   const routerParams = useParams();
   const routerLocation = useLocation();
-  const loading = useSelector((state) => state.loading);
-  const error = useSelector((state) => state.error);
+  const loading = useSelector((state) => state.common.loading);
+  const error = useSelector((state) => state.common.error);
+  const moviesData = useSelector((state) => state.movies.moviesData);
 
-  const moviesData = useSelector((state) => state.moviesData);
   const [sortBy, setSortBy] = useState(optionsConfig[0].value);
 
   const [searchState, setSearchState] = useState('');

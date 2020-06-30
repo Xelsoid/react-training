@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.scss';
 import { addImageFallback } from '@utils/index';
-import { fetchMovieData } from '@root/src/services/reducers';
+import { fetchMovieData } from '@root/src/services/movieReducers';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,7 @@ const GalleryCard = ({
   title, poster_path, release_date, genres, id,
 }) => {
   const dispatch = useDispatch();
-  const movieData = useSelector((state) => state.movieData);
+  const movieData = useSelector((state) => state.movies.movieData);
 
   const fetchMovieCallback = () => {
     if (+movieData.id === +id) {

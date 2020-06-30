@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { clearMoviesDataFromStore } from '@reducers';
+import { clearMoviesDataFromStore } from '@root/src/services/movieReducers';
 import './index.scss';
 import { NavLink } from 'react-router-dom';
 

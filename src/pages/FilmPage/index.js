@@ -11,7 +11,8 @@ import { useParams, useLocation } from 'react-router-dom';
 import SortControlPanel from '@components/SortControlPanel';
 import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
-import { fetchMovieData, ERRORS, LOADINGS } from '@root/src/services/reducers';
+import { fetchMovieData } from '@root/src/services/movieReducers';
+import { LOADINGS, ERRORS } from '@root/src/services/constants';
 import Loading from '@components/Loading';
 import FetchError from '@components/FetchError';
 
@@ -20,9 +21,10 @@ const FilmPage = () => {
   const routerParams = useParams();
   const routerLocation = useLocation();
 
-  const movieData = useSelector((state) => state.movieData);
-  const loading = useSelector((state) => state.loading);
-  const error = useSelector((state) => state.error);
+  const movieData = useSelector((state) => state.movies.movieData);
+  const moviesData = useSelector((state) => state.movies.moviesData);
+  const loading = useSelector((state) => state.common.loading);
+  const error = useSelector((state) => state.common.error);
 
   const {
     poster_path, title, tagline, vote_average, release_date, runtime, overview, id, genres,
@@ -35,8 +37,6 @@ const FilmPage = () => {
       dispatch(fetchMovieData(searchId));
     }
   }, []);
-
-  const moviesData = useSelector((state) => state.moviesData);
 
   const headerChildren = {
     upperChild:

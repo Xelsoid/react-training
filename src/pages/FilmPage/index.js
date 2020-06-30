@@ -13,6 +13,7 @@ import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
 import { fetchMovieData } from '@root/src/services/movieReducers';
 import FetchResult from '@components/FetchResult';
+import { FETCH_HANDLERS } from '@root/src/services/constants';
 
 const useCustomHook = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const FilmPage = () => {
     const searchId = routerParams.id;
 
     if (/\/film/i.test(routerLocation.pathname) && !id && +searchId !== id) {
-      dispatch(fetchMovieData(searchId));
+      dispatch(fetchMovieData(searchId, FETCH_HANDLERS.MOVIE));
     }
   }, []);
 
@@ -72,7 +73,7 @@ const FilmPage = () => {
       />
       <Main>
         <SortControlPanel title={`Films by ${genres && genres[0]} genre`} />
-        <FetchResult loading={loading} error={error}>
+        <FetchResult loading={loading} error={error} handlerId={FETCH_HANDLERS.MOVIE}>
           {
             moviesData && moviesData.data && moviesData.data.length
               ? <FilmsGallery films={moviesData.data} />

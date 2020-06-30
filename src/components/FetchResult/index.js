@@ -1,15 +1,14 @@
 import React from 'react';
-import { ERRORS, LOADINGS } from '@root/src/services/constants';
 import Loading from '@components/Loading';
 import FetchError from '@components/FetchError';
 import PropTypes from 'prop-types';
 
-const FetchResult = ({ loading, error, children }) => {
+const FetchResult = ({ loading, error, handlerId, children }) => {
   let Component;
 
-  if (loading && (loading[LOADINGS.MOVIE_LOADING] || loading[LOADINGS.MOVIES_LOADING])) {
+  if (loading && loading[handlerId]) {
     Component = <Loading />;
-  } else if (error && error[ERRORS.MOVIE_ERROR]) {
+  } else if (error && error[handlerId]) {
     Component = <FetchError />;
   } else if (children) {
     Component = children;
@@ -22,12 +21,14 @@ const FetchResult = ({ loading, error, children }) => {
 FetchResult.propTypes = {
   loading: PropTypes.object,
   error: PropTypes.object,
+  handlerId: PropTypes.string,
   children: PropTypes.node,
 };
 
 FetchResult.defaultProps = {
   loading: {},
   error: {},
+  handlerId: '',
   children: null,
 };
 

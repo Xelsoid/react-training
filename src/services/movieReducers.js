@@ -1,7 +1,7 @@
 import { sortByReleaseDate, sortByRating } from '@utils/index';
 import { fetchMovies, fetchMovie } from '@api';
 import { handleFetchErrors, handleLoading } from '@root/src/services/commonReducers';
-import { ACTIONS, ERRORS, LOADINGS } from '@root/src/services/constants';
+import { ACTIONS } from '@root/src/services/constants';
 
 const initialStore = {
   moviesData: {},
@@ -18,37 +18,37 @@ export const addMovieDataToStore = (data) => ({
   payload: data,
 });
 
-export const fetchData = (method, resultHandler) => (dispatch) => {
-  dispatch(handleLoading(LOADINGS.MOVIES_LOADING, true));
-  dispatch(handleFetchErrors(ERRORS.MOVIES_ERROR, false));
+export const fetchData = (method, resultHandler, fetchHandlerId) => (dispatch) => {
+  dispatch(handleLoading(fetchHandlerId, true));
+  dispatch(handleFetchErrors(fetchHandlerId, false));
 
   method.then((res) => {
     if (!res.ok) {
-      dispatch(handleLoading(LOADINGS.MOVIES_LOADING, false));
-      return dispatch(handleFetchErrors(ERRORS.MOVIES_ERROR, 'Response is not okay'));
+      dispatch(handleLoading(fetchHandlerId, false));
+      return dispatch(handleFetchErrors(fetchHandlerId, 'Response is not okay'));
     }
     return res.json();
   })
     .then((res) => resultHandler(res))
-    .catch((error) => dispatch(handleFetchErrors(ERRORS.MOVIES_ERROR, error)))
-    .finally(() => dispatch(handleLoading(LOADINGS.MOVIES_LOADING, false)));
+    .catch((error) => dispatch(handleFetchErrors(fetchHandlerId, error)))
+    .finally(() => dispatch(handleLoading(fetchHandlerId, false)));
 };
 
-export const fetchMoviesData = (searchQuery, searchByQuery) => (dispatch) => {
+export const fetchMoviesData = (searchQuery, searchByQuery, fetchHandlerId) => (dispatch) => {
   const method = fetchMovies(searchQuery, searchByQuery);
   const resultHandler = (res) => dispatch(addMoviesDataToStore(res));
 
-  dispatch(fetchData(method, resultHandler));
+  dispatch(fetchData(method, resultHandler, fetchHandlerId));
 };
 
-export const fetchMovieData = (id) => (dispatch) => {
-  const method = fetchMovie(id);
+export const fetchMovieData = (movieId, fetchHandlerId) => (dispatch) => {
+  const method = fetchMovie(movieId);
   const resultHandler = (res) => {
-    dispatch(fetchMoviesData(res.genres[0], 'genres'));
+    dispatch(fetchMoviesData(res.genres[0], 'genres', fetchHandlerId));
     dispatch(addMovieDataToStore(res));
   };
 
-  dispatch(fetchData(method, resultHandler));
+  dispatch(fetchData(method, resultHandler, fetchHandlerId));
 };
 
 export const clearMoviesDataFromStore = () => ({

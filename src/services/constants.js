@@ -8,12 +8,7 @@ export const ACTIONS = {
   HANDLE_FETCH_LOADING: 'HANDLE_FETCH_LOADING',
 };
 
-export const LOADINGS = {
-  MOVIES_LOADING: 'moviesLoading',
-  MOVIE_LOADING: 'movieLoading',
-};
-
-export const ERRORS = {
-  MOVIES_ERROR: 'moviesLoading',
-  MOVIE_ERROR: 'movieLoading',
+export const FETCH_HANDLERS = {
+  MOVIES: 'MOVIES',
+  MOVIE: 'MOVIE',
 };

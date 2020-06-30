@@ -11,13 +11,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   filterByRating, filterByReleaseDate, fetchMoviesData,
 } from '@root/src/services/movieReducers';
-import { ERRORS, LOADINGS } from '@root/src/services/constants';
 import { useParams, useLocation } from 'react-router-dom';
 import OptionChooser from '@components/OptionChooser';
-import Loading from '@components/Loading';
-
-import FetchError from '@components/FetchError';
 import FetchResult from '@components/FetchResult';
+import { FETCH_HANDLERS } from '@root/src/services/constants';
 
 const optionsConfig = [
   {
@@ -68,7 +65,7 @@ const RootPage = () => {
   };
 
   const findMovies = (searchQuery, searchByQuery) => {
-    dispatch(fetchMoviesData(searchQuery, searchByQuery));
+    dispatch(fetchMoviesData(searchQuery, searchByQuery, FETCH_HANDLERS.MOVIE));
   };
 
   const findMoviesByButton = () => {
@@ -127,7 +124,7 @@ const RootPage = () => {
           />
         </SortControlPanel>
 
-        <FetchResult loading={loading} error={error}>
+        <FetchResult loading={loading} error={error} handlerId={FETCH_HANDLERS.MOVIE}>
           {
             moviesData && moviesData.data && moviesData.data.length
               ? <FilmsGallery films={moviesData.data} />

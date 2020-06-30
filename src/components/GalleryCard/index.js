@@ -5,6 +5,7 @@ import { addImageFallback } from '@utils/index';
 import { fetchMovieData } from '@root/src/services/movieReducers';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { FETCH_HANDLERS } from '@root/src/services/constants';
 
 const GalleryCard = ({
   title, poster_path, release_date, genres, id,
@@ -16,7 +17,7 @@ const GalleryCard = ({
     if (+movieData.id === +id) {
       return;
     }
-    dispatch(fetchMovieData(id));
+    dispatch(fetchMovieData(id, FETCH_HANDLERS.MOVIE));
   };
 
   return (

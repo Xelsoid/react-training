@@ -18,39 +18,37 @@ export const addMovieDataToStore = (data) => ({
   payload: data,
 });
 
-export const fetchMoviesData = (searchQuery, searchByQuery) => (dispatch) => {
+export const fetchData = (method, resultHandler) => (dispatch) => {
   dispatch(handleLoading(LOADINGS.MOVIES_LOADING, true));
   dispatch(handleFetchErrors(ERRORS.MOVIES_ERROR, false));
 
-  fetchMovies(searchQuery, searchByQuery).then((res) => {
+  method.then((res) => {
     if (!res.ok) {
       dispatch(handleLoading(LOADINGS.MOVIES_LOADING, false));
       return dispatch(handleFetchErrors(ERRORS.MOVIES_ERROR, 'Response is not okay'));
     }
     return res.json();
   })
-    .then((res) => dispatch(addMoviesDataToStore(res)))
+    .then((res) => resultHandler(res))
     .catch((error) => dispatch(handleFetchErrors(ERRORS.MOVIES_ERROR, error)))
     .finally(() => dispatch(handleLoading(LOADINGS.MOVIES_LOADING, false)));
 };
 
-export const fetchMovieData = (id) => (dispatch) => {
-  dispatch(handleLoading(LOADINGS.MOVIE_LOADING, true));
-  dispatch(handleFetchErrors(ERRORS.MOVIE_ERROR, false));
+export const fetchMoviesData = (searchQuery, searchByQuery) => (dispatch) => {
+  const method = fetchMovies(searchQuery, searchByQuery);
+  const resultHandler = (res) => dispatch(addMoviesDataToStore(res));
 
-  fetchMovie(id).then((res) => {
-    if (!res.ok) {
-      dispatch(handleLoading(LOADINGS.MOVIE_LOADING, false));
-      return dispatch(handleFetchErrors(ERRORS.MOVIE_ERROR, 'Response is not okay'));
-    }
-    return res.json();
-  })
-    .then((res) => {
-      dispatch(fetchMoviesData(res.genres[0], 'genres'));
-      dispatch(addMovieDataToStore(res));
-    })
-    .catch((error) => dispatch(handleFetchErrors(ERRORS.MOVIE_ERROR, error)))
-    .finally(() => dispatch(handleLoading(LOADINGS.MOVIE_LOADING, false)));
+  dispatch(fetchData(method, resultHandler));
+};
+
+export const fetchMovieData = (id) => (dispatch) => {
+  const method = fetchMovie(id);
+  const resultHandler = (res) => {
+    dispatch(fetchMoviesData(res.genres[0], 'genres'));
+    dispatch(addMovieDataToStore(res));
+  };
+
+  dispatch(fetchData(method, resultHandler));
 };
 
 export const clearMoviesDataFromStore = () => ({

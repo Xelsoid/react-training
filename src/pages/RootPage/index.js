@@ -36,13 +36,23 @@ const searchOptionsConfig = [
   },
 ];
 
-const RootPage = () => {
+const useCustomHook = () => {
   const dispatch = useDispatch();
   const routerParams = useParams();
   const routerLocation = useLocation();
   const loading = useSelector((state) => state.common.loading);
   const error = useSelector((state) => state.common.error);
   const moviesData = useSelector((state) => state.movies.moviesData);
+
+  return {
+    dispatch, routerParams, routerLocation, loading, error, moviesData,
+  };
+};
+
+const RootPage = () => {
+  const {
+    dispatch, routerParams, routerLocation, loading, error, moviesData,
+  } = useCustomHook();
 
   const [sortBy, setSortBy] = useState(optionsConfig[0].value);
 

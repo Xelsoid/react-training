@@ -16,16 +16,24 @@ import { LOADINGS, ERRORS } from '@root/src/services/constants';
 import Loading from '@components/Loading';
 import FetchError from '@components/FetchError';
 
-const FilmPage = () => {
+const useCustomHook = () => {
   const dispatch = useDispatch();
   const routerParams = useParams();
   const routerLocation = useLocation();
-
   const movieData = useSelector((state) => state.movies.movieData);
   const moviesData = useSelector((state) => state.movies.moviesData);
   const loading = useSelector((state) => state.common.loading);
   const error = useSelector((state) => state.common.error);
 
+  return {
+    dispatch, routerParams, routerLocation, movieData, moviesData, loading, error,
+  };
+};
+
+const FilmPage = () => {
+  const {
+    dispatch, routerParams, routerLocation, movieData, moviesData, loading, error,
+  } = useCustomHook();
   const {
     poster_path, title, tagline, vote_average, release_date, runtime, overview, id, genres,
   } = movieData;

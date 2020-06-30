@@ -12,9 +12,7 @@ import SortControlPanel from '@components/SortControlPanel';
 import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
 import { fetchMovieData } from '@root/src/services/movieReducers';
-import { LOADINGS, ERRORS } from '@root/src/services/constants';
-import Loading from '@components/Loading';
-import FetchError from '@components/FetchError';
+import FetchResult from '@components/FetchResult';
 
 const useCustomHook = () => {
   const dispatch = useDispatch();
@@ -74,15 +72,13 @@ const FilmPage = () => {
       />
       <Main>
         <SortControlPanel title={`Films by ${genres && genres[0]} genre`} />
-        {
-          loading && (loading[LOADINGS.MOVIE_LOADING] || loading[LOADINGS.MOVIES_LOADING])
-            ? <Loading />
-            : error && error[ERRORS.MOVIE_ERROR]
-              ? <FetchError />
-              : moviesData && moviesData.data && moviesData.data.length
-                ? <FilmsGallery films={moviesData.data} />
-                : <NotFound />
-        }
+        <FetchResult loading={loading} error={error}>
+          {
+            moviesData && moviesData.data && moviesData.data.length
+              ? <FilmsGallery films={moviesData.data} />
+              : <NotFound />
+          }
+        </FetchResult>
       </Main>
       <Footer />
     </>

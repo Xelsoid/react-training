@@ -17,6 +17,7 @@ import OptionChooser from '@components/OptionChooser';
 import Loading from '@components/Loading';
 
 import FetchError from '@components/FetchError';
+import FetchResult from '@components/FetchResult';
 
 const optionsConfig = [
   {
@@ -126,15 +127,13 @@ const RootPage = () => {
           />
         </SortControlPanel>
 
-        {
-          loading && loading[LOADINGS.MOVIES_LOADING]
-            ? <Loading />
-            : error && error[ERRORS.MOVIES_ERROR]
-              ? <FetchError />
-              : moviesData && moviesData.data && moviesData.data.length
-                ? <FilmsGallery films={moviesData.data} />
-                : <NotFound />
-        }
+        <FetchResult loading={loading} error={error}>
+          {
+            moviesData && moviesData.data && moviesData.data.length
+              ? <FilmsGallery films={moviesData.data} />
+              : <NotFound />
+          }
+        </FetchResult>
       </Main>
       <Footer />
     </>

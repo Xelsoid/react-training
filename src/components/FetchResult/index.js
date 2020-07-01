@@ -3,7 +3,9 @@ import Loading from '@components/Loading';
 import FetchError from '@components/FetchError';
 import PropTypes from 'prop-types';
 
-const FetchResult = ({ loading, error, handlerId, children }) => {
+const FetchResult = ({
+  loading, error, handlerId, children,
+}) => {
   let Component;
 
   if (loading && loading[handlerId]) {

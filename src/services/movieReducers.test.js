@@ -68,7 +68,8 @@ describe('reducers tests', () => {
       type: ACTIONS.STORE_MOVIES,
       payload: MOCKED_DATA,
     };
-    expect(movieReducers(initialState, action)).toEqual({ ...initialState, moviesData: action.payload });
+    expect(movieReducers(initialState, action))
+      .toEqual({ ...initialState, moviesData: action.payload });
   });
 
   it('should handle STORE_MOVIE', () => {
@@ -76,7 +77,8 @@ describe('reducers tests', () => {
       type: ACTIONS.STORE_MOVIE,
       payload: MOCKED_DATA.data[0],
     };
-    expect(movieReducers(initialState, action)).toEqual({ ...initialState, movieData: action.payload });
+    expect(movieReducers(initialState, action))
+      .toEqual({ ...initialState, movieData: action.payload });
   });
 
   it('should handle CLEAR_STORE_MOVIES', () => {

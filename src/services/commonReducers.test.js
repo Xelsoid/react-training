@@ -1,6 +1,5 @@
 import { ACTIONS, FETCH_HANDLERS } from '@root/src/services/constants';
 import { handleFetchErrors, handleLoading, commonReducers } from './commonReducers';
-import { movieReducers } from '@root/src/services/movieReducers';
 
 describe('actions test', () => {
   it('action fetched data errors (flag: true)', () => {

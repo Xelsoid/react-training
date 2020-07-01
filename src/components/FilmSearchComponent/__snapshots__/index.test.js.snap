@@ -12,8 +12,22 @@ exports[`FilmSearchComponent test renders correctly 1`] = `
   <div
     className="film-search__panel"
   >
-    <TextInput />
-    <Button />
+    <TextInput
+      defaultValue=""
+      onChangeCallback={[MockFunction]}
+      placeholder="Enter the data"
+      type="text"
+    />
+    <Link
+      to="/search/Search  "
+    >
+      <Button
+        additionalClassName="btn--large"
+        name="SEARCH"
+        onClickCallback={[MockFunction]}
+        type="button"
+      />
+    </Link>
   </div>
   <div
     className="film-search__filter"
@@ -23,7 +37,24 @@ exports[`FilmSearchComponent test renders correctly 1`] = `
     >
       SEARCH BY
     </span>
-    <OptionChooser />
+    <OptionChooser
+      defaultValue=""
+      onChangeCallback={[MockFunction]}
+      optionsConfig={
+        Array [
+          Object {
+            "name": "searchType",
+            "radioBtnName": "TITLE",
+            "value": "title",
+          },
+          Object {
+            "name": "searchType",
+            "radioBtnName": "GENRE",
+            "value": "genres",
+          },
+        ]
+      }
+    />
   </div>
 </div>
 `;

@@ -1,12 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchIcon test renders correctly 1`] = `
-<button
-  className="search-icon"
-  type="button"
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
 >
-  <i
-    className="fas fa-search fa-2x fa-flip-horizontal"
-  />
-</button>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <SearchIcon>
+        <NavLink
+          className="search-icon"
+          onClick={[Function]}
+          to="/"
+          type="button"
+        >
+          <Link
+            aria-current="page"
+            className="search-icon active"
+            onClick={[Function]}
+            style={Object {}}
+            to={
+              Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": null,
+              }
+            }
+            type="button"
+          >
+            <LinkAnchor
+              aria-current="page"
+              className="search-icon active"
+              href="/"
+              navigate={[Function]}
+              onClick={[Function]}
+              style={Object {}}
+              type="button"
+            >
+              <a
+                aria-current="page"
+                className="search-icon active"
+                href="/"
+                onClick={[Function]}
+                style={Object {}}
+                type="button"
+              >
+                <i
+                  className="fas fa-search fa-2x fa-flip-horizontal"
+                />
+              </a>
+            </LinkAnchor>
+          </Link>
+        </NavLink>
+      </SearchIcon>
+    </Router>
+  </BrowserRouter>
+</Provider>
 `;

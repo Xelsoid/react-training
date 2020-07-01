@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FetchResult test component doesnt render 1`] = `
+<FetchResult
+  error={Object {}}
+  handlerId=""
+  loading={Object {}}
+/>
+`;
+
+exports[`FetchResult test renders correctly Child component 1`] = `
+<FetchResult
+  error={Object {}}
+  handlerId=""
+  loading={Object {}}
+>
+  <ChildExample>
+    <h1>
+       Child test component 
+    </h1>
+  </ChildExample>
+</FetchResult>
+`;
+
+exports[`FetchResult test renders correctly Error 1`] = `
+<FetchResult
+  error={
+    Object {
+      "MOVIE": true,
+    }
+  }
+  handlerId="MOVIE"
+  loading={Object {}}
+>
+  <FetchError>
+    <div
+      className="fetch-error"
+    >
+      Request error happened..., please try again.
+    </div>
+  </FetchError>
+</FetchResult>
+`;
+
+exports[`FetchResult test renders correctly Loading 1`] = `
+<FetchResult
+  error={Object {}}
+  handlerId="MOVIE"
+  loading={
+    Object {
+      "MOVIE": true,
+    }
+  }
+>
+  <Loading>
+    <div
+      className="loading"
+    >
+      Loading films... Please wait.
+    </div>
+  </Loading>
+</FetchResult>
+`;

@@ -9,6 +9,13 @@
 
   &__option {
     display: none;
+
+    &:checked + label{
+      background-color: $pink;
+      &:hover {
+        background-color: $light-pink;
+      }
+    }
   }
 
   &__label {
@@ -20,14 +27,6 @@
 
     &:hover {
       background-color: $btn-grey;
-    }
-
-    &--active {
-      background-color: $pink;
-
-      &:hover {
-        background-color: $light-pink;
-      }
     }
   }
 }

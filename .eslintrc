@@ -2,7 +2,8 @@
   "extends": [
     "airbnb",
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "plugins": [
     "react"
@@ -18,6 +19,7 @@
     "node": true
   },
   "rules": {
+    "camelcase": [0],
     "sort-keys": "off",
     "quotes": ["error", "single"],
     "jsx-quotes": ["error", "prefer-double"],
@@ -25,6 +27,9 @@
     "react/jsx-filename-extension": "off",
     "import/no-unresolved": "off",
     "react/forbid-prop-types": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-nested-ternary": "off",
     "jsx-a11y/label-has-for": [
       2,
       {

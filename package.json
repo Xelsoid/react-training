@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "5.0.2",
+    "jest-fetch-mock": "^3.0.3",
     "html-webpack-plugin": "^4.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
@@ -37,7 +38,10 @@
     "react-hot-loader": "^4.12.21",
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
@@ -48,7 +52,10 @@
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^4.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "redux-mock-store": "^1.5.4"
+  },
   "scripts": {
     "development": "cross-env NODE_ENV=development node server.js",
     "production": "cross-env NODE_ENV=production webpack",
@@ -75,10 +82,14 @@
     "@utils": "src/utils",
     "@mockedData": "src/mockedData",
     "@styles": "src/styles",
-    "@components": "src/components"
+    "@components": "src/components",
+    "@store": "src/store",
+    "@reducers": "src/services/reducers.js",
+    "@api": "src/services/api.js"
   },
   "jest": {
     "verbose": true,
+    "automock": false,
     "setupFiles": [
       "./jestsetup.js"
     ],
@@ -93,7 +104,10 @@
       "^@utils(.*)$": "<rootDir>/src/utils$1",
       "^@mockedData(.*)$": "<rootDir>/src/mockedData$1",
       "^@styles(.*)$": "<rootDir>/src/styles$1",
-      "^@components(.*)$": "<rootDir>/src/components$1"
+      "^@components(.*)$": "<rootDir>/src/components$1",
+      "^@store(.*)$": "<rootDir>/src/store$1",
+      "^@reducers(.*)$": "<rootDir>/src/services/reducers.js",
+      "^@api(.*)$": "<rootDir>/src/services/api.js"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(js|ts|tsx)?$"
   }

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fetch test renders correctly 1`] = `
+<div
+  className="fetch-error"
+>
+  Request error happened..., please try again.
+</div>
+`;

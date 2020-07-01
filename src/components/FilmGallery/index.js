@@ -1,17 +1,19 @@
 import React from 'react';
-import './index.scss';
 import GalleryCard from '@components/GalleryCard';
 import PropTypes from 'prop-types';
+import './index.scss';
 
-const FilmsGallery = ({ films: { data } }) => (
+const FilmsGallery = ({ films }) => (
+
   <div className="film-gallery">
-    {data.map((film) => (
+    {films.map((film) => (
       <div key={film.id} className="film-gallery--column">
         <GalleryCard
           title={film.title}
-          posterPath={film.poster_path}
-          releaseDate={film.release_date}
+          poster_path={film.poster_path}
+          release_date={film.release_date}
           genres={film.genres}
+          id={film.id}
         />
       </div>
     ))}
@@ -19,9 +21,7 @@ const FilmsGallery = ({ films: { data } }) => (
 );
 
 FilmsGallery.propTypes = {
-  films: PropTypes.shape({
-    data: PropTypes.array,
-  }).isRequired,
+  films: PropTypes.array.isRequired,
 };
 
 export default FilmsGallery;

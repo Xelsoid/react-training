@@ -1,18 +1,22 @@
 import React from 'react';
-import './index.scss';
-import SortControlPanel from '@components/SortControlPanel';
-import FilmsGallery from '@components/FilmGallery';
-import MOCKED_DATA from '@mockedData/MOCKED_DATA';
-import NotFound from '@components/NotFound';
+import PropTypes from 'prop-types';
 
-const Main = () => (
+import './index.scss';
+
+const Main = ({ children }) => (
   <div className="main-wrapper">
-    <main className="main-">
-      <SortControlPanel />
-      <FilmsGallery films={MOCKED_DATA} />
-      {/* <NotFound/> */}
+    <main>
+      {children}
     </main>
   </div>
 );
+
+Main.propTypes = {
+  children: PropTypes.node,
+};
+
+Main.defaultProps = {
+  children: null,
+};
 
 export default Main;

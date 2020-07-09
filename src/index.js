@@ -13,7 +13,7 @@ import PageNotFound from '@components/PageNotFound';
 import RootPage from '@root/src/pages/RootPage';
 import FilmPage from '@root/src/pages/FilmPage';
 
-const App = () => (
+export const App = () => (
   <ErrorBoundary>
     <BrowserRouter>
       <Switch>

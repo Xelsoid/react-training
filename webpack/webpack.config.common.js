@@ -1,7 +1,8 @@
 require('module-alias/register');
 const path = require('path');
-const npm_package = require('../package.json');
 const webpack = require('webpack');
+const npm_package = require('../package.json');
+
 const isDevMod = process.env.NODE_ENV === 'development';
 
 module.exports = {
@@ -22,6 +23,18 @@ module.exports = {
       test: /\.js?$/,
       loader: 'babel-loader',
       exclude: /node_modules/,
+    }, {
+      test: /\.(gif|png|jpe?g|svg)$/i,
+      use: [
+        'file-loader',
+        {
+          loader: 'image-webpack-loader',
+          options: {
+            bypassOnDebug: true, // webpack@1.x
+            disable: true, // webpack@2.x and newer
+          },
+        },
+      ],
     }],
   },
   plugins: [

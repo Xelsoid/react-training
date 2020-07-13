@@ -3,6 +3,16 @@ import ReactDOM from 'react-dom';
 import '@styles/reset.css';
 import '@styles/colours.scss';
 import '@styles/styles.scss';
-import { App } from './index';
+import { BrowserRouter } from 'react-router-dom';
+import configureStore from './store/index';
+import App from './index';
 
-ReactDOM.render(<App />, document.getElementById('reactRoot'));
+const store = configureStore(window.PRELOADED_STATE);
+
+ReactDOM.render(
+  <App
+    Router={BrowserRouter}
+    store={store}
+  />,
+  document.getElementById('reactRoot'),
+);

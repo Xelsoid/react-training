@@ -20,21 +20,21 @@ module.exports = merge(common, {
     rules: [{
       test: /\.js?$/,
       loader: 'babel-loader',
-      exclude: /node_modules/
+      exclude: /node_modules/,
     }, {
       test: /\.scss$/,
       use: [
         isDevMod ? 'style-loader' : MiniCssExtractPlugin.loader,
         'css-loader',
-        'sass-loader'
-      ]
+        'sass-loader',
+      ],
     }, {
       test: /\.css$/,
       use: [
         isDevMod ? 'style-loader' : MiniCssExtractPlugin.loader,
         'css-loader',
       ],
-    }]
+    }],
   },
 
   plugins: [

@@ -24,7 +24,6 @@ module.exports = merge(common, {
       use: [
         'css-loader',
       ],
-    },
-    ],
+    }],
   },
 });

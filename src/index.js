@@ -11,7 +11,9 @@ import PageNotFound from '@components/PageNotFound';
 import RootPage from '@root/src/pages/RootPage';
 import FilmPage from '@root/src/pages/FilmPage';
 
-const App = ({ Router, location, context, store }) => (
+const App = ({
+  Router, location, context, store,
+}) => (
   <Provider store={store}>
     <ErrorBoundary>
       <Router location={location} context={context}>

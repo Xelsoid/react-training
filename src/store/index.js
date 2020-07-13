@@ -7,6 +7,4 @@ const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOO
 
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 
-export default (initialState) => {
-  return createStore(rootReducer, initialState, enhancer);
-};
+export default (initialState) => createStore(rootReducer, initialState, enhancer);

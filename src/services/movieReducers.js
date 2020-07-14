@@ -33,11 +33,11 @@ export const filterByRating = () => ({
   type: ACTIONS.FILTER_BY_RATING,
 });
 
-export const fetchMoviesDataRequest = (searchQuery, searchByQuery, handler) => {
+export const fetchMoviesDataRequest = (searchQuery, searchByQuery, fetchHandlerId) => {
   const url = returnMoviesUrl(searchQuery, searchByQuery);
   return {
     type: ACTIONS.FETCH_MOVIES_DATA_REQUEST,
-    payload: { url, handler },
+    payload: { url, fetchHandlerId },
   };
 };
 
@@ -50,7 +50,7 @@ export const fetchMovieDataRequest = (movieId, fetchHandlerId) => {
 };
 
 // Sagas
-export function* fetchMovieDataAsync(action) {
+export function* fetchDataAsync(action) {
   const { url, fetchHandlerId } = action.payload;
 
   yield put(handleLoading(fetchHandlerId, true));
@@ -62,31 +62,28 @@ export function* fetchMovieDataAsync(action) {
   }
   const res = yield response.json();
   yield put(handleLoading(fetchHandlerId, false));
-  yield put(fetchMoviesDataRequest(res.genres[0], 'genres', fetchHandlerId));
-  yield put(addMovieDataToStore(res));
+
+  switch (action.type) {
+    case ACTIONS.FETCH_MOVIES_DATA_REQUEST:
+      yield put(addMoviesDataToStore(res));
+      break;
+
+    case ACTIONS.FETCH_MOVIE_DATA_REQUEST:
+      yield put(fetchMoviesDataRequest(res.genres[0], 'genres', fetchHandlerId));
+      yield put(addMovieDataToStore(res));
+      break;
+
+    default:
+      put(handleFetchErrors(fetchHandlerId, 'Response is not okay'));
+  }
 }
 
 export function* watchFetchMovieDataAsync() {
-  yield takeLatest(ACTIONS.FETCH_MOVIE_DATA_REQUEST, fetchMovieDataAsync);
-}
-
-export function* fetchMoviesDataAsync(action) {
-  const { url, fetchHandlerId } = action.payload;
-
-  yield put(handleLoading(fetchHandlerId, true));
-  yield put(handleFetchErrors(fetchHandlerId, false));
-  const response = yield call(fetch, url);
-  if (!response.ok) {
-    yield put(handleLoading(fetchHandlerId, false));
-    yield put(handleFetchErrors(fetchHandlerId, 'Response is not okay'));
-  }
-  const res = yield response.json();
-  yield put(handleLoading(fetchHandlerId, false));
-  yield put(addMoviesDataToStore(res));
+  yield takeLatest(ACTIONS.FETCH_MOVIE_DATA_REQUEST, fetchDataAsync);
 }
 
 export function* watchFetchMoviesDataAsync() {
-  yield takeLatest(ACTIONS.FETCH_MOVIES_DATA_REQUEST, fetchMoviesDataAsync);
+  yield takeLatest(ACTIONS.FETCH_MOVIES_DATA_REQUEST, fetchDataAsync);
 }
 
 // Users Saga

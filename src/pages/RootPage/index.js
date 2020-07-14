@@ -9,7 +9,7 @@ import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  filterByRating, filterByReleaseDate, fetchMoviesData,
+  filterByRating, filterByReleaseDate, fetchMoviesDataRequest,
 } from '@root/src/services/movieReducers';
 import { useParams, useLocation } from 'react-router-dom';
 import OptionChooser from '@components/OptionChooser';
@@ -65,7 +65,7 @@ const RootPage = () => {
   };
 
   const findMovies = (searchQuery, searchByQuery) => {
-    dispatch(fetchMoviesData(searchQuery, searchByQuery, FETCH_HANDLERS.MOVIE));
+    dispatch(fetchMoviesDataRequest(searchQuery, searchByQuery, FETCH_HANDLERS.MOVIE));
   };
 
   const findMoviesByButton = () => {

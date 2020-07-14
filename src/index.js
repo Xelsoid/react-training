@@ -7,6 +7,8 @@ import ErrorBoundary from '@components/ErrorBoundary';
 import '@styles/reset.css';
 import '@styles/colours.scss';
 import '@styles/styles.scss';
+import 'isomorphic-fetch';
+import '@babel/polyfill';
 import PageNotFound from '@components/PageNotFound';
 import RootPage from '@root/src/pages/RootPage';
 import FilmPage from '@root/src/pages/FilmPage';

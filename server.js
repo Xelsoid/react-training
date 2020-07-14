@@ -22,7 +22,7 @@ if (isDevelopment) {
 } else {
   const serverRenderer = require('../public/js/serverRenderer').default;
 
-  app.use(express.static('public'));
+  app.use(express.static(PUBLIC_PATH));
   app.use(serverRenderer());
 }
 

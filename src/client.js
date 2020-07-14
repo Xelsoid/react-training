@@ -9,7 +9,7 @@ import App from './index';
 
 const store = configureStore(window.PRELOADED_STATE);
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <App
     Router={BrowserRouter}
     store={store}

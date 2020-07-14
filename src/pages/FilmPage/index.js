@@ -11,7 +11,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import SortControlPanel from '@components/SortControlPanel';
 import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
-import { fetchMovieData } from '@root/src/services/movieReducers';
+import { fetchMovieDataRequest } from '@root/src/services/movieReducers';
 import FetchResult from '@components/FetchResult';
 import { FETCH_HANDLERS } from '@root/src/services/constants';
 
@@ -41,7 +41,7 @@ const FilmPage = () => {
     const searchId = routerParams.id;
 
     if (/\/film/i.test(routerLocation.pathname) && !id && +searchId !== id) {
-      dispatch(fetchMovieData(searchId, FETCH_HANDLERS.MOVIE));
+      dispatch(fetchMovieDataRequest(searchId, FETCH_HANDLERS.MOVIE));
     }
   }, []);
 

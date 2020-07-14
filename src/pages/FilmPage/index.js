@@ -41,7 +41,7 @@ const FilmPage = () => {
     const searchId = routerParams.id;
 
     if (/\/film/i.test(routerLocation.pathname) && !id && +searchId !== id) {
-      dispatch(fetchMovieDataRequest(searchId, FETCH_HANDLERS.MOVIE));
+      // dispatch(fetchMovieDataRequest(searchId, FETCH_HANDLERS.MOVIE));
     }
   }, []);
 

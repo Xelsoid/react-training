@@ -77,7 +77,7 @@ const RootPage = () => {
       const searchQuery = routerParams.searchQuery.split(' ');
       setSearchState(searchQuery[1]);
       setSearchByState(searchQuery[2]);
-      findMovies(searchQuery[1], searchQuery[2]);
+      // findMovies(searchQuery[1], searchQuery[2]);
     }
   }, []);
 

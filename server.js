@@ -2,7 +2,6 @@
 const express = require('express');
 
 const PORT = 9090;
-const PUBLIC_PATH = `${__dirname}/dist`;
 const app = express();
 
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -22,7 +21,7 @@ if (isDevelopment) {
 } else {
   const serverRenderer = require('../public/js/serverRenderer').default;
 
-  app.use(express.static(PUBLIC_PATH));
+  app.use(express.static('public'));
   app.use(serverRenderer());
 }
 

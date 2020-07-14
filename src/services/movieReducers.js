@@ -52,7 +52,6 @@ export const fetchMovieDataRequest = (movieId, fetchHandlerId) => {
 // Sagas
 export function* fetchDataAsync(action) {
   const { url, fetchHandlerId } = action.payload;
-
   yield put(handleLoading(fetchHandlerId, true));
   yield put(handleFetchErrors(fetchHandlerId, false));
   const response = yield call(fetch, url);

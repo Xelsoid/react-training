@@ -38,7 +38,7 @@ module.exports = merge(common, {
   },
 
   plugins: [
-    !isDevMod && new CleanWebpackPlugin(),
+    !isDevMod && new CleanWebpackPlugin('./public', { root: path.resolve(__dirname, '../') }),
     isDevMod && new webpack.HotModuleReplacementPlugin(),
 
     new MiniCssExtractPlugin({

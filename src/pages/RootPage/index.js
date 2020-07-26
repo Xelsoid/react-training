@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Header from '@components/Header';
 import Main from '@components/Main';
 import Footer from '@components/Footer';
@@ -49,7 +49,7 @@ const useCustomHook = () => {
 
 const RootPage = () => {
   const {
-    dispatch, routerParams, routerLocation, loading, error, moviesData,
+    dispatch, loading, error, moviesData,
   } = useCustomHook();
 
   const [sortBy, setSortBy] = useState(optionsConfig[0].value);
@@ -71,15 +71,6 @@ const RootPage = () => {
   const findMoviesByButton = () => {
     findMovies(searchState, searchByState);
   };
-
-  useEffect(() => {
-    if (/\/search\/Search/i.test(routerLocation.pathname)) {
-      const searchQuery = routerParams.searchQuery.split(' ');
-      setSearchState(searchQuery[1]);
-      setSearchByState(searchQuery[2]);
-      // findMovies(searchQuery[1], searchQuery[2]);
-    }
-  }, []);
 
   const getAndSetSortBy = (event) => {
     setSortBy(event.target.value);

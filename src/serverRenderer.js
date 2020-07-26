@@ -45,7 +45,7 @@ export default function serverRenderer() {
       />
     );
 
-    store.runSaga(req.url).done.then(() => {
+    store.runSaga().done.then(() => {
       const htmlString = renderToString(renderRoot());
       // context.url will contain the URL to redirect to if a <Redirect> was used
       if (context.url) {

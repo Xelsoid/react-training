@@ -12,6 +12,9 @@ import '@babel/polyfill';
 import PageNotFound from '@components/PageNotFound';
 import RootPage from '@root/src/pages/RootPage';
 import FilmPage from '@root/src/pages/FilmPage';
+import { withRouter } from 'react-router';
+import ServerFetchHOC from './components/ServerFetchHOC';
+import { matchURLandDoFetch } from './utils';
 
 const App = ({
   Router, location, context, store,
@@ -27,10 +30,10 @@ const App = ({
             <RootPage />
           </Route>
           <Route path="/search/:searchQuery">
-            <RootPage />
+            {withRouter(ServerFetchHOC(RootPage, store, matchURLandDoFetch))}
           </Route>
           <Route path="/film/:id">
-            <FilmPage />
+            {withRouter(ServerFetchHOC(FilmPage, store, matchURLandDoFetch))}
           </Route>
           <Redirect to="/404" />
         </Switch>

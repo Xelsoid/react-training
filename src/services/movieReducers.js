@@ -1,7 +1,10 @@
 import { sortByReleaseDate, sortByRating } from '@utils/index';
-import { fetchMovies, fetchMovie } from '@api';
+import { returnMoviesUrl, returnMovieUrl } from '@api';
 import { handleFetchErrors, handleLoading } from '@root/src/services/commonReducers';
 import { ACTIONS } from '@root/src/services/constants';
+import {
+  call, put, all, takeLatest,
+} from 'redux-saga/effects';
 
 const initialStore = {
   moviesData: {},
@@ -18,39 +21,6 @@ export const addMovieDataToStore = (data) => ({
   payload: data,
 });
 
-export const fetchData = (method, resultHandler, fetchHandlerId) => (dispatch) => {
-  dispatch(handleLoading(fetchHandlerId, true));
-  dispatch(handleFetchErrors(fetchHandlerId, false));
-
-  method.then((res) => {
-    if (!res.ok) {
-      dispatch(handleLoading(fetchHandlerId, false));
-      return dispatch(handleFetchErrors(fetchHandlerId, 'Response is not okay'));
-    }
-    return res.json();
-  })
-    .then((res) => resultHandler(res))
-    .catch((error) => dispatch(handleFetchErrors(fetchHandlerId, error)))
-    .finally(() => dispatch(handleLoading(fetchHandlerId, false)));
-};
-
-export const fetchMoviesData = (searchQuery, searchByQuery, fetchHandlerId) => (dispatch) => {
-  const method = fetchMovies(searchQuery, searchByQuery);
-  const resultHandler = (res) => dispatch(addMoviesDataToStore(res));
-
-  dispatch(fetchData(method, resultHandler, fetchHandlerId));
-};
-
-export const fetchMovieData = (movieId, fetchHandlerId) => (dispatch) => {
-  const method = fetchMovie(movieId);
-  const resultHandler = (res) => {
-    dispatch(fetchMoviesData(res.genres[0], 'genres', fetchHandlerId));
-    dispatch(addMovieDataToStore(res));
-  };
-
-  dispatch(fetchData(method, resultHandler, fetchHandlerId));
-};
-
 export const clearMoviesDataFromStore = () => ({
   type: ACTIONS.CLEAR_STORE_MOVIES,
 });
@@ -62,6 +32,66 @@ export const filterByReleaseDate = () => ({
 export const filterByRating = () => ({
   type: ACTIONS.FILTER_BY_RATING,
 });
+
+export const fetchMoviesDataRequest = (searchQuery, searchByQuery, fetchHandlerId) => {
+  const url = returnMoviesUrl(searchQuery, searchByQuery);
+  return {
+    type: ACTIONS.FETCH_MOVIES_DATA_REQUEST,
+    payload: { url, fetchHandlerId },
+  };
+};
+
+export const fetchMovieDataRequest = (movieId, fetchHandlerId) => {
+  const url = returnMovieUrl(movieId);
+  return {
+    type: ACTIONS.FETCH_MOVIE_DATA_REQUEST,
+    payload: { url, fetchHandlerId },
+  };
+};
+
+// Sagas
+export function* fetchDataAsync(action) {
+  const { url, fetchHandlerId } = action.payload;
+  yield put(handleLoading(fetchHandlerId, true));
+  yield put(handleFetchErrors(fetchHandlerId, false));
+  const response = yield call(fetch, url);
+  if (!response.ok) {
+    yield put(handleLoading(fetchHandlerId, false));
+    yield put(handleFetchErrors(fetchHandlerId, 'Response is not okay'));
+  }
+  const res = yield response.json();
+  yield put(handleLoading(fetchHandlerId, false));
+
+  switch (action.type) {
+    case ACTIONS.FETCH_MOVIES_DATA_REQUEST:
+      yield put(addMoviesDataToStore(res));
+      break;
+
+    case ACTIONS.FETCH_MOVIE_DATA_REQUEST:
+      yield put(fetchMoviesDataRequest(res.genres[0], 'genres', fetchHandlerId));
+      yield put(addMovieDataToStore(res));
+      break;
+
+    default:
+      put(handleFetchErrors(fetchHandlerId, 'Response is not okay'));
+  }
+}
+
+export function* watchFetchMovieDataAsync() {
+  yield takeLatest(ACTIONS.FETCH_MOVIE_DATA_REQUEST, fetchDataAsync);
+}
+
+export function* watchFetchMoviesDataAsync() {
+  yield takeLatest(ACTIONS.FETCH_MOVIES_DATA_REQUEST, fetchDataAsync);
+}
+
+// Users Saga
+export function* moviesSaga() {
+  yield all([
+    watchFetchMoviesDataAsync(),
+    watchFetchMovieDataAsync(),
+  ]);
+}
 
 export const movieReducers = (state = initialStore, action) => {
   switch (action.type) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Header from '@components/Header';
 import Main from '@components/Main';
 import Footer from '@components/Footer';
@@ -9,7 +9,7 @@ import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  filterByRating, filterByReleaseDate, fetchMoviesData,
+  filterByRating, filterByReleaseDate, fetchMoviesDataRequest,
 } from '@root/src/services/movieReducers';
 import { useParams, useLocation } from 'react-router-dom';
 import OptionChooser from '@components/OptionChooser';
@@ -49,7 +49,7 @@ const useCustomHook = () => {
 
 const RootPage = () => {
   const {
-    dispatch, routerParams, routerLocation, loading, error, moviesData,
+    dispatch, loading, error, moviesData,
   } = useCustomHook();
 
   const [sortBy, setSortBy] = useState(optionsConfig[0].value);
@@ -65,21 +65,12 @@ const RootPage = () => {
   };
 
   const findMovies = (searchQuery, searchByQuery) => {
-    dispatch(fetchMoviesData(searchQuery, searchByQuery, FETCH_HANDLERS.MOVIE));
+    dispatch(fetchMoviesDataRequest(searchQuery, searchByQuery, FETCH_HANDLERS.MOVIE));
   };
 
   const findMoviesByButton = () => {
     findMovies(searchState, searchByState);
   };
-
-  useEffect(() => {
-    if (/\/search\/Search/i.test(routerLocation.pathname)) {
-      const searchQuery = routerParams.searchQuery.split(' ');
-      setSearchState(searchQuery[1]);
-      setSearchByState(searchQuery[2]);
-      findMovies(searchQuery[1], searchQuery[2]);
-    }
-  }, []);
 
   const getAndSetSortBy = (event) => {
     setSortBy(event.target.value);

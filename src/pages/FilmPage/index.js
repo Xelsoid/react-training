@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from '@components/Header';
 import Main from '@components/Main';
 import Footer from '@components/Footer';
@@ -11,7 +11,6 @@ import { useParams, useLocation } from 'react-router-dom';
 import SortControlPanel from '@components/SortControlPanel';
 import FilmsGallery from '@components/FilmGallery';
 import NotFound from '@components/NotFound';
-import { fetchMovieData } from '@root/src/services/movieReducers';
 import FetchResult from '@components/FetchResult';
 import { FETCH_HANDLERS } from '@root/src/services/constants';
 
@@ -31,19 +30,11 @@ const useCustomHook = () => {
 
 const FilmPage = () => {
   const {
-    dispatch, routerParams, routerLocation, movieData, moviesData, loading, error,
+    movieData, moviesData, loading, error,
   } = useCustomHook();
   const {
     poster_path, title, tagline, vote_average, release_date, runtime, overview, id, genres,
   } = movieData;
-
-  useEffect(() => {
-    const searchId = routerParams.id;
-
-    if (/\/film/i.test(routerLocation.pathname) && !id && +searchId !== id) {
-      dispatch(fetchMovieData(searchId, FETCH_HANDLERS.MOVIE));
-    }
-  }, []);
 
   const headerChildren = {
     upperChild:

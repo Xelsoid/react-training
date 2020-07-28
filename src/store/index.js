@@ -1,20 +1,19 @@
-import thunk from 'redux-thunk';
 import { createStore, compose, applyMiddleware } from 'redux';
-import rootReducer from '@reducers';
+import createSagaMiddleware, { END } from 'redux-saga';
+import { rootReducer } from '@reducers';
+import { moviesSaga } from '../services/movieReducers';
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
   || compose;
 
-const enhancer = composeEnhancers(applyMiddleware(thunk));
+const sagaMiddleware = createSagaMiddleware();
+const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
 
-const initialState = localStorage.getItem('redux')
-  ? JSON.parse(localStorage.getItem('redux'))
-  : {};
+export default (initialState) => {
+  const store = createStore(rootReducer, initialState, enhancer);
+  sagaMiddleware.run(moviesSaga);
+  store.runSaga = () => sagaMiddleware.run(moviesSaga);
+  store.close = () => store.dispatch(END);
 
-const store = createStore(rootReducer, initialState, enhancer);
-
-store.subscribe(
-  () => { localStorage.setItem('redux', JSON.stringify(store.getState())); },
-);
-
-export default store;
+  return store;
+};

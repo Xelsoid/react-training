@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.scss';
 import { addImageFallback } from '@utils/index';
-import { fetchMovieData } from '@root/src/services/movieReducers';
+import { fetchMovieDataRequest } from '@root/src/services/movieReducers';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FETCH_HANDLERS } from '@root/src/services/constants';
@@ -17,7 +17,7 @@ const GalleryCard = ({
     if (+movieData.id === +id) {
       return;
     }
-    dispatch(fetchMovieData(id, FETCH_HANDLERS.MOVIE));
+    dispatch(fetchMovieDataRequest(id, FETCH_HANDLERS.MOVIE));
   };
 
   return (

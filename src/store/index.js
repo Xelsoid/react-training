@@ -1,17 +1,17 @@
-import thunk from 'redux-thunk';
-import { createStore, compose, applyMiddleware } from 'redux';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import rootReducer from '@reducers';
 
-const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
-  || compose;
+const middleware = getDefaultMiddleware({
+  immutableCheck: false,
+  serializableCheck: false,
+  thunk: true,
+});
 
-const enhancer = composeEnhancers(applyMiddleware(thunk));
-
-const initialState = localStorage.getItem('redux')
-  ? JSON.parse(localStorage.getItem('redux'))
-  : {};
-
-const store = createStore(rootReducer, initialState, enhancer);
+const store = configureStore({
+  reducer: { ...rootReducer },
+  middleware,
+  devTools: process.env.NODE_ENV !== 'production',
+});
 
 store.subscribe(
   () => { localStorage.setItem('redux', JSON.stringify(store.getState())); },

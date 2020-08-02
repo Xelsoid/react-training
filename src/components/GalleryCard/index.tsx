@@ -1,15 +1,22 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './index.scss';
-import { addImageFallback } from '@utils/index';
-import { fetchMovieData } from '@root/src/services/movieReducers';
+import { addImageFallback } from '../../utils/index';
+import { fetchMovieData } from '../../services/movieReducers';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
-import { FETCH_HANDLERS } from '@root/src/services/constants';
+import { FETCH_HANDLERS } from '../../services/constants';
 
-const GalleryCard = ({
+interface GalleryCardProps {
+    title: string;
+    poster_path: string;
+    release_date: string;
+    genres: Array<String>;
+    id: number;
+}
+
+export const GalleryCard = ({
   title, poster_path, release_date, genres, id,
-}) => {
+}: GalleryCardProps) => {
   const dispatch = useDispatch();
   const movieData = useSelector((state) => state.movies.movieData);
 
@@ -38,13 +45,3 @@ const GalleryCard = ({
     </div>
   );
 };
-
-GalleryCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  poster_path: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  id: PropTypes.number.isRequired,
-};
-
-export default GalleryCard;

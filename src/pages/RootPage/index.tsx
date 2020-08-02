@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import Header from '@components/Header';
-import Main from '@components/Main';
-import Footer from '@components/Footer';
-import Logo from '@components/Logo';
-import FilmSearchComponent from '@components/FilmSearchComponent';
-import SortControlPanel from '@components/SortControlPanel';
-import FilmsGallery from '@components/FilmGallery';
-import NotFound from '@components/NotFound';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { Header } from '@components/Header/index';
+import { Main } from '@components/Main/index';
+import { Footer } from '@components/Footer/index';
+import { Logo } from '@components/Logo/index';
+import { FilmSearchComponent } from '@components/FilmSearchComponent/index';
+import { SortControlPanel } from '@components/SortControlPanel/index';
+import { FilmsGallery } from '@components/FilmGallery/index';
+import { NotFound } from '@components/NotFound/index';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   filterByRating, filterByReleaseDate, fetchMoviesData,
-} from '@root/src/services/movieReducers';
+} from '../../services/movieReducers';
 import { useParams, useLocation } from 'react-router-dom';
-import OptionChooser from '@components/OptionChooser';
-import FetchResult from '@components/FetchResult';
-import { FETCH_HANDLERS } from '@root/src/services/constants';
+import { OptionChooser } from '@components/OptionChooser/index';
+import { FetchResult } from '@components/FetchResult/index';
+import { FETCH_HANDLERS } from '../../services/constants';
 
 const optionsConfig = [
   {
@@ -47,7 +48,7 @@ const useCustomHook = () => {
   };
 };
 
-const RootPage = () => {
+export const RootPage = () => {
   const {
     dispatch, routerParams, routerLocation, loading, error, moviesData,
   } = useCustomHook();
@@ -136,5 +137,3 @@ const RootPage = () => {
     </>
   );
 };
-
-export default RootPage;

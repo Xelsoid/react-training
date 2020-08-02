@@ -1,10 +1,12 @@
-import React from 'react';
-import GalleryCard from '@components/GalleryCard';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import { GalleryCard } from '@components/GalleryCard/index';
 import './index.scss';
 
-const FilmsGallery = ({ films }) => (
+interface FilmsGalleryProps {
+    films: Array<any>;
+};
 
+export const FilmsGallery = ({ films }: FilmsGalleryProps) => (
   <div className="film-gallery">
     {films.map((film) => (
       <div key={film.id} className="film-gallery--column">
@@ -19,9 +21,3 @@ const FilmsGallery = ({ films }) => (
     ))}
   </div>
 );
-
-FilmsGallery.propTypes = {
-  films: PropTypes.array.isRequired,
-};
-
-export default FilmsGallery;

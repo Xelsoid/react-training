@@ -1,9 +1,16 @@
-import React from 'react';
+import * as React from 'react';
 import './index.scss';
-import PropTypes from 'prop-types';
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+interface ErrorBoundaryProps {
+    children: React.ReactNode;
+}
+
+interface ErrorBoundaryState {
+    hasError: boolean;
+}
+
+export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: any) {
     super(props);
     this.state = { hasError: false };
   }
@@ -28,9 +35,3 @@ class ErrorBoundary extends React.Component {
     return children;
   }
 }
-
-ErrorBoundary.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default ErrorBoundary;

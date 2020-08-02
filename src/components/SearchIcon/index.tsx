@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { useDispatch } from 'react-redux';
-import { clearMoviesDataFromStore } from '@root/src/services/movieReducers';
+import { clearMoviesDataFromStore } from '../../services/movieReducers';
 import './index.scss';
 import { NavLink } from 'react-router-dom';
 
-const SearchIcon = () => {
+export const SearchIcon = () => {
   const dispatch = useDispatch();
   const clearMovies = () => {
     dispatch(clearMoviesDataFromStore());
@@ -16,5 +16,3 @@ const SearchIcon = () => {
     </NavLink>
   );
 };
-
-export default SearchIcon;

@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import {
   BrowserRouter, Route, Switch, Redirect,
 } from 'react-router-dom';
-import store from '@store';
-import ErrorBoundary from '@components/ErrorBoundary';
+import { ErrorBoundary } from '@components/ErrorBoundary/index.tsx';
 import '@styles/reset.css';
 import '@styles/colours.scss';
 import '@styles/styles.scss';
-import PageNotFound from '@components/PageNotFound';
-import RootPage from '@root/src/pages/RootPage';
-import FilmPage from '@root/src/pages/FilmPage';
+import { PageNotFound } from '@components/PageNotFound/index';
+import { RootPage } from './pages/RootPage/index';
+import { FilmPage } from './pages/FilmPage/index';
+import store from './store/index';
 
 const App = () => (
   <ErrorBoundary>

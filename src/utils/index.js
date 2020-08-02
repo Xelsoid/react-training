@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const formatIncomingData = (incomingData) => {
   const data = incomingData;
   const keyArray = Object.keys(data).filter((element) => (/_/).test(element));

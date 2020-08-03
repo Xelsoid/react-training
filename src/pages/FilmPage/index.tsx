@@ -7,23 +7,61 @@ import { Logo } from '@components/Logo/index';
 import { FilmDescription } from '@components/FilmDescription/index.tsx';
 import { SearchIcon } from '@components/SearchIcon/index';
 import { useDispatch, useSelector } from 'react-redux';
-import { addImageFallback } from '../../utils/index';
 import { useParams, useLocation } from 'react-router-dom';
 import { SortControlPanel } from '@components/SortControlPanel/index';
 import { FilmsGallery } from '@components/FilmGallery/index';
 import { NotFound } from '@components/NotFound/index';
-import { fetchMovieData } from '../../services/movieReducers';
 import { FetchResult } from '@components/FetchResult';
+import { fetchMovieData } from '../../services/movieReducers';
+import { addImageFallback } from '../../utils';
 import { FETCH_HANDLERS } from '../../services/constants';
+
+interface CommonProps {
+    common: {
+        loading: string,
+        error: string
+    };
+}
+
+interface MovieProps {
+    data: Array<any>;
+    total: number;
+}
+
+interface FilmProps {
+    id: number;
+    title: string;
+    tagline: string;
+    vote_average: number;
+    vote_count: number;
+    release_date: string;
+    poster_path: string;
+    overview: string;
+    budget: number;
+    revenue: number;
+    genres: string[];
+    runtime: number;
+}
+
+interface RouterParamsProps {
+    id: string
+}
+
+interface MoviesProps {
+    movies: {
+        moviesData: MovieProps;
+        movieData: FilmProps;
+    }
+}
 
 const useCustomHook = () => {
   const dispatch = useDispatch();
-  const routerParams = useParams();
+  const routerParams: RouterParamsProps = useParams();
   const routerLocation = useLocation();
-  const movieData = useSelector((state) => state.movies.movieData);
-  const moviesData = useSelector((state) => state.movies.moviesData);
-  const loading = useSelector((state) => state.common.loading);
-  const error = useSelector((state) => state.common.error);
+  const movieData = useSelector((state: MoviesProps) => state.movies.movieData);
+  const moviesData = useSelector((state: MoviesProps) => state.movies.moviesData);
+  const loading = useSelector((state: CommonProps) => state.common.loading);
+  const error = useSelector((state: CommonProps) => state.common.error);
 
   return {
     dispatch, routerParams, routerLocation, movieData, moviesData, loading, error,

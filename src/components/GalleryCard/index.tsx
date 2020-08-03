@@ -1,24 +1,34 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './index.scss';
-import { addImageFallback } from '../../utils/index';
-import { fetchMovieData } from '../../services/movieReducers';
 import { useDispatch, useSelector } from 'react-redux';
+import { addImageFallback } from '../../utils';
+import { fetchMovieData } from '../../services/movieReducers';
 import { FETCH_HANDLERS } from '../../services/constants';
 
 interface GalleryCardProps {
     title: string;
     poster_path: string;
     release_date: string;
-    genres: Array<String>;
+    genres: Array<string>;
     id: number;
 }
 
-export const GalleryCard = ({
+interface MovieData {
+    id: string;
+}
+
+interface MoviesProps {
+    movies: {
+        movieData: MovieData
+    };
+}
+
+export const GalleryCard: React.FC<GalleryCardProps> = ({
   title, poster_path, release_date, genres, id,
-}: GalleryCardProps) => {
+}) => {
   const dispatch = useDispatch();
-  const movieData = useSelector((state) => state.movies.movieData);
+  const movieData = useSelector((state: MoviesProps) => state.movies.movieData);
 
   const fetchMovieCallback = () => {
     if (+movieData.id === +id) {

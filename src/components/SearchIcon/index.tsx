@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { clearMoviesDataFromStore } from '../../services/movieReducers';
 import './index.scss';
-import { NavLink } from 'react-router-dom';
 
 export const SearchIcon = () => {
   const dispatch = useDispatch();

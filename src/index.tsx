@@ -9,8 +9,8 @@ import '@styles/reset.css';
 import '@styles/colours.scss';
 import '@styles/styles.scss';
 import { PageNotFound } from '@components/PageNotFound/index';
-import { RootPage } from './pages/RootPage/index';
-import { FilmPage } from './pages/FilmPage/index';
+import { RootPage } from './pages/RootPage/';
+import { FilmPage } from './pages/FilmPage/';
 import store from './store/index';
 
 const App = () => (

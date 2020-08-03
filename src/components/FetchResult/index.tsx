@@ -6,7 +6,7 @@ interface FetchResultProps {
     loading: Object;
     error: Object;
     handlerId: string;
-    children: React.ReactNode;
+    children: React.ReactElement;
 }
 
 export const FetchResult = ({
@@ -25,4 +25,3 @@ export const FetchResult = ({
   }
   return (Component);
 };
-

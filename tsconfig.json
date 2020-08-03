@@ -2,8 +2,9 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "module": "commonjs",
+    "allowJs": true,
     "target": "es6",
     "jsx": "react",
     "suppressImplicitAnyIndexErrors": true,

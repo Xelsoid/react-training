@@ -5,8 +5,14 @@ import { OptionChooser } from '@components/OptionChooser/index';
 import './index.scss';
 import { Link } from 'react-router-dom';
 
+interface OptionsProps {
+    radioBtnName: string;
+    name: string;
+    value: string;
+}
+
 interface FilmSearchComponentProps {
-    searchOptionsConfig: Array<any>;
+    searchOptionsConfig: Array<OptionsProps>;
     searchState: string;
     getAndSetSearchState: (e: React.ChangeEvent) => void;
     searchByState: string;

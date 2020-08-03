@@ -9,12 +9,12 @@ import { SortControlPanel } from '@components/SortControlPanel/index';
 import { FilmsGallery } from '@components/FilmGallery/index';
 import { NotFound } from '@components/NotFound/index';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  filterByRating, filterByReleaseDate, fetchMoviesData,
-} from '../../services/movieReducers';
 import { useParams, useLocation } from 'react-router-dom';
 import { OptionChooser } from '@components/OptionChooser/index';
 import { FetchResult } from '@components/FetchResult/index';
+import {
+  filterByRating, filterByReleaseDate, fetchMoviesData,
+} from '../../services/movieReducers';
 import { FETCH_HANDLERS } from '../../services/constants';
 
 const optionsConfig = [
@@ -35,13 +35,35 @@ const searchOptionsConfig = [
   },
 ];
 
+interface CommonProps {
+    common: {
+        loading: string,
+        error: string
+    };
+}
+
+interface MovieProps {
+    data: Array<any>;
+    total: number;
+}
+
+interface MoviesProps {
+    movies: {
+        moviesData: MovieProps;
+    }
+}
+
+interface SearchQuery {
+    searchQuery: string;
+}
+
 const useCustomHook = () => {
   const dispatch = useDispatch();
-  const routerParams = useParams();
+  const routerParams: SearchQuery = useParams();
   const routerLocation = useLocation();
-  const loading = useSelector((state) => state.common.loading);
-  const error = useSelector((state) => state.common.error);
-  const moviesData = useSelector((state) => state.movies.moviesData);
+  const loading = useSelector<CommonProps>((state) => state.common.loading);
+  const error = useSelector<CommonProps>((state) => state.common.error);
+  const moviesData = useSelector((state: MoviesProps) => state.movies.moviesData);
 
   return {
     dispatch, routerParams, routerLocation, loading, error, moviesData,
@@ -56,16 +78,16 @@ export const RootPage = () => {
   const [sortBy, setSortBy] = useState(optionsConfig[0].value);
 
   const [searchState, setSearchState] = useState('');
-  const getAndSetSearchState = (event) => {
+  const getAndSetSearchState = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchState(event.target.value);
   };
 
   const [searchByState, setSearchByState] = useState(searchOptionsConfig[0].value);
-  const getAndSetSearchByState = (event) => {
+  const getAndSetSearchByState = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchByState(event.target.value);
   };
 
-  const findMovies = (searchQuery, searchByQuery) => {
+  const findMovies = (searchQuery: string, searchByQuery: string) => {
     dispatch(fetchMoviesData(searchQuery, searchByQuery, FETCH_HANDLERS.MOVIE));
   };
 
@@ -82,7 +104,7 @@ export const RootPage = () => {
     }
   }, []);
 
-  const getAndSetSortBy = (event) => {
+  const getAndSetSortBy = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSortBy(event.target.value);
     if (moviesData && moviesData.total) {
       if (event.target.value === optionsConfig[0].value) {
@@ -126,11 +148,11 @@ export const RootPage = () => {
         </SortControlPanel>
 
         <FetchResult loading={loading} error={error} handlerId={FETCH_HANDLERS.MOVIE}>
-          {
+            {
             moviesData && moviesData.data && moviesData.data.length
               ? <FilmsGallery films={moviesData.data} />
               : <NotFound />
-          }
+            }
         </FetchResult>
       </Main>
       <Footer />

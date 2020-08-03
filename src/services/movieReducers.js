@@ -1,5 +1,5 @@
 import { sortByReleaseDate, sortByRating } from '@utils/index';
-import { fetchMovies, fetchMovie } from '@api';
+import { fetchMovies, fetchMovie } from './api';
 import { handleFetchErrors, handleLoading } from '@root/src/services/commonReducers';
 import { ACTIONS } from '@root/src/services/constants';
 import { createReducer, createAction } from '@reduxjs/toolkit';

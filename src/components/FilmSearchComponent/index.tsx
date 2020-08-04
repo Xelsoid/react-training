@@ -1,12 +1,12 @@
-import React from 'react';
-import TextInput from '@components/TextInput';
-import Button from '@components/Button';
-import OptionChooser from '@components/OptionChooser';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import { TextInput } from '@components/TextInput/index';
+import { Button } from '@components/Button/index';
+import { OptionChooser } from '@components/OptionChooser/index';
 import './index.scss';
 import { Link } from 'react-router-dom';
+import { FilmSearchComponentPropsInt } from '../../interface';
 
-const FilmSearchComponent = ({
+export const FilmSearchComponent = ({
   searchOptionsConfig,
   searchState,
   getAndSetSearchState,
@@ -15,7 +15,7 @@ const FilmSearchComponent = ({
   getAndSetSearchByState,
   title,
   chooserTitle,
-}) => (
+}: FilmSearchComponentPropsInt) => (
   <div className="film-search-wrapper">
     <h2 className="film-search__title">{title}</h2>
     <div className="film-search__panel">
@@ -30,6 +30,7 @@ const FilmSearchComponent = ({
           onClickCallback={findMoviesByButton}
           additionalClassName="btn--large"
           name="SEARCH"
+          type="button"
         />
       </Link>
 
@@ -44,21 +45,3 @@ const FilmSearchComponent = ({
     </div>
   </div>
 );
-
-FilmSearchComponent.propTypes = {
-  searchOptionsConfig: PropTypes.array.isRequired,
-  searchState: PropTypes.string.isRequired,
-  getAndSetSearchState: PropTypes.func.isRequired,
-  searchByState: PropTypes.string.isRequired,
-  findMoviesByButton: PropTypes.func.isRequired,
-  getAndSetSearchByState: PropTypes.func.isRequired,
-  title: PropTypes.string,
-  chooserTitle: PropTypes.string,
-};
-
-FilmSearchComponent.defaultProps = {
-  title: 'SEARCH',
-  chooserTitle: 'SEARCH BY',
-};
-
-export default FilmSearchComponent;

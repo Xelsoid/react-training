@@ -1,23 +1,23 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './index.scss';
-import { addImageFallback } from '@utils/index';
-import { fetchMovieData } from '@root/src/services/movieReducers';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
-import { FETCH_HANDLERS } from '@root/src/services/constants';
+import { addImageFallback } from '../../utils';
+import { fetchMovieData } from '../../services/movieReducers';
+import { FETCH_HANDLERS } from '../../services/constants';
+import { FilmDescriptionInt, MoviesPropsInt } from '../../interface';
 
-const GalleryCard = ({
+export const GalleryCard: React.FC<FilmDescriptionInt> = ({
   title, poster_path, release_date, genres, id,
 }) => {
   const dispatch = useDispatch();
-  const movieData = useSelector((state) => state.movies.movieData);
+  const movieData = useSelector((state: MoviesPropsInt) => state.movies.movieData);
 
   const fetchMovieCallback = () => {
     if (+movieData.id === +id) {
       return;
     }
-    dispatch(fetchMovieData(id, FETCH_HANDLERS.MOVIE));
+    dispatch(fetchMovieData(`${id}`, FETCH_HANDLERS.MOVIE));
   };
 
   return (
@@ -38,13 +38,3 @@ const GalleryCard = ({
     </div>
   );
 };
-
-GalleryCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  poster_path: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  id: PropTypes.number.isRequired,
-};
-
-export default GalleryCard;

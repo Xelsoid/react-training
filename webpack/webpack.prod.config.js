@@ -5,7 +5,7 @@ module.exports = () => ({
   mode: 'production',
   devtool: 'none',
 
-  entry: './index.js',
+  entry: './index.tsx',
   output: {
     filename: 'main.min.js',
     path: path.resolve(__dirname, '../production'),

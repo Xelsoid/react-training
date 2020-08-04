@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import './index.scss';
+import { OptionChooserInt } from '../../interface';
 
-const OptionChooser = ({ optionsConfig, defaultValue, onChangeCallback }) => (
+export const OptionChooser = ({ optionsConfig, defaultValue, onChangeCallback }: OptionChooserInt) => (
   <div className="option-chooser-wrapper">
     {optionsConfig.map((option) => (
       <React.Fragment key={option.value}>
@@ -25,11 +25,3 @@ const OptionChooser = ({ optionsConfig, defaultValue, onChangeCallback }) => (
     ))}
   </div>
 );
-
-OptionChooser.propTypes = {
-  optionsConfig: PropTypes.array.isRequired,
-  defaultValue: PropTypes.string.isRequired,
-  onChangeCallback: PropTypes.func.isRequired,
-};
-
-export default OptionChooser;

@@ -30,6 +30,11 @@
     "react-hooks/exhaustive-deps": "off",
     "react/jsx-props-no-spreading": "off",
     "no-nested-ternary": "off",
+    "import/prefer-default-export": "off",
+    "react/button-has-type": "off",
+    "react/prop-types": "off",
+    "no-param-reassign": "off",
+    "import/extensions": "off",
     "jsx-a11y/label-has-for": [
       2,
       {

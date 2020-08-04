@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+import * as React from 'react';
 import './index.scss';
+import { SortControlPanelInt } from '../../interface';
 
-const SortControlPanel = ({
+export const SortControlPanel = ({
   title, children, filterTitle,
-}) => (
+}: SortControlPanelInt) => (
   <div className="sort-control-panel-wrapper">
     <strong className="sort-control-panel__result-amount">{title}</strong>
     {
@@ -20,17 +19,3 @@ const SortControlPanel = ({
     }
   </div>
 );
-
-SortControlPanel.propTypes = {
-  title: PropTypes.string,
-  filterTitle: PropTypes.string,
-  children: PropTypes.node,
-};
-
-SortControlPanel.defaultProps = {
-  title: '',
-  filterTitle: 'Sort by',
-  children: null,
-};
-
-export default SortControlPanel;

@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import Header from '@components/Header';
-import Main from '@components/Main';
-import Footer from '@components/Footer';
-import Logo from '@components/Logo';
-import FilmSearchComponent from '@components/FilmSearchComponent';
-import SortControlPanel from '@components/SortControlPanel';
-import FilmsGallery from '@components/FilmGallery';
-import NotFound from '@components/NotFound';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { Header } from '@components/Header/index';
+import { Main } from '@components/Main/index';
+import { Footer } from '@components/Footer/index';
+import { Logo } from '@components/Logo/index';
+import { FilmSearchComponent } from '@components/FilmSearchComponent/index';
+import { SortControlPanel } from '@components/SortControlPanel/index';
+import { FilmsGallery } from '@components/FilmGallery/index';
+import { NotFound } from '@components/NotFound/index';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useLocation } from 'react-router-dom';
+import { OptionChooser } from '@components/OptionChooser/index';
+import { FetchResult } from '@components/FetchResult/index';
 import {
   filterByRating, filterByReleaseDate, fetchMoviesData,
-} from '@root/src/services/movieReducers';
-import { useParams, useLocation } from 'react-router-dom';
-import OptionChooser from '@components/OptionChooser';
-import FetchResult from '@components/FetchResult';
-import { FETCH_HANDLERS } from '@root/src/services/constants';
+} from '../../services/movieReducers';
+import { FETCH_HANDLERS } from '../../services/constants';
+import { CommonPropsInt, SearchQueryInt, MoviesPropsInt } from '../../interface';
 
 const optionsConfig = [
   {
@@ -36,18 +38,18 @@ const searchOptionsConfig = [
 
 const useCustomHook = () => {
   const dispatch = useDispatch();
-  const routerParams = useParams();
+  const routerParams: SearchQueryInt = useParams();
   const routerLocation = useLocation();
-  const loading = useSelector((state) => state.common.loading);
-  const error = useSelector((state) => state.common.error);
-  const moviesData = useSelector((state) => state.movies.moviesData);
+  const loading = useSelector<CommonPropsInt>((state) => state.common.loading);
+  const error = useSelector<CommonPropsInt>((state) => state.common.error);
+  const moviesData = useSelector((state: MoviesPropsInt) => state.movies.moviesData);
 
   return {
     dispatch, routerParams, routerLocation, loading, error, moviesData,
   };
 };
 
-const RootPage = () => {
+export const RootPage = () => {
   const {
     dispatch, routerParams, routerLocation, loading, error, moviesData,
   } = useCustomHook();
@@ -55,16 +57,16 @@ const RootPage = () => {
   const [sortBy, setSortBy] = useState(optionsConfig[0].value);
 
   const [searchState, setSearchState] = useState('');
-  const getAndSetSearchState = (event) => {
+  const getAndSetSearchState = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchState(event.target.value);
   };
 
   const [searchByState, setSearchByState] = useState(searchOptionsConfig[0].value);
-  const getAndSetSearchByState = (event) => {
+  const getAndSetSearchByState = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchByState(event.target.value);
   };
 
-  const findMovies = (searchQuery, searchByQuery) => {
+  const findMovies = (searchQuery: string, searchByQuery: string) => {
     dispatch(fetchMoviesData(searchQuery, searchByQuery, FETCH_HANDLERS.MOVIE));
   };
 
@@ -81,7 +83,7 @@ const RootPage = () => {
     }
   }, []);
 
-  const getAndSetSortBy = (event) => {
+  const getAndSetSortBy = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSortBy(event.target.value);
     if (moviesData && moviesData.total) {
       if (event.target.value === optionsConfig[0].value) {
@@ -125,16 +127,14 @@ const RootPage = () => {
         </SortControlPanel>
 
         <FetchResult loading={loading} error={error} handlerId={FETCH_HANDLERS.MOVIE}>
-          {
+            {
             moviesData && moviesData.data && moviesData.data.length
               ? <FilmsGallery films={moviesData.data} />
               : <NotFound />
-          }
+            }
         </FetchResult>
       </Main>
       <Footer />
     </>
   );
 };
-
-export default RootPage;

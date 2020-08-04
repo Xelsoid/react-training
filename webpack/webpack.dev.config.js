@@ -8,7 +8,7 @@ module.exports = () => ({
   entry: [
     'webpack-hot-middleware/client?reload=true',
     'react-hot-loader/patch',
-    './index.js',
+    './index.tsx',
   ],
   output: {
     filename: 'main.js',

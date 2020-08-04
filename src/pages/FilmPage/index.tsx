@@ -1,35 +1,37 @@
-import React, { useEffect } from 'react';
-import Header from '@components/Header';
-import Main from '@components/Main';
-import Footer from '@components/Footer';
-import Logo from '@components/Logo';
-import FilmDescription from '@components/FilmDescription';
-import SearchIcon from '@components/SearchIcon';
+import * as React from 'react';
+import { useEffect } from 'react';
+import { Header } from '@components/Header/index';
+import { Main } from '@components/Main/index';
+import { Footer } from '@components/Footer/index';
+import { Logo } from '@components/Logo/index';
+import { FilmDescription } from '@components/FilmDescription/index.tsx';
+import { SearchIcon } from '@components/SearchIcon/index';
 import { useDispatch, useSelector } from 'react-redux';
-import { addImageFallback } from '@utils/index';
 import { useParams, useLocation } from 'react-router-dom';
-import SortControlPanel from '@components/SortControlPanel';
-import FilmsGallery from '@components/FilmGallery';
-import NotFound from '@components/NotFound';
-import { fetchMovieData } from '@root/src/services/movieReducers';
-import FetchResult from '@components/FetchResult';
-import { FETCH_HANDLERS } from '@root/src/services/constants';
+import { SortControlPanel } from '@components/SortControlPanel/index';
+import { FilmsGallery } from '@components/FilmGallery/index';
+import { NotFound } from '@components/NotFound/index';
+import { FetchResult } from '@components/FetchResult';
+import { fetchMovieData } from '../../services/movieReducers';
+import { addImageFallback } from '../../utils';
+import { FETCH_HANDLERS } from '../../services/constants';
+import { CommonPropsInt, RouterParamsInt, MoviesPropsInt } from '../../interface';
 
 const useCustomHook = () => {
   const dispatch = useDispatch();
-  const routerParams = useParams();
+  const routerParams: RouterParamsInt = useParams();
   const routerLocation = useLocation();
-  const movieData = useSelector((state) => state.movies.movieData);
-  const moviesData = useSelector((state) => state.movies.moviesData);
-  const loading = useSelector((state) => state.common.loading);
-  const error = useSelector((state) => state.common.error);
+  const movieData = useSelector((state: MoviesPropsInt) => state.movies.movieData);
+  const moviesData = useSelector((state: MoviesPropsInt) => state.movies.moviesData);
+  const loading = useSelector((state: CommonPropsInt) => state.common.loading);
+  const error = useSelector((state: CommonPropsInt) => state.common.error);
 
   return {
     dispatch, routerParams, routerLocation, movieData, moviesData, loading, error,
   };
 };
 
-const FilmPage = () => {
+export const FilmPage = () => {
   const {
     dispatch, routerParams, routerLocation, movieData, moviesData, loading, error,
   } = useCustomHook();
@@ -85,5 +87,3 @@ const FilmPage = () => {
     </>
   );
 };
-
-export default FilmPage;

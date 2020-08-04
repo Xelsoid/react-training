@@ -1,7 +1,9 @@
 import { sortByReleaseDate, sortByRating } from '@utils/index';
 import { handleFetchErrors, handleLoading } from '@root/src/services/commonReducers';
 import { ACTIONS } from '@root/src/services/constants';
-import { createReducer, createAction, ThunkDispatch, AnyAction } from '@reduxjs/toolkit';
+import {
+  createReducer, createAction, ThunkDispatch, AnyAction,
+} from '@reduxjs/toolkit';
 import { fetchMovies, fetchMovie } from './api';
 
 const initialStore = {
@@ -21,7 +23,9 @@ export const clearMoviesDataFromStore = createAction(ACTIONS.CLEAR_STORE_MOVIES)
 export const filterByReleaseDate = createAction(ACTIONS.FILTER_BY_RELEASE_DATE);
 export const filterByRating = createAction(ACTIONS.FILTER_BY_RATING);
 
-export const fetchData = (method: Promise<Response>, resultHandler: any, fetchHandlerId: any) => (dispatch: MyThunkDispatch) => {
+type resultHandlerType = (res: object) => void;
+
+export const fetchData = (method: Promise<Response>, resultHandler: resultHandlerType, fetchHandlerId: string) => (dispatch: MyThunkDispatch) => {
   dispatch(handleLoading({ id: fetchHandlerId, flag: true }));
   dispatch(handleFetchErrors({ id: fetchHandlerId, flag: false }));
 
@@ -68,7 +72,7 @@ export const movieReducers = createReducer(initialStore, {
   },
   [filterByRating.type]: (state) => {
     // @ts-ignore
-    state.moviesData.data = sortByRating<string>(state.moviesData.data);
+    state.moviesData.data = sortByRating(state.moviesData.data);
   },
   [addMoviesDataToStore.type]: (state, action) => {
     state.moviesData = action.payload.res;

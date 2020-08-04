@@ -16,6 +16,7 @@ import {
   filterByRating, filterByReleaseDate, fetchMoviesData,
 } from '../../services/movieReducers';
 import { FETCH_HANDLERS } from '../../services/constants';
+import { CommonPropsInt, SearchQueryInt, MoviesPropsInt } from '../../interface';
 
 const optionsConfig = [
   {
@@ -35,35 +36,13 @@ const searchOptionsConfig = [
   },
 ];
 
-interface CommonProps {
-    common: {
-        loading: string,
-        error: string
-    };
-}
-
-interface MovieProps {
-    data: Array<any>;
-    total: number;
-}
-
-interface MoviesProps {
-    movies: {
-        moviesData: MovieProps;
-    }
-}
-
-interface SearchQuery {
-    searchQuery: string;
-}
-
 const useCustomHook = () => {
   const dispatch = useDispatch();
-  const routerParams: SearchQuery = useParams();
+  const routerParams: SearchQueryInt = useParams();
   const routerLocation = useLocation();
-  const loading = useSelector<CommonProps>((state) => state.common.loading);
-  const error = useSelector<CommonProps>((state) => state.common.error);
-  const moviesData = useSelector((state: MoviesProps) => state.movies.moviesData);
+  const loading = useSelector<CommonPropsInt>((state) => state.common.loading);
+  const error = useSelector<CommonPropsInt>((state) => state.common.error);
+  const moviesData = useSelector((state: MoviesPropsInt) => state.movies.moviesData);
 
   return {
     dispatch, routerParams, routerLocation, loading, error, moviesData,

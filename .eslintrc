@@ -34,6 +34,7 @@
     "react/button-has-type": "off",
     "react/prop-types": "off",
     "no-param-reassign": "off",
+    "import/extensions": "off",
     "jsx-a11y/label-has-for": [
       2,
       {

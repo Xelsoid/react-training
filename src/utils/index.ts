@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { FilmDescriptionInt } from '../interface';
+
 export const formatIncomingData = (incomingData: string) => {
   const data = incomingData;
   const keyArray = Object.keys(data).filter((element) => (/_/).test(element));
@@ -19,25 +21,10 @@ export const formatIncomingData = (incomingData: string) => {
   return data;
 };
 
-interface FilmProps {
-    id: number;
-    title: string;
-    tagline: string;
-    vote_average: number;
-    vote_count: number;
-    release_date: string;
-    poster_path: string;
-    overview: string;
-    budget: number;
-    revenue: number;
-    genres: string[];
-    runtime: number;
-}
-
-export const sortByReleaseDate = (array: Array<FilmProps>) => array.sort((a, b) => (
+export const sortByReleaseDate = (array: Array<FilmDescriptionInt>) => array.sort((a, b) => (
   new Date(b.release_date).getTime() - new Date(a.release_date).getTime()));
 
-export const sortByRating = (array: Array<FilmProps>) => array.sort((a, b) => (
+export const sortByRating = (array: Array<FilmDescriptionInt>) => array.sort((a, b) => (
   b.vote_average - a.vote_average));
 
 export const addImageFallback = (event: React.InvalidEvent<HTMLImageElement>) => {

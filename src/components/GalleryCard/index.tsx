@@ -5,30 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addImageFallback } from '../../utils';
 import { fetchMovieData } from '../../services/movieReducers';
 import { FETCH_HANDLERS } from '../../services/constants';
+import { FilmDescriptionInt, MoviesPropsInt } from '../../interface';
 
-interface GalleryCardProps {
-    title: string;
-    poster_path: string;
-    release_date: string;
-    genres: Array<string>;
-    id: number;
-}
-
-interface MovieData {
-    id: string;
-}
-
-interface MoviesProps {
-    movies: {
-        movieData: MovieData
-    };
-}
-
-export const GalleryCard: React.FC<GalleryCardProps> = ({
+export const GalleryCard: React.FC<FilmDescriptionInt> = ({
   title, poster_path, release_date, genres, id,
 }) => {
   const dispatch = useDispatch();
-  const movieData = useSelector((state: MoviesProps) => state.movies.movieData);
+  const movieData = useSelector((state: MoviesPropsInt) => state.movies.movieData);
 
   const fetchMovieCallback = () => {
     if (+movieData.id === +id) {

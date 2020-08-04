@@ -1,15 +1,10 @@
 import * as React from 'react';
 import './index.scss';
-
-interface SortControlPanelProps {
-    title: string;
-    filterTitle?: string;
-    children?: React.ReactNode;
-};
+import { SortControlPanelInt } from '../../interface';
 
 export const SortControlPanel = ({
   title, children, filterTitle,
-}: SortControlPanelProps) => (
+}: SortControlPanelInt) => (
   <div className="sort-control-panel-wrapper">
     <strong className="sort-control-panel__result-amount">{title}</strong>
     {
@@ -24,4 +19,3 @@ export const SortControlPanel = ({
     }
   </div>
 );
-

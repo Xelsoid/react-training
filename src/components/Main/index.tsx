@@ -1,11 +1,7 @@
 import * as React from 'react';
 import './index.scss';
 
-interface MainProps {
-    children: React.ReactNode;
-};
-
-export const Main = ({ children }: MainProps) => (
+export const Main: React.FC = ({ children }) => (
   <div className="main-wrapper">
     <main>
       {children}

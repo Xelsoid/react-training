@@ -1,20 +1,11 @@
 import * as React from 'react';
 import './index.scss';
 import { addImageFallback } from '../../utils/index';
-
-interface FilmDescriptionProps {
-    title: string;
-    poster_path: string;
-    vote_average: number;
-    tagline: string;
-    release_date: string;
-    runtime: number;
-    overview: string;
-}
+import { FilmDescriptionInt } from '../../interface';
 
 export const FilmDescription = ({
   title, poster_path, vote_average, tagline, release_date, runtime, overview,
-}: FilmDescriptionProps) => (
+}: FilmDescriptionInt) => (
   <div className="film-description">
     <div className="film-description__image-wrapper">
       <img

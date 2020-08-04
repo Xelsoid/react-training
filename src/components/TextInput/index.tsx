@@ -1,16 +1,10 @@
 import * as React from 'react';
 import './index.scss';
-
-interface TextInputProps {
-    type: string;
-    defaultValue: string;
-    placeholder: string;
-    onChangeCallback: (e: React.ChangeEvent) => void;
-}
+import { TextInputPropsInt } from '../../interface';
 
 export const TextInput = ({
   type, placeholder, defaultValue, onChangeCallback,
-}: TextInputProps) => (
+}: TextInputPropsInt) => (
   <input
     className="text-input"
     type={type}

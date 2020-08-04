@@ -5,25 +5,21 @@ import {
   createReducer, createAction, ThunkDispatch, AnyAction,
 } from '@reduxjs/toolkit';
 import { fetchMovies, fetchMovie } from './api';
+import { MoviesInt, ResponseInt } from '../interface';
+
+type MyThunkDispatch = ThunkDispatch<{}, {}, AnyAction>;
+type resultHandlerType = (res: object) => void;
 
 const initialStore = {
   moviesData: {},
   movieData: {},
 };
 
-interface MoviesInt {
-    res: object;
-}
-
-type MyThunkDispatch = ThunkDispatch<{}, {}, AnyAction>;
-
 export const addMoviesDataToStore = createAction<MoviesInt>(ACTIONS.STORE_MOVIES);
 export const addMovieDataToStore = createAction<MoviesInt>(ACTIONS.STORE_MOVIE);
 export const clearMoviesDataFromStore = createAction(ACTIONS.CLEAR_STORE_MOVIES);
 export const filterByReleaseDate = createAction(ACTIONS.FILTER_BY_RELEASE_DATE);
 export const filterByRating = createAction(ACTIONS.FILTER_BY_RATING);
-
-type resultHandlerType = (res: object) => void;
 
 export const fetchData = (method: Promise<Response>, resultHandler: resultHandlerType, fetchHandlerId: string) => (dispatch: MyThunkDispatch) => {
   dispatch(handleLoading({ id: fetchHandlerId, flag: true }));
@@ -47,10 +43,6 @@ export const fetchMoviesData = (searchQuery: string, searchByQuery: string, fetc
 
   dispatch(fetchData(method, resultHandler, fetchHandlerId));
 };
-
-interface ResponseInt {
-    genres: Array<string>
-}
 
 export const fetchMovieData = (movieId: string, fetchHandlerId: string) => (dispatch: MyThunkDispatch) => {
   const method = fetchMovie(movieId);

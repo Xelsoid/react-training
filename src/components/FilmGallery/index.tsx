@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { GalleryCard } from '@components/GalleryCard/index';
 import './index.scss';
+import { FilmsGalleryInt } from '../../interface';
 
-interface FilmsGalleryProps {
-    films: Array<any>;
-};
-
-export const FilmsGallery = ({ films }: FilmsGalleryProps) => (
+export const FilmsGallery = ({ films }: FilmsGalleryInt) => (
   <div className="film-gallery">
     {films.map((film) => (
       <div key={film.id} className="film-gallery--column">

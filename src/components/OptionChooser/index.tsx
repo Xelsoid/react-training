@@ -1,13 +1,8 @@
 import * as React from 'react';
 import './index.scss';
+import { OptionChooserInt } from '../../interface';
 
-interface OptionChooserProps {
-    optionsConfig: Array<any>;
-    defaultValue: string;
-    onChangeCallback: (e: React.ChangeEvent) => void;
-}
-
-export const OptionChooser = ({ optionsConfig, defaultValue, onChangeCallback }: OptionChooserProps) => (
+export const OptionChooser = ({ optionsConfig, defaultValue, onChangeCallback }: OptionChooserInt) => (
   <div className="option-chooser-wrapper">
     {optionsConfig.map((option) => (
       <React.Fragment key={option.value}>

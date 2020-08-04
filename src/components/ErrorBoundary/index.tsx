@@ -1,15 +1,8 @@
 import * as React from 'react';
 import './index.scss';
+import { ErrorBoundaryStateInt, ErrorBoundaryPropsInt } from '../../interface';
 
-interface ErrorBoundaryProps {
-    children: React.ReactNode;
-}
-
-interface ErrorBoundaryState {
-    hasError: boolean;
-}
-
-export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends React.Component<ErrorBoundaryPropsInt, ErrorBoundaryStateInt> {
   constructor(props: any) {
     super(props);
     this.state = { hasError: false };

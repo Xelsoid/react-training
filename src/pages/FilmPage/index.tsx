@@ -15,53 +15,16 @@ import { FetchResult } from '@components/FetchResult';
 import { fetchMovieData } from '../../services/movieReducers';
 import { addImageFallback } from '../../utils';
 import { FETCH_HANDLERS } from '../../services/constants';
-
-interface CommonProps {
-    common: {
-        loading: string,
-        error: string
-    };
-}
-
-interface MovieProps {
-    data: Array<any>;
-    total: number;
-}
-
-interface FilmProps {
-    id: number;
-    title: string;
-    tagline: string;
-    vote_average: number;
-    vote_count: number;
-    release_date: string;
-    poster_path: string;
-    overview: string;
-    budget: number;
-    revenue: number;
-    genres: string[];
-    runtime: number;
-}
-
-interface RouterParamsProps {
-    id: string
-}
-
-interface MoviesProps {
-    movies: {
-        moviesData: MovieProps;
-        movieData: FilmProps;
-    }
-}
+import { CommonPropsInt, RouterParamsInt, MoviesPropsInt } from '../../interface';
 
 const useCustomHook = () => {
   const dispatch = useDispatch();
-  const routerParams: RouterParamsProps = useParams();
+  const routerParams: RouterParamsInt = useParams();
   const routerLocation = useLocation();
-  const movieData = useSelector((state: MoviesProps) => state.movies.movieData);
-  const moviesData = useSelector((state: MoviesProps) => state.movies.moviesData);
-  const loading = useSelector((state: CommonProps) => state.common.loading);
-  const error = useSelector((state: CommonProps) => state.common.error);
+  const movieData = useSelector((state: MoviesPropsInt) => state.movies.movieData);
+  const moviesData = useSelector((state: MoviesPropsInt) => state.movies.moviesData);
+  const loading = useSelector((state: CommonPropsInt) => state.common.loading);
+  const error = useSelector((state: CommonPropsInt) => state.common.error);
 
   return {
     dispatch, routerParams, routerLocation, movieData, moviesData, loading, error,

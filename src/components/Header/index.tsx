@@ -1,13 +1,8 @@
 import * as React from 'react';
 import './index.scss';
+import { HeaderInt } from '../../interface';
 
-interface HeaderProps {
-    headerChildren: any;
-    upperChild?: React.ReactNode;
-    middleChild?: React.ReactNode;
-}
-
-export const Header = ({ headerChildren: { upperChild, middleChild } }: HeaderProps) => (
+export const Header = ({ headerChildren: { upperChild, middleChild } }: HeaderInt) => (
   <div className="header-wrapper">
     <header className="header">
       <div className="header__logo-wrapper">

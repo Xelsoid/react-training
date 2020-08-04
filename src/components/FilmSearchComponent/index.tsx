@@ -4,23 +4,7 @@ import { Button } from '@components/Button/index';
 import { OptionChooser } from '@components/OptionChooser/index';
 import './index.scss';
 import { Link } from 'react-router-dom';
-
-interface OptionsProps {
-    radioBtnName: string;
-    name: string;
-    value: string;
-}
-
-interface FilmSearchComponentProps {
-    searchOptionsConfig: Array<OptionsProps>;
-    searchState: string;
-    getAndSetSearchState: (e: React.ChangeEvent) => void;
-    searchByState: string;
-    findMoviesByButton: (e: React.MouseEvent) => void;
-    getAndSetSearchByState: (e: React.ChangeEvent) => void;
-    title: string;
-    chooserTitle: string;
-}
+import { FilmSearchComponentPropsInt } from '../../interface';
 
 export const FilmSearchComponent = ({
   searchOptionsConfig,
@@ -31,7 +15,7 @@ export const FilmSearchComponent = ({
   getAndSetSearchByState,
   title,
   chooserTitle,
-}: FilmSearchComponentProps) => (
+}: FilmSearchComponentPropsInt) => (
   <div className="film-search-wrapper">
     <h2 className="film-search__title">{title}</h2>
     <div className="film-search__panel">

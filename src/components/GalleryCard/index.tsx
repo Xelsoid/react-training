@@ -34,7 +34,7 @@ export const GalleryCard: React.FC<GalleryCardProps> = ({
     if (+movieData.id === +id) {
       return;
     }
-    dispatch(fetchMovieData(id, FETCH_HANDLERS.MOVIE));
+    dispatch(fetchMovieData(`${id}`, FETCH_HANDLERS.MOVIE));
   };
 
   return (

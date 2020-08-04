@@ -1,21 +1,27 @@
 import { sortByReleaseDate, sortByRating } from '@utils/index';
-import { fetchMovies, fetchMovie } from './api';
 import { handleFetchErrors, handleLoading } from '@root/src/services/commonReducers';
 import { ACTIONS } from '@root/src/services/constants';
-import { createReducer, createAction } from '@reduxjs/toolkit';
+import { createReducer, createAction, ThunkDispatch, AnyAction } from '@reduxjs/toolkit';
+import { fetchMovies, fetchMovie } from './api';
 
 const initialStore = {
   moviesData: {},
   movieData: {},
 };
 
-export const addMoviesDataToStore = createAction(ACTIONS.STORE_MOVIES);
-export const addMovieDataToStore = createAction(ACTIONS.STORE_MOVIE);
+interface MoviesInt {
+    res: object;
+}
+
+type MyThunkDispatch = ThunkDispatch<{}, {}, AnyAction>;
+
+export const addMoviesDataToStore = createAction<MoviesInt>(ACTIONS.STORE_MOVIES);
+export const addMovieDataToStore = createAction<MoviesInt>(ACTIONS.STORE_MOVIE);
 export const clearMoviesDataFromStore = createAction(ACTIONS.CLEAR_STORE_MOVIES);
 export const filterByReleaseDate = createAction(ACTIONS.FILTER_BY_RELEASE_DATE);
 export const filterByRating = createAction(ACTIONS.FILTER_BY_RATING);
 
-export const fetchData = (method, resultHandler, fetchHandlerId) => (dispatch) => {
+export const fetchData = (method: Promise<Response>, resultHandler: any, fetchHandlerId: any) => (dispatch: MyThunkDispatch) => {
   dispatch(handleLoading({ id: fetchHandlerId, flag: true }));
   dispatch(handleFetchErrors({ id: fetchHandlerId, flag: false }));
 
@@ -31,16 +37,20 @@ export const fetchData = (method, resultHandler, fetchHandlerId) => (dispatch) =
     .finally(() => dispatch(handleLoading({ id: fetchHandlerId, flag: false })));
 };
 
-export const fetchMoviesData = (searchQuery, searchByQuery, fetchHandlerId) => (dispatch) => {
+export const fetchMoviesData = (searchQuery: string, searchByQuery: string, fetchHandlerId: string) => (dispatch: MyThunkDispatch) => {
   const method = fetchMovies(searchQuery, searchByQuery);
-  const resultHandler = (res) => dispatch(addMoviesDataToStore({ res }));
+  const resultHandler = (res: object) => dispatch(addMoviesDataToStore({ res }));
 
   dispatch(fetchData(method, resultHandler, fetchHandlerId));
 };
 
-export const fetchMovieData = (movieId, fetchHandlerId) => (dispatch) => {
+interface ResponseInt {
+    genres: Array<string>
+}
+
+export const fetchMovieData = (movieId: string, fetchHandlerId: string) => (dispatch: MyThunkDispatch) => {
   const method = fetchMovie(movieId);
-  const resultHandler = (res) => {
+  const resultHandler = (res: ResponseInt) => {
     dispatch(fetchMoviesData(res.genres[0], 'genres', fetchHandlerId));
     dispatch(addMovieDataToStore({ res }));
   };
@@ -49,19 +59,21 @@ export const fetchMovieData = (movieId, fetchHandlerId) => (dispatch) => {
 };
 
 export const movieReducers = createReducer(initialStore, {
-  [clearMoviesDataFromStore]: (state, action) => {
+  [clearMoviesDataFromStore.type]: (state) => {
     state.moviesData = {};
   },
-  [filterByReleaseDate]: (state, action) => {
+  [filterByReleaseDate.type]: (state) => {
+    // @ts-ignore
     state.moviesData.data = sortByReleaseDate(state.moviesData.data);
   },
-  [filterByRating]: (state, action) => {
-    state.moviesData.data = sortByRating(state.moviesData.data);
+  [filterByRating.type]: (state) => {
+    // @ts-ignore
+    state.moviesData.data = sortByRating<string>(state.moviesData.data);
   },
-  [addMoviesDataToStore]: (state, action) => {
+  [addMoviesDataToStore.type]: (state, action) => {
     state.moviesData = action.payload.res;
   },
-  [addMovieDataToStore]: (state, action) => {
+  [addMovieDataToStore.type]: (state, action) => {
     state.movieData = action.payload.res;
   },
 });
